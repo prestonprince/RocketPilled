@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .team import team_members
 
 
 class User(db.Model, UserMixin):
@@ -13,7 +14,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    xp_points = db.Column(db.Integer, default=0)
 
+    teams = db.relationship("Team", secondary=team_members, back_populates="members")
+    
     @property
     def password(self):
         return self.hashed_password
@@ -25,9 +29,22 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def to_dict_base(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "xp_points": self.xp_points
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            "xp_points": self.xp_points,
+            "solo_teams": [team.to_dict() for team in self.teams if team.type == "solo"],
+            "duo_teams": [team.to_dict() for team in self.teams if team.type == "duo"],
+            "squad_teams": [team.to_dict() for team in self.teams if team.type == "squad"]
         }
+    

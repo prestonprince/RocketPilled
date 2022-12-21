@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Team, db, User
-from app.forms import CreateTeamForm, AddTeamMemberForm
+from app.forms import CreateTeamForm, AddTeamMemberForm, RemoveTeamMemberForm
 from .auth_routes import validation_errors_to_error_messages, authorized
 
 team_routes = Blueprint('teams', __name__)
@@ -74,6 +74,7 @@ def validate_team_member(team, user, user_info):
 
 
 @team_routes.route('/<int:team_id>', methods=['PUT'])
+@login_required
 def add_team_member(team_id):
     """
     Query for team by team_id param and query for user by user_id in request body.
@@ -97,4 +98,30 @@ def add_team_member(team_id):
 
         return team.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@team_routes.route('/<int:team_id>', methods=['DELETE'])
+@login_required
+def remove_team_member(team_id):
+    form = RemoveTeamMemberForm()
+    data = form.data
+
+    team = Team.query.get(team_id)
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User.query.get(data['user_id'])
+        # check to make sure user is on the team
+        if user not in team.members:
+            return {'error': 'User is not on this team'}
+        
+        team.members.remove(user)
+        db.session.commit()
+        return team.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+        
+
+
+
     

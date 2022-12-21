@@ -73,10 +73,11 @@ def validate_team_member(team, user, user_info):
         return {'error': "You do not own this team"}
 
 
-@team_routes.route('/<int:team_id>', methods=['PUT'])
+@team_routes.route('/<int:team_id>', methods=['POST'])
 @login_required
 def add_team_member(team_id):
     """
+    Add user to team
     Query for team by team_id param and query for user by user_id in request body.
     If team and user exist, add user to team members
     """
@@ -100,9 +101,13 @@ def add_team_member(team_id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@team_routes.route('/<int:team_id>', methods=['DELETE'])
+@team_routes.route('/<int:team_id>', methods=['PUT'])
 @login_required
 def remove_team_member(team_id):
+    """
+    Remove user from a team
+    """
+
     form = RemoveTeamMemberForm()
     data = form.data
 
@@ -119,6 +124,27 @@ def remove_team_member(team_id):
         db.session.commit()
         return team.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@team_routes.route('/<int:team_id>', methods=['DELETE'])
+@login_required
+def delete_team(team_id):
+    """
+    Delete a team if authorized
+    """
+    team = Team.query.get(team_id)
+
+    if not authorized(team.owner_id):
+        return {"error": "You do not own this team"}
+        
+    db.session.delete(team)
+    db.session.commit()
+    
+    return {"message": "Successfully deleted"}
+
+
+
+
 
         
 

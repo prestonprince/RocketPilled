@@ -1,8 +1,8 @@
 """all tables
 
-Revision ID: bfaf181af213
+Revision ID: 2644f3eb784e
 Revises: 
-Create Date: 2022-12-20 15:44:38.356139
+Create Date: 2022-12-20 17:20:49.994286
 
 """
 from alembic import op
@@ -10,10 +10,11 @@ import sqlalchemy as sa
 
 import os
 environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get('SCHEMA')
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = 'bfaf181af213'
+revision = '2644f3eb784e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -85,6 +86,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE match_reports SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

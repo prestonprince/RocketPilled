@@ -27,5 +27,10 @@ def team(team_id):
     Query for a team by id and return that team in a dictionary
     """
     team = Team.query.get(team_id)
-
     return team.to_dict()
+
+
+@team_routes.route('', methods=["POST"])
+@login_required
+def create_team():
+    pass

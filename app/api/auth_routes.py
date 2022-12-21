@@ -7,6 +7,15 @@ from flask_login import current_user, login_user, logout_user, login_required
 auth_routes = Blueprint('auth', __name__)
 
 
+def authorized(id):
+    """
+    simple function that returns true if passed in ID
+    is equal to current user id. If false, user is unauthorized to 
+    perform action
+    """
+    return False if current_user.id != id else True
+
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list

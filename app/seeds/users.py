@@ -37,12 +37,12 @@ def seed_users():
     db.session.commit()
 
     # seed teams
-    nrg = Team(owner_id=3, name="NRG", type='squad')
-    faze = Team(owner_id=6, name="FaZe", type='squad')
-    jacksolos = Team(owner_id=11, name="JackSolos", type='solo')
-    fksolo = Team(owner_id=6, name='FkSolos', type='solo')
-    arsybaby = Team(owner_id=9, name='ArsyBabies', type='duo')
-    theduo = Team(owner_id=10, name='TheDuo', type='duo')
+    nrg = Team(owner_id=3, name="NRG", type='Squad')
+    faze = Team(owner_id=6, name="FaZe", type='Squad')
+    jacksolos = Team(owner_id=11, name="JackSolos", type='Solo')
+    fksolo = Team(owner_id=6, name='FkSolos', type='Solo')
+    arsybaby = Team(owner_id=9, name='ArsyBabies', type='Duo')
+    theduo = Team(owner_id=10, name='TheDuo', type='Duo')
 
     db.session.add_all([nrg, faze, jacksolos, fksolo, arsybaby, theduo])
     db.session.commit()

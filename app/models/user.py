@@ -43,8 +43,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "xp_points": self.xp_points,
-            "solo_teams": [team.to_dict() for team in self.teams if team.type == "solo"],
-            "duo_teams": [team.to_dict() for team in self.teams if team.type == "duo"],
-            "squad_teams": [team.to_dict() for team in self.teams if team.type == "squad"]
+            "Solo": [team.to_dict() for team in self.teams if team.type == "Solo"],
+            "Duo": [team.to_dict() for team in self.teams if team.type == "Duo"],
+            "Squad": [team.to_dict() for team in self.teams if team.type == "Squad"]
         }
     

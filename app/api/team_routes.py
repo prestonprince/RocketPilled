@@ -1,6 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Team
+from app.models import Team, db, User
+from app.forms import CreateTeamForm
+from .auth_routes import validation_errors_to_error_messages
 
 team_routes = Blueprint('teams', __name__)
 
@@ -33,4 +35,23 @@ def team(team_id):
 @team_routes.route('', methods=["POST"])
 @login_required
 def create_team():
-    pass
+    """
+    Create a new team based on request body
+    """
+    form = CreateTeamForm()
+    user = User.query.get(current_user.id)
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        new_team = Team(
+            owner_id=data['owner_id'],
+            name=data['name'],
+            type=data['type']
+        )
+        db.session.add(new_team)
+
+        new_team.members.append(user)
+        db.session.commit()
+        return new_team.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

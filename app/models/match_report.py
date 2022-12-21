@@ -7,9 +7,8 @@ class MatchReport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), nullable=False)
     match_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("matches.id")), nullable=False)
-    is_win = db.Column(db.Boolean, nullable=False)
-
-    team = db.relationship("Team", back_populates="reports")
+    is_win = db.Column(db.Boolean)
+    
     match = db.relationship("Match", back_populates="reports")
 
     def to_dict_base(self):

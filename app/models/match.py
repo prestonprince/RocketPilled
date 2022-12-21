@@ -15,7 +15,7 @@ class Match(db.Model):
     map = db.Column(db.String(40))
     winning_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), default=None)
 
-    teams = db.relationship("Team", back_populates="match")
+    teams = db.relationship("Team", back_populates="matches")
     reports = db.relationship("MatchReport", back_populates='match')
 
     @property

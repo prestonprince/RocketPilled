@@ -1,8 +1,8 @@
-"""create all tables
+"""all tables
 
-Revision ID: fd721b7ab479
+Revision ID: bfaf181af213
 Revises: 
-Create Date: 2022-12-20 14:39:06.000301
+Create Date: 2022-12-20 15:44:38.356139
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get('SCHEMA')
 
-
 # revision identifiers, used by Alembic.
-revision = 'fd721b7ab479'
+revision = 'bfaf181af213'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -78,7 +77,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=False),
     sa.Column('match_id', sa.Integer(), nullable=False),
-    sa.Column('is_win', sa.Boolean(), nullable=False),
+    sa.Column('is_win', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['match_id'], ['matches.id'], ),
     sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
     sa.PrimaryKeyConstraint('id')

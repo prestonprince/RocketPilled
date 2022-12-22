@@ -5,13 +5,11 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import Banner from './components/Banner';
-import MatchesTitleCard from './components/MatchesTitleCard';
-import MatchesNav from './components/MatchesNav';
-import Matches from './components/Matches';
+import Matches from './components/pages/matches/Matches';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import Teams from './components/Teams';
+import Teams from './components/pages/teams/Teams'
 import { authenticate } from './store/session';
-import MyTeams from './components/MyTeams';
+import MyTeams from './components/pages/myTeams/MyTeams';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

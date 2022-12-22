@@ -1,6 +1,12 @@
-const TeamsList = () => {
+const TeamsList = ({ teams }) => {
     return (
-        <h3>Hello from TeamsList</h3>
+        <div>
+            <ul>
+                {Object.values(teams).map(team => (
+                    <span key={team.id}>{team.name}</span>
+                ))}
+            </ul>
+        </div>
     )
 };
 

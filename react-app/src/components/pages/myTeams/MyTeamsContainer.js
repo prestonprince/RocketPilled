@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux'
 import MyTeamCard from "./MyTeamCard";
 
 const MyTeamsConainer = ({ teams }) => {
@@ -10,6 +11,7 @@ const MyTeamsConainer = ({ teams }) => {
             ): 
             <h2>No teams yet</h2>
         }
+            <button>Create Team</button>
         </div>
     )
 };

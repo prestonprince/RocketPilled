@@ -1,7 +1,13 @@
-import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import MyTeamCard from "./MyTeamCard";
 
 const MyTeamsConainer = ({ teams }) => {
+    const history = useHistory()
+
+    const handleClick = () => {
+        history.push('/teams/new')
+    }
+
     return (
         <div>
             {teams.length > 0 ? (
@@ -11,7 +17,7 @@ const MyTeamsConainer = ({ teams }) => {
             ): 
             <h2>No teams yet</h2>
         }
-            <button>Create Team</button>
+            <button onClick={handleClick}>Create Team</button>
         </div>
     )
 };

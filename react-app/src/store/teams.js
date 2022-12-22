@@ -52,19 +52,25 @@ export const createTeam = (team) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         console.log(data);
+        dispatch(addTeam(data))
         return data;
     };
 
     throw response;
 }
 
-const initialState = {}
+const initialState = {};
 
 export default function reducer(state = initialState, action) {
     let newState = {...state};
     switch (action.type) {
         case LOAD_TEAMS:
             newState = {...state, ...action.payload}
+            return newState
+        case ADD_TEAM:
+            const id = action.payload.id
+            const type =action.payload.type
+            newState[type][id] = action.payload
             return newState
         default:
             return state

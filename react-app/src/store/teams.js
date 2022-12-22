@@ -1,6 +1,7 @@
 // constants
 const LOAD_TEAMS = '/teams/LOAD_TEAMS';
-const ADD_TEAM = 'teams/ADD_TEAM'
+const ADD_TEAM = 'teams/ADD_TEAM';
+const REMOVE_TEAM = 'teams/REMOVE_TEAM'
 
 const loadTeams = (payload) => ({
     type: LOAD_TEAMS,
@@ -9,6 +10,11 @@ const loadTeams = (payload) => ({
 
 const addTeam = (payload) => ({
     type: ADD_TEAM,
+    payload
+});
+
+const removeTeam = (payload) => ({
+    type: REMOVE_TEAM,
     payload
 })
 
@@ -57,7 +63,24 @@ export const createTeam = (team) => async(dispatch) => {
     };
 
     throw response;
-}
+};
+
+export const deleteTeam = (team) => async(dispatch) => {
+    const response = await fetch(`/api/teams/${team.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeTeam(team));
+        return data
+    }
+    
+    throw response
+};
 
 const initialState = {};
 
@@ -72,6 +95,10 @@ export default function reducer(state = initialState, action) {
             const type =action.payload.type
             newState[type][id] = action.payload
             return newState
+        case REMOVE_TEAM:
+            const removeId = action.payload.id;
+            const removeType = action.payload.type;
+            delete newState[removeType][removeId];
         default:
             return state
     }

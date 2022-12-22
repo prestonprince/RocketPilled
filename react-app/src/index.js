@@ -5,7 +5,14 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 
+import * as teamActions from "./store/teams";
+
 const store = configureStore();
+
+if (process.env.NODE_ENV !== "production") {
+  window.store = store; //expose store to window in development
+  window.teamActions = teamActions;
+}
 
 ReactDOM.render(
   <React.StrictMode>

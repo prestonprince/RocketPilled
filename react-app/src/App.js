@@ -9,7 +9,9 @@ import MatchesTitleCard from './components/MatchesTitleCard';
 import MatchesNav from './components/MatchesNav';
 import Matches from './components/Matches';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Teams from './components/Teams';
 import { authenticate } from './store/session';
+import MyTeams from './components/MyTeams';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +41,10 @@ function App() {
         <ProtectedRoute path='/teams'>
           <Banner />
           <Teams />
+        </ProtectedRoute>
+        <ProtectedRoute path='/my-teams'>
+          <Banner />
+          <MyTeams />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Banner />

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import MatchesNav from "./MatchesNav";
 import MatchesTitleCard from "./MatchesTitleCard";
 

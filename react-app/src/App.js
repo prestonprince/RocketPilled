@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
+import Banner from './components/Banner';
+import Matches from './components/pages/matches/Matches';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import Teams from './components/pages/teams/Teams'
 import { authenticate } from './store/session';
+import MyTeams from './components/pages/myTeams/MyTeams';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,14 +36,17 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path='/teams'>
+          <Banner />
+          <Teams />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/my-teams'>
+          <Banner />
+          <MyTeams />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Banner />
+          <Matches />
         </Route>
       </Switch>
     </BrowserRouter>

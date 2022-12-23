@@ -85,6 +85,40 @@ export const deleteTeam = (team) => async(dispatch) => {
     throw response
 };
 
+export const addTeamMember = (userId, teamId) => async(dispatch) => {
+    const response = await fetch(`/api/teams/${teamId}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ user_id: userId })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getAllTeams());
+        return data
+    };
+    throw response;
+}
+
+export const removeTeamMember = (userId, teamId) => async(dispatch) => {
+    const response = await fetch(`/api/teams/${teamId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ user_id: userId })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getAllTeams());
+        return data
+    };
+    throw response;
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import ManageRosterForm from "./ManageRosterForm";
 import { getAllUsers } from "../../store/session";
 
-const ManageRosterModal = () => {
+const ManageRosterModal = ({ team }) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
 
@@ -15,11 +15,11 @@ const ManageRosterModal = () => {
     return (
         <>
             <button onClick={handleClick}>
-                Manage Roster
+                Add Teammates
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ManageRosterForm />
+                    <ManageRosterForm team={team} setShowModal={setShowModal} />
                 </Modal>
             )}
         </>

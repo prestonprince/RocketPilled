@@ -8,7 +8,7 @@ const TeamBar = ({ team }) => {
                 <span>placeholder for team record</span>
             </div>
             <div>
-                <span>placeholder for recent teamm matches</span>
+                <span>placeholder for recent team matches</span>
             </div>
         </div>
     )

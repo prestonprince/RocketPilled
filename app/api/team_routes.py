@@ -14,7 +14,6 @@ def all_teams():
     solo, duo, and squad type
     """
     teams = Team.query.all()
-    print(teams)
     all_teams = {
         "solo": [team.to_dict() for team in teams if team.type == 'Solo'],
         "duo": [team.to_dict() for team in teams if team.type == 'Duo'],
@@ -22,15 +21,6 @@ def all_teams():
     }
 
     return {"teams": all_teams}
-
-
-# @team_routes.route('/<int:team_id>')
-# def team(team_id):
-#     """
-#     Query for a team by id and return that team in a dictionary
-#     """
-#     team = Team.query.get(team_id)
-#     return team.to_dict()
 
 
 @team_routes.route('', methods=["POST"])

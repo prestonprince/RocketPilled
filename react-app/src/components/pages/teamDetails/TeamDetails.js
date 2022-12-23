@@ -5,6 +5,7 @@ import { deleteTeam } from "../../../store/teams";
 import TeamBar from "./TeamBar";
 import TeamRoster from "./TeamRoster";
 import TeamMatches from "./TeamMatches";
+import { getAllUsers } from "../../../store/session";
 
 const TeamDetails = () => {
     const { id, type } = useParams()
@@ -20,13 +21,17 @@ const TeamDetails = () => {
         })
     }
 
+    const handleManage = () => {
+        dispatch(getAllUsers())
+    }
+
     return (
         <div>
             <div>
                 <span>{team.name}</span>
                 {user.id === team.owner_id && (
                     <div>
-                        <button>Manage Roster</button>
+                        <button onClick={handleManage}>Manage Roster</button>
                         <button onClick={() => handleDisband(team)}>Disband</button>
                     </div>
                 )}

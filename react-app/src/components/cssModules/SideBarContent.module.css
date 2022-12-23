@@ -1,0 +1,10 @@
+.teams:hover {
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    /* border: 3px solid red; */
+}

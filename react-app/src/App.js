@@ -52,7 +52,6 @@ function App() {
           <CreateTeamForm />
         </ProtectedRoute>
         <ProtectedRoute path='/my-teams'>
-          <Banner />
           <MyTeams />
         </ProtectedRoute>
         <Route path='/' exact={true} >

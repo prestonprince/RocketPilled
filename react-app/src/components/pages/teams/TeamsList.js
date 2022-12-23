@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import styles from '../../cssModules/TeamsList.module.css'
 
 const TeamsList = ({ teams }) => {
     const history= useHistory()
@@ -8,12 +9,10 @@ const TeamsList = ({ teams }) => {
     }
 
     return (
-        <div>
-            <ul>
-                {Object.values(teams).map(team => (
-                    <span onClick={() => handleClick(team)} key={team.id}>{team.name}</span>
-                ))}
-            </ul>
+        <div className={styles.container}>
+            {Object.values(teams).map(team => (
+                <span onClick={() => handleClick(team)} key={team.id}>{team.name}</span>
+            ))}
         </div>
     )
 };

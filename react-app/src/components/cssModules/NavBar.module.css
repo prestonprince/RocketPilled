@@ -1,0 +1,36 @@
+.nav_container {
+    position: sticky;
+    /* border: 3px solid blue; */
+    display: flex;
+    justify-content: center;
+    background-color: #292929;
+    height: 6.5vh;
+    align-items: center;
+}
+
+.nav_links {
+    display: flex;
+    justify-content: space-between;
+    /* border: 3px solid red; */
+    width: 90vw;
+}
+
+.sign_up_login {
+    display: flex;
+    /* border: 3px solid yellow; */
+    width: 8vw;
+    justify-content: space-evenly;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.nav_user {
+    color: white;
+}
+
+.nav_user:hover {
+    cursor: pointer;
+}

@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import TeamsContainer from "./TeamsContainer";
+import styles from "../../cssModules/Teams.module.css"
 
 const Teams = () => {
     const teams = useSelector(state => state.teams)
 
     return (
-        <div>
+        <div className={styles.container}>
             {teams ? (
                 <TeamsContainer />
             ): 

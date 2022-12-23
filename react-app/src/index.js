@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
+import { SideBarModalProvider } from './context/SideBarModal';
 
 import * as teamActions from "./store/teams";
 
@@ -19,7 +20,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ModalProvider>
-        <App />
+        <SideBarModalProvider>
+          <App /> 
+        </SideBarModalProvider>
       </ModalProvider>
       </Provider>
   </React.StrictMode>,

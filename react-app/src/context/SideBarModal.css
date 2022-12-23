@@ -1,0 +1,30 @@
+#sideBarModal {
+    position: fixed;
+    top: 13vh;
+    right: 8vw;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #sideBarModal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+  }
+  
+  #sideBarModal-content {
+    position: absolute;
+    background-color: #3f3f3f;
+    width: 17vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    /* border-radius: 12px; */
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  }

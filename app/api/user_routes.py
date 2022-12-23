@@ -22,4 +22,15 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    return user.to_dict()
+    user_info = user.to_dict()
+
+    soloList = user_info['Solo']
+    duoList = user_info['Duo']
+    squadList = user_info['Squad']
+
+    soloDict = {d['id']: d for d in soloList}
+    duoDict = {d['id']: d for d in duoList}
+    squadDict = {d['id']: d for d in squadList }
+
+
+    return {**user_info, "Solo": soloDict, "Duo": duoDict, "Squad": squadDict}

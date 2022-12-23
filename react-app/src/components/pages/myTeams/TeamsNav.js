@@ -1,3 +1,5 @@
+import styles from "../../cssModules/TeamsNav.module.css"
+
 const TeamsNav = ({ setTeams, user }) => {
     const soloClick = () => {
         setTeams(user.Solo)
@@ -12,10 +14,16 @@ const TeamsNav = ({ setTeams, user }) => {
     };
 
     return (
-        <div>
-            <span onClick={soloClick}>Solo</span>
-            <span onClick={duoClick}>Duo</span>
-            <span onClick={squadClick}>Squad</span>
+        <div className={styles.container}>
+            <div className={styles.title}>
+                <span onClick={soloClick}>Solo</span>
+            </div>
+            <div className={styles.title}>
+                <span onClick={duoClick}>Duo</span>
+            </div>
+            <div className={styles.title}>
+                <span onClick={squadClick}>Squad</span>
+            </div>
         </div>
     )
 };

@@ -1,6 +1,9 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const REMOVE_USER_TEAM = 'session/REMOVE_USER_TEAM';
+const ADD_USER_TEAM ='session/ADD_USER_TEAM';
+const SET_ALL_USERS = 'session/SET_ALL_USERS';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +14,22 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+export const removeUserTeam = (payload) => ({
+  type: REMOVE_USER_TEAM,
+  payload
+})
+
+export const addUserTeam = (payload) => ({
+  type: ADD_USER_TEAM,
+  payload
+})
+
+const setAllUsers = (payload) => ({
+  type: SET_ALL_USERS,
+  payload
+})
+
+const initialState = { user: null, allUsers: null };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -95,14 +113,41 @@ export const signUp = (username, email, password) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
+};
+
+export const getAllUsers = () => async(dispatch) => {
+  const response = await fetch('/api/users/', {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data)
+    dispatch(setAllUsers(data.users))
+  }
 }
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state};
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
+    case SET_ALL_USERS:
+      newState.allUsers = action.payload;
+      return newState;
     case REMOVE_USER:
       return { user: null }
+    case ADD_USER_TEAM:
+      let addType = action.payload.type;
+      let addId = action.payload.id;
+      newState.user[addType][addId] = action.payload
+      return newState
+    case REMOVE_USER_TEAM:
+      let type = action.payload.type
+      let id = action.payload.id
+      delete newState.user[type][id]
     default:
       return state;
   }

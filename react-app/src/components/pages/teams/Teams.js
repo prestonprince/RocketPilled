@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getAllTeams } from "../../../store/teams";
+import { useSelector } from "react-redux";
 import TeamsContainer from "./TeamsContainer";
+import styles from "../../cssModules/Teams.module.css"
 
 const Teams = () => {
-    const dispatch = useDispatch()
-    const [teamsLoaded, setTeamsLoaded] = useState(false);
-
-    useEffect(() => {
-        dispatch(getAllTeams()).then(() => setTeamsLoaded(true))
-    }, [dispatch])
+    const teams = useSelector(state => state.teams)
 
     return (
-        <div>
-            {teamsLoaded ? (
+        <div className={styles.container}>
+            {teams ? (
                 <TeamsContainer />
             ): 
                 <h3>Teams loading...</h3>

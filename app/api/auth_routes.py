@@ -33,7 +33,17 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        return current_user.to_dict()
+        user_info = current_user.to_dict()
+
+        soloList = user_info['Solo']
+        duoList = user_info['Duo']
+        squadList = user_info['Squad']
+
+        soloDict = {d['id']: d for d in soloList}
+        duoDict = {d['id']: d for d in duoList}
+        squadDict = {d['id']: d for d in squadList }
+
+        return {**user_info, "Solo": soloDict, "Duo": duoDict, "Squad": squadDict}
     return {'errors': ['Unauthorized']}
 
 

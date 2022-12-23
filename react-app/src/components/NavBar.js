@@ -1,41 +1,57 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
+import styles from './cssModules/NavBar.module.css'
+import SideBar from './sideBar/SideBar';
 
 const NavBar = () => {
+  const user = useSelector(state => state.session.user)
+
+  console.log(user)
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
+    <nav className={styles.nav_container}>
+      <div className={styles.nav_links}>
+        <div>
+          <span>
+            <NavLink to='/' className={styles.link} exact={true} activeClassName='active'>
+              Home
+            </NavLink>
+          </span>
+        </div>
+        {!user ? (
+          <div className={styles.sign_up_login}>
+            <span>
+              <NavLink className={styles.link} to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
+            </span>
+            <span>
+              <NavLink className={styles.link} to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            </span>
+          </div>
+        ): 
+          <div>
+            <span className={styles.nav_user}><SideBar user={user} /></span>
+          </div>
+        }
+        {/* <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <NavLink to='/my-teams' exact={true} activeClassName='active'>
             My Teams
           </NavLink>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <LogoutButton />
-        </li>
-      </ul>
+        </li> */}
+      </div>
     </nav>
   );
 }

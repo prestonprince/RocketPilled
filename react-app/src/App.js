@@ -10,6 +10,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Teams from './components/pages/teams/Teams'
 import { authenticate } from './store/session';
 import MyTeams from './components/pages/myTeams/MyTeams';
+import CreateTeamForm from './components/forms/CreateTeamForm';
+import TeamDetails from './components/pages/teamDetails/TeamDetails';
+import { getAllTeams } from './store/teams';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,7 +21,8 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
-      setLoaded(true);
+      await dispatch(getAllTeams())
+      setLoaded(true)
     })();
   }, [dispatch]);
 
@@ -36,12 +40,18 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/teams'>
+        <ProtectedRoute path='/teams' exact>
           <Banner />
           <Teams />
         </ProtectedRoute>
-        <ProtectedRoute path='/my-teams'>
+        <ProtectedRoute path='/teams/:type/:id'>
           <Banner />
+          <TeamDetails />
+        </ProtectedRoute>
+        <ProtectedRoute path='/teams/new' exact>
+          <CreateTeamForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/my-teams'>
           <MyTeams />
         </ProtectedRoute>
         <Route path='/' exact={true} >

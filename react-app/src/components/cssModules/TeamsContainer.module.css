@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    /* border: 3px solid red; */
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.list_container {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vw;
+}

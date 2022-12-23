@@ -1,5 +1,25 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
+team_matches = db.Table(
+    'team_matches',
+    db.Model.metadata,
+    db.Column(
+        'match_id',
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("matches.id")),
+        primary_key=True
+    ),
+    db.Column(
+        "team_id",
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("teams.id")),
+        primary_key=True
+    )
+)
+
+if environment == "production":
+    team_matches.schema = SCHEMA
+
 
 class Match(db.Model):
     __tablename__ = 'matches'
@@ -15,7 +35,7 @@ class Match(db.Model):
     map = db.Column(db.String(40))
     winning_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), default=None)
 
-    teams = db.relationship("Team", back_populates="matches")
+    teams = db.relationship("Team", secondary=team_matches, back_populates="matches")
     reports = db.relationship("MatchReport", back_populates='match')
 
     @property

@@ -10,7 +10,7 @@ class Match(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # status can be posted, pending, completed, or disputed
     status = db.Column(db.String(20), default="posted")
-    # type can be 1v1, 2v2, or 3v3
+    # type can be Solo, Duo, or Squad
     type = db.Column(db.String(5), nullable=False)
     map = db.Column(db.String(40))
     winning_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), default=None)

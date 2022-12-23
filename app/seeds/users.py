@@ -1,4 +1,4 @@
-from app.models import db, User, Team, environment, SCHEMA
+from app.models import db, User, Team, Match, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
@@ -66,6 +66,39 @@ def seed_users():
 
     db.session.commit()
 
+    # seed matches
+    match1 = Match(type='Squad', map='Champions Field')
+    match2 = Match(type='Duo', map='Neo Tokyo')
+    match3 = Match(type='Solo', map='Urban Central')
+
+    db.session.add_all([match1, match2, match3])
+    db.session.commit()
+
+    # print("HELLOOOOO",match1.teams)
+
+    # match1.teams.append(faze)
+    # match1.teams.append(nrg)
+
+    # match2.teams.append(arsybaby)
+    # match2.teams.append(theduo)
+
+    # match3.append(fksolo)
+    # match3.append(jacksolos)
+
+    # db.session.commit()
+
+    faze.matches.append(match1)
+    nrg.matches.append(match1)
+
+    theduo.matches.append(match2)
+    arsybaby.matches.append(match2)
+    
+    fksolo.matches.append(match3)
+    jacksolos.matches.append(match3)
+
+    db.session.commit()
+    print(nrg.matches)
+    print(faze.matches)
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
@@ -75,10 +108,12 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.matches RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.team_members RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.teams RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
+        db.session.execute("DELETE FROM matches")
         db.session.execute("DELETE FROM team_members")
         db.session.execute("DELETE FROM teams")
         db.session.execute("DELETE FROM users")

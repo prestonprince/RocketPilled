@@ -1,3 +1,5 @@
+import { removeUserTeam, addUserTeam } from "./session";
+
 // constants
 const LOAD_TEAMS = '/teams/LOAD_TEAMS';
 const ADD_TEAM = 'teams/ADD_TEAM';
@@ -57,7 +59,7 @@ export const createTeam = (team) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        dispatch(addUserTeam(data))
         dispatch(addTeam(data))
         return data;
     };
@@ -76,6 +78,7 @@ export const deleteTeam = (team) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(removeTeam(team));
+        dispatch(removeUserTeam(team))
         return data
     }
     

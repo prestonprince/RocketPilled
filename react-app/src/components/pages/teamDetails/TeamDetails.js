@@ -26,7 +26,7 @@ const TeamDetails = () => {
                 <span>{team.name}</span>
                 {user.id === team.owner_id && (
                     <div>
-                        <button>Manage</button>
+                        <button>Manage Roster</button>
                         <button onClick={() => handleDisband(team)}>Disband</button>
                     </div>
                 )}

@@ -1,6 +1,8 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const REMOVE_USER_TEAM = 'session/REMOVE_TEAM_USER'
+const ADD_USER_TEAM ='session/ADD_USER_TEAM'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +11,16 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+})
+
+export const removeUserTeam = (payload) => ({
+  type: REMOVE_USER_TEAM,
+  payload
+})
+
+export const addUserTeam = (payload) => ({
+  type: ADD_USER_TEAM,
+  payload
 })
 
 const initialState = { user: null };
@@ -98,11 +110,21 @@ export const signUp = (username, email, password) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state};
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case ADD_USER_TEAM:
+      let addType = action.payload.type;
+      let addId = action.payload.id;
+      newState.user[addType][addId] = action.payload
+      return newState
+    case REMOVE_USER_TEAM:
+      let type = action.payload.type
+      let id = action.payload.id
+      delete newState.user[type][id]
     default:
       return state;
   }

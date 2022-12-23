@@ -1,7 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
-const REMOVE_USER_TEAM = 'session/REMOVE_TEAM_USER';
+const REMOVE_USER_TEAM = 'session/REMOVE_USER_TEAM';
 const ADD_USER_TEAM ='session/ADD_USER_TEAM';
 const SET_ALL_USERS = 'session/SET_ALL_USERS';
 

@@ -22,7 +22,9 @@ const TeamDetails = () => {
     useEffect(() => {}, [removePlayer])
 
     const handleDisband = (team) => {
+        console.log('BEFORE DISPATCH', user.Solo)
         dispatch(deleteTeam(team)).then(() => {
+            console.log("AFTER DISPATCH", user.Solo)
             history.push('/my-teams')
         })
     }

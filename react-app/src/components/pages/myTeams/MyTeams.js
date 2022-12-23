@@ -9,6 +9,8 @@ const MyTeams = () => {
     const [teams, setTeams] = useState(user.Solo)
     const [click, setClick] = useState(false)
 
+    console.log(teams)
+
     return (
         <div>
             <span>My Teams</span>

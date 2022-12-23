@@ -59,7 +59,7 @@ export const createTeam = (team) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(addUserTeam(data))
+        await dispatch(addUserTeam(data))
         dispatch(addTeam(data))
         return data;
     };
@@ -77,8 +77,8 @@ export const deleteTeam = (team) => async(dispatch) => {
     
     if (response.ok) {
         const data = await response.json();
-        dispatch(removeTeam(team));
-        dispatch(removeUserTeam(team))
+        await dispatch(removeTeam(team));
+        dispatch(removeUserTeam(team));
         return data
     }
     

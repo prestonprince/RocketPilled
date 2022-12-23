@@ -74,31 +74,34 @@ def seed_users():
     db.session.add_all([match1, match2, match3])
     db.session.commit()
 
-    # print("HELLOOOOO",match1.teams)
 
-    # match1.teams.append(faze)
-    # match1.teams.append(nrg)
+    match1.teams.append(faze)
+    match1.teams.append(nrg)
 
-    # match2.teams.append(arsybaby)
-    # match2.teams.append(theduo)
+    match2.teams.append(arsybaby)
+    match2.teams.append(theduo)
 
-    # match3.append(fksolo)
-    # match3.append(jacksolos)
-
-    # db.session.commit()
-
-    faze.matches.append(match1)
-    nrg.matches.append(match1)
-
-    theduo.matches.append(match2)
-    arsybaby.matches.append(match2)
-    
-    fksolo.matches.append(match3)
-    jacksolos.matches.append(match3)
+    match3.teams.append(fksolo)
+    match3.teams.append(jacksolos)
 
     db.session.commit()
-    print(nrg.matches)
-    print(faze.matches)
+    print("HELLOOOOO",match1.teams)
+    print("HELLOOOOO",match2.teams)
+    print("HELLOOOOO",match3.teams)
+    print("DONE SEEDING")
+
+    # faze.matches.append(match1)
+    # nrg.matches.append(match1)
+
+    # theduo.matches.append(match2)
+    # arsybaby.matches.append(match2)
+    
+    # fksolo.matches.append(match3)
+    # jacksolos.matches.append(match3)
+
+    # db.session.commit()
+    # print(nrg.matches)
+    # print(faze.matches)
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE

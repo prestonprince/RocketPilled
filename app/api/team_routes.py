@@ -87,7 +87,7 @@ def add_team_member(team_id):
         team.members.append(user)
         db.session.commit()
 
-        return team.to_dict()
+        return team.to_dict(), 201
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

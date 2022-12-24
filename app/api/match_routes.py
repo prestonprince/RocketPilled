@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Team, User, Match
 from .auth_routes import validation_errors_to_error_messages, authorized
-from ..utils.match_utils import random_map
+from ..utils.match_utils import random_map, MAPS
 from app.forms import PostMatchForm, DeleteMatchForm
 
 
@@ -30,7 +30,8 @@ def post_match():
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        new_match = Match(form['type'])
+        map = random_map(MAPS)
+        new_match = Match(type=form['type'], map=map)
 
         db.session.add(new_match)
         db.session.commit()

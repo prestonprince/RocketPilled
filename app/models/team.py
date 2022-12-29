@@ -1,6 +1,9 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .match import team_matches
 
+#TODO FOR ALL one to many RELATIONSHIPS: 
+#! define cascade on backref like so: 
+#! parent = db.relationship(Parent, backref=backref("children", cascade = 'all, delete'))
 
 team_members = db.Table(
     'team_members',

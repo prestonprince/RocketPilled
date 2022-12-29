@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Team, User, Match
 from .auth_routes import validation_errors_to_error_messages, authorized
 from ..utils.match_utils import random_map, MAPS
-from app.forms import PostMatchForm, DeleteMatchForm
+from app.forms import PostMatchForm, DeleteMatchForm, UpdateMatchStatusForm
 
 
 match_routes = Blueprint('matches', __name__)
@@ -31,22 +31,48 @@ def post_match():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         map = random_map(MAPS)
-        new_match = Match(type=form['type'], map=map)
+        new_match = Match(type=form.data['type'], map=map)
 
         db.session.add(new_match)
         db.session.commit()
 
-        team = Team.query.get(form['team_id'])
+        team = Team.query.get(form.data['team_id'])
         new_match.teams.append(team)
         db.session.commit()
 
         return new_match.to_dict(), 201
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-#TODO after 3rd feature
-# @match_routes.route("/<int:match_id>", methods=['PUT'])
-# def update_status(match_id):
-#     pass
+
+@match_routes.route("/<int:match_id>", methods=['PUT'])
+def update_status(match_id):
+    """
+    update match status with status update in the request body
+    req body takes:
+        team id that is updating the match
+        status string
+    """
+    #! will only update from posted to pending until 3rd feature is implemented
+    form = UpdateMatchStatusForm()
+    data = form.data
+    match = Match.query.get(match_id)
+    team = Team.query.get(data['team_id'])
+
+    if team.type != match.type:
+        return {'error': 'Team and match type must be the same'}
+
+    if len(match.teams) > 1:
+        return {'error': 'this match has already been accepted'}
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        status = data['status']
+
+        match.status = status
+        match.teams.append(team)
+        db.session.commit()
+        return match.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 @match_routes.route("/<int:match_id>", methods=['DELETE'])
@@ -59,6 +85,9 @@ def cancel_match(match_id):
 
     match = Match.query.get(match_id)
     team = Team.query.get(data['team_id'])
+
+    if not authorized(team.owner_id):
+        return {'error', 'You are not authorized to perform this action'}, 403
 
     if not match:
         return {'error': 'Match not found'}

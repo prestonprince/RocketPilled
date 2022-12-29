@@ -17,7 +17,11 @@ def all_matches():
     matches = Match.query.all()
     all_matches = [match.to_dict() for match in matches]
 
-    return {"matches": all_matches}
+    solo_matches = [match for match in all_matches if match['type'] == 'Solo']
+    duo_matches = [match for match in all_matches if match['type'] == 'Duo']
+    squad_matches = [match for match in all_matches if match['type'] == 'Squad']
+
+    return {"Solo": solo_matches, "Duo": duo_matches, "Squad": squad_matches}
 
 
 @match_routes.route('', methods=['POST'])
@@ -27,6 +31,7 @@ def post_match():
     Route that takes in type and team id and posts new match for that team
     """
     form = PostMatchForm()
+    print('EN ROUTE')
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -45,6 +50,7 @@ def post_match():
 
 
 @match_routes.route("/<int:match_id>", methods=['PUT'])
+@login_required
 def update_status(match_id):
     """
     update match status with status update in the request body

@@ -67,9 +67,9 @@ def seed_users():
     db.session.commit()
 
     # seed matches
-    match1 = Match(type='Squad', map='Champions Field')
-    match2 = Match(type='Duo', map='Neo Tokyo')
-    match3 = Match(type='Solo', map='Urban Central')
+    match1 = Match(status='pending', type='Squad', map='Champions Field')
+    match2 = Match(status='pending', type='Duo', map='Neo Tokyo')
+    match3 = Match(status='pending', type='Solo', map='Urban Central')
 
     db.session.add_all([match1, match2, match3])
     db.session.commit()
@@ -85,9 +85,6 @@ def seed_users():
     match3.teams.append(jacksolos)
 
     db.session.commit()
-    print("HELLOOOOO",match1.teams)
-    print("HELLOOOOO",match2.teams)
-    print("HELLOOOOO",match3.teams)
     print("DONE SEEDING")
 
     # faze.matches.append(match1)

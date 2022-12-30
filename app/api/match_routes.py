@@ -31,7 +31,6 @@ def post_match():
     Route that takes in type and team id and posts new match for that team
     """
     form = PostMatchForm()
-    print('EN ROUTE')
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -74,9 +73,12 @@ def update_status(match_id):
     if form.validate_on_submit():
         status = data['status']
 
-        match.status = status
-        match.teams.append(team)
-        db.session.commit()
+        if status == 'pending':
+            match.status = status
+            match.teams.append(team)
+            db.session.commit()
+
+
         return match.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

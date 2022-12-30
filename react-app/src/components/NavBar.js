@@ -8,8 +8,6 @@ import SideBar from './sideBar/SideBar';
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
 
-  console.log(user)
-
   return (
     <nav className={styles.nav_container}>
       <div className={styles.nav_links}>

@@ -1,14 +1,23 @@
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import { logout } from "../../store/session";
 import styles from '../cssModules/SideBarContent.module.css'
 
 const SideBarContent = ({ user, setShowModal }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const handleTeams = () => {
         setShowModal(false)
         history.push('/my-teams')
     }
+
+    const onLogout = async (e) => {
+        setShowModal(false)
+        await dispatch(logout());
+        history.push('/')
+      };
 
     return (
         <div>
@@ -18,7 +27,7 @@ const SideBarContent = ({ user, setShowModal }) => {
             <div styles={styles.container}>
                 <span>Matches</span>
                 <span className={styles.teams} onClick={handleTeams}>Teams</span>
-                <span>Sign Out</span>
+                <span onClick={onLogout}>Sign Out</span>
             </div>
         </div>
     )

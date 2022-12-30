@@ -10,8 +10,6 @@ const MyTeams = () => {
     const [teams, setTeams] = useState(user.Solo)
     const [click, setClick] = useState(false)
 
-    console.log(teams)
-
     return (
         <div className={styles.container}>
             <div className={styles.top}>

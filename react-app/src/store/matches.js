@@ -3,6 +3,7 @@ import { normalize } from "./teams";
 //constants
 const LOAD_MATCHES = '/matches/LOAD_MATCHES';
 const ADD_MATCH = '/matches/ADD_MATCH';
+const REMOVE_MATCH = '/matches/REMOVE_MATCH';
 
 const loadMatches = (payload) => ({
     type: LOAD_MATCHES,
@@ -11,6 +12,11 @@ const loadMatches = (payload) => ({
 
 const addMatch = (payload) => ({
     type: ADD_MATCH,
+    payload
+});
+
+const removeMatch = (payload) => ({
+    type: REMOVE_MATCH,
     payload
 })
 
@@ -37,7 +43,6 @@ export const getAllMatches = () => async(dispatch) => {
 };
 
 export const postMatch = (match) => async(dispatch) => {
-    console.log(match)
     const response = await fetch('/api/matches', {
         method: "POST",
         headers: {
@@ -48,7 +53,6 @@ export const postMatch = (match) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        console.log(data)
         dispatch(addMatch(data))
         return data
     }
@@ -56,20 +60,48 @@ export const postMatch = (match) => async(dispatch) => {
     throw data
 }
 
-const intitalState = {};
+export const cancelMatch = (match, teamId) => async(dispatch) => {
+    const { id } = match
+    const response = await fetch(`/api/matches/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({team_id: teamId})
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeMatch(match))
+        return data
+    };
+    const data = await response.json()
+    throw data
+}
+
+const intitalState = {Solo: {}, Duo: {}, Squad: {}};
 
 export default function reducer(state = intitalState, action) {
     let newState;
+    let type, id
     switch(action.type) {
         case LOAD_MATCHES:
             newState = {...state, ...action.payload}
             return newState
         case ADD_MATCH:
-            let newMatchId = action.payload.id
-            let newMatchType = action.payload.type
+            id = action.payload.id;
+            type = action.payload.type;
+
             newState = {...state}
-            newState[newMatchType][newMatchId] = action.payload
+            newState[type][id] = action.payload
             return newState
+        case REMOVE_MATCH:
+            id = action.payload.id
+            type = action.payload.type
+
+            newState = { ...state };
+            delete newState[type][id];
+            return newState;
         default:
             return state
     }

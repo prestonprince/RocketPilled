@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 
+import CreateMatchModal from "../../CreateMatchModal";
+
 const MatchesNav = ({ setType }) => {
     const history = useHistory()
 
@@ -36,7 +38,7 @@ const MatchesNav = ({ setType }) => {
             <div>
                 <button onClick={teamsButton}>Teams</button>
                 <div>
-                    <button>Create Match</button>
+                    <CreateMatchModal />
                     {/* on button click, show drop down below */}
                     {/* <div>
                         <span>Solo</span>

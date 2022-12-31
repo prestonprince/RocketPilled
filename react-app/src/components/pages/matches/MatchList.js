@@ -1,18 +1,19 @@
-const MatchList = ({ matches, type }) => {
-    let matchArr = Object.values(matches);
-    if (type === 'all') {
-        matchArr = Object.values(matches)
-        .map(obj => Object.values(obj))
-        .flat()
-    };
+import MatchCard from "./MatchCard";
+
+const MatchList = ({ matches }) => {
     
     return (
-        <div>
-            {matchArr.map(match => (
-                <span key={match.id}>{match.map}</span>
-            ))}
-            <h2>match list</h2>
-        </div>
+        <>
+        {matches.length > 0 ? (
+            <div>
+                {matches.map(match => (
+                    <MatchCard key={match.id} match={match}/>
+                ))}
+            </div>
+        ):
+            <span>No matches posted</span>
+        }
+        </>
     )
 };
 

@@ -10,16 +10,19 @@ import { getAllMatches } from '../../../store/matches';
 const Matches = () => {
     const dispatch = useDispatch();
     const allMatches = useSelector(state => state.matches)
+    const user = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
     const [type, setType] = useState('all')
 
     useEffect(() => {
         dispatch(getAllMatches()).then(() => setIsLoaded(true))
-    }, [dispatch])
+    }, [dispatch, user])
 
-    let matches = allMatches[type];
-    if (type === 'all') {
-        matches = allMatches
+    const allMatchesArr = Object.values(allMatches)
+    let filteredMatches = allMatchesArr.map(obj => Object.values(obj)).flat().filter(match => match.status === 'posted')
+
+    if (type !== 'all') {
+        filteredMatches = filteredMatches.filter(match => match.type === type)
     };
 
     return (
@@ -28,7 +31,7 @@ const Matches = () => {
                 <div>
                     <MatchesTitleCard />
                     <MatchesNav setType={setType} />
-                    <MatchList matches={matches} type={type} />
+                    <MatchList matches={filteredMatches} />
                 </div>
             ):
                 <div>

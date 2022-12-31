@@ -67,7 +67,7 @@ def seed_users():
     db.session.commit()
 
     # seed matches
-    match1 = Match(status='pending', type='Squad', map='Champions Field')
+    match1 = Match(status='posted', type='Squad', map='Champions Field')
     match2 = Match(status='pending', type='Duo', map='Neo Tokyo')
     match3 = Match(status='pending', type='Solo', map='Urban Central')
 
@@ -76,7 +76,6 @@ def seed_users():
 
 
     match1.teams.append(faze)
-    match1.teams.append(nrg)
 
     match2.teams.append(arsybaby)
     match2.teams.append(theduo)

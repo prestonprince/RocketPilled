@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from './auth/LogoutButton';
 import styles from './cssModules/NavBar.module.css'
 import SideBar from './sideBar/SideBar';
 

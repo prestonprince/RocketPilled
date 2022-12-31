@@ -43,7 +43,7 @@ const CreateMatchModal = ({ team }) => {
             <button onClick={handleClick}>
                 Create Match
             </button>
-            {showModal && (
+            {user && showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateMatchForm setShowModal={setShowModal} />
                 </Modal>

@@ -1,4 +1,4 @@
-import { removeUserTeam, addUserTeam } from "./session";
+import { removeUserTeam, addUserTeam, authenticate } from "./session";
 
 // constants
 const LOAD_TEAMS = '/teams/LOAD_TEAMS';
@@ -97,6 +97,7 @@ export const addTeamMember = (userId, teamId) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getAllTeams());
+        await dispatch(authenticate())
         return data
     };
     throw response;
@@ -114,6 +115,7 @@ export const removeTeamMember = (userId, teamId) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getAllTeams());
+        await dispatch(authenticate())
         return data
     };
     throw response;

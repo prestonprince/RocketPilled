@@ -19,13 +19,18 @@ const SideBarContent = ({ user, setShowModal }) => {
         history.push('/')
       };
 
+    const handleMatches = () => {
+        setShowModal(false)
+        history.push('/my-matches')
+    }
+
     return (
         <div>
             <div>
                 <span>{user.username}</span>
             </div>
             <div styles={styles.container}>
-                <span>Matches</span>
+                <span onClick={handleMatches} >Matches</span>
                 <span className={styles.teams} onClick={handleTeams}>Teams</span>
                 <span onClick={onLogout}>Sign Out</span>
             </div>

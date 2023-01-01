@@ -2,7 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { deleteTeam } from "../../../store/teams";
+import { deleteTeam, removeTeamMember } from "../../../store/teams";
 import TeamBar from "./TeamBar";
 import TeamRoster from "./TeamRoster";
 import TeamMatches from "./TeamMatches";
@@ -22,9 +22,7 @@ const TeamDetails = () => {
     useEffect(() => {}, [removePlayer])
 
     const handleDisband = (team) => {
-        console.log('BEFORE DISPATCH', user.Solo)
         dispatch(deleteTeam(team)).then(() => {
-            console.log("AFTER DISPATCH", user.Solo)
             history.push('/my-teams')
         })
     }
@@ -37,18 +35,28 @@ const TeamDetails = () => {
             else return false;
     }
 
+    const handleLeave = (team) => {
+        dispatch(removeTeamMember(user.id, team)).then(() => {
+            history.push('/my-teams')
+        })
+    }
+
     return (
         <div>
             <div>
                 <span>{team.name}</span>
-                {user.id === team.owner_id && (
+                {user.id === team.owner_id ? (
                     <div>
                         {(type !== 'Solo' && teamSizeCheck(team)) && (
                             <ManageRosterModal team={team} />
                         )}
                         <button onClick={() => handleDisband(team)}>Disband</button>
                     </div>
-                )}
+                ):
+                    <div>
+                        <button onClick={() => handleLeave(team)}>Leave Team</button>
+                    </div>
+                }
             </div>
             <div>
                 <TeamBar team={team}/>

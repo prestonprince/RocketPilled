@@ -1,4 +1,4 @@
-import { removeUserTeam, addUserTeam } from "./session";
+import { removeUserTeam, addUserTeam, authenticate } from "./session";
 
 // constants
 const LOAD_TEAMS = '/teams/LOAD_TEAMS';
@@ -20,7 +20,7 @@ const removeTeam = (payload) => ({
     payload
 })
 
-const normalize = (arr) => {
+export const normalize = (arr) => {
     const dataObj = {};
     arr.forEach(obj => {
         dataObj[obj.id] = obj
@@ -96,13 +96,15 @@ export const addTeamMember = (userId, teamId) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getAllTeams());
+        await dispatch(getAllTeams());
+        await dispatch(authenticate())
         return data
     };
     throw response;
 }
 
-export const removeTeamMember = (userId, teamId) => async(dispatch) => {
+export const removeTeamMember = (userId, team) => async(dispatch) => {
+    const teamId = team.id
     const response = await fetch(`/api/teams/${teamId}`, {
         method: "PUT",
         headers: {
@@ -113,7 +115,8 @@ export const removeTeamMember = (userId, teamId) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getAllTeams());
+        await dispatch(getAllTeams());
+        dispatch(removeUserTeam(team))
         return data
     };
     throw response;

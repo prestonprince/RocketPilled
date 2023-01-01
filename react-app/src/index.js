@@ -8,12 +8,14 @@ import { ModalProvider } from './context/Modal';
 import { SideBarModalProvider } from './context/SideBarModal';
 
 import * as teamActions from "./store/teams";
+import * as matchActions from './store/matches'
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store; //expose store to window in development
   window.teamActions = teamActions;
+  window.matchActions = matchActions;
 }
 
 ReactDOM.render(

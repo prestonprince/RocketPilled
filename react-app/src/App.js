@@ -13,6 +13,7 @@ import MyTeams from './components/pages/myTeams/MyTeams';
 import CreateTeamForm from './components/forms/CreateTeamForm';
 import TeamDetails from './components/pages/teamDetails/TeamDetails';
 import { getAllTeams } from './store/teams';
+import MyMatches from './components/pages/myMatches/MyMatches';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/my-teams'>
           <MyTeams />
+        </ProtectedRoute>
+        <ProtectedRoute path='/my-matches'>
+          <MyMatches />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Banner />

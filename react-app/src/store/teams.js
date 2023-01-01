@@ -96,14 +96,15 @@ export const addTeamMember = (userId, teamId) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getAllTeams());
+        await dispatch(getAllTeams());
         await dispatch(authenticate())
         return data
     };
     throw response;
 }
 
-export const removeTeamMember = (userId, teamId) => async(dispatch) => {
+export const removeTeamMember = (userId, team) => async(dispatch) => {
+    const teamId = team.id
     const response = await fetch(`/api/teams/${teamId}`, {
         method: "PUT",
         headers: {
@@ -114,8 +115,8 @@ export const removeTeamMember = (userId, teamId) => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getAllTeams());
-        await dispatch(authenticate())
+        await dispatch(getAllTeams());
+        dispatch(removeUserTeam(team))
         return data
     };
     throw response;

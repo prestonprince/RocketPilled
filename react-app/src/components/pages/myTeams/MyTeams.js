@@ -12,7 +12,7 @@ const MyTeams = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.top}>
+               <div className={styles.top}>
                 <span>My Teams</span>
                 <TeamsNav setTeams={setTeams} user={user} />
             </div>

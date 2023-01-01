@@ -39,14 +39,18 @@ const TeamDetails = () => {
         <div>
             <div>
                 <span>{team.name}</span>
-                {user.id === team.owner_id && (
+                {user.id === team.owner_id ? (
                     <div>
                         {(type !== 'Solo' && teamSizeCheck(team)) && (
                             <ManageRosterModal team={team} />
                         )}
                         <button onClick={() => handleDisband(team)}>Disband</button>
                     </div>
-                )}
+                ):
+                    <div>
+                        <button>Leave Team</button>
+                    </div>
+                }
             </div>
             <div>
                 <TeamBar team={team}/>

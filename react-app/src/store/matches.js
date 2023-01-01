@@ -61,6 +61,7 @@ export const postMatch = (match) => async(dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(addMatch(data))
+        await dispatch(authenticate())
         return data
     }
     const data = await response.json()

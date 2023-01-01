@@ -2,7 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { deleteTeam } from "../../../store/teams";
+import { deleteTeam, removeTeamMember } from "../../../store/teams";
 import TeamBar from "./TeamBar";
 import TeamRoster from "./TeamRoster";
 import TeamMatches from "./TeamMatches";
@@ -35,6 +35,12 @@ const TeamDetails = () => {
             else return false;
     }
 
+    const handleLeave = (team) => {
+        dispatch(removeTeamMember(user.id, team)).then(() => {
+            history.push('/my-teams')
+        })
+    }
+
     return (
         <div>
             <div>
@@ -48,7 +54,7 @@ const TeamDetails = () => {
                     </div>
                 ):
                     <div>
-                        <button>Leave Team</button>
+                        <button onClick={() => handleLeave(team)}>Leave Team</button>
                     </div>
                 }
             </div>

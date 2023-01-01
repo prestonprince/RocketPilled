@@ -36,9 +36,7 @@ const Matches = () => {
                     <MatchList matches={filteredMatches} />
                 </div>
             ):
-                <div>
-                    <span>Loading...</span>
-                </div>
+            <div className={styles.loader}></div>
             }
         </>     
     )

@@ -29,3 +29,24 @@ body::-webkit-scrollbar {
   body::-webkit-scrollbar-corner {
     border: 2px red solid;
   }
+
+  .loader {
+    position: relative;
+    border-radius: 30px;
+    width: 60%;
+    height: 4px;
+    top: 250px;
+    left: 325px;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    border-radius: 20px;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #8aff80;
+    animation: moving 0.5s ease-in-out infinite;
+}

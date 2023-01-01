@@ -2,13 +2,44 @@
     display: flex;
     /* border: 3px solid red; */
     justify-content: center;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
+    width: 60vw;
+    height: 50vh;
+    gap: 1vw;
 }
 
 .list_container {
     /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2vw;
+    /* justify-content: center; */
+    /* padding: 2vw; */
+    width: 30%;
+    background-color: #292929;
+    border-radius: .25vh;
+}
+
+.bar {
+    height: .8vh;
+    background-color: #5cc5e6;
+    border-radius: .25vh .25vh 0 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5vh;
+    padding-left: .5vw;
+}
+
+.teamLabel {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.gameLabel {
+    font-size: .8rem;
+    font-weight: 600;
 }

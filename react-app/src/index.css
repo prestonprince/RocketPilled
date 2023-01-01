@@ -3,4 +3,29 @@ body {
     margin: 0;
     background-color: #1a1a1a;
     color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
+
+body::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #4a4b4b;
+    position: relative;
+    left: -5px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #1a1a1a;
+  }
+  
+  body::-webkit-scrollbar-corner {
+    border: 2px red solid;
+  }

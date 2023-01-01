@@ -1,34 +1,45 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './cssModules/NavBar.module.css'
 import SideBar from './sideBar/SideBar';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
+
+  const handleHome = () => {
+    history.push('/')
+  }
+
+  const handleSignIn = () => {
+    history.push('/login')
+  }
+
+  const handleSignUp = () => {
+    history.push('/sign-up')
+  }
 
   return (
     <nav className={styles.nav_container}>
       <div className={styles.nav_links}>
-        <div>
-          <span>
-            <NavLink to='/' className={styles.link} exact={true} activeClassName='active'>
-              Home
-            </NavLink>
-          </span>
+        <div className={styles.houseContainer} onClick={handleHome}>
+        <span className="material-symbols-outlined" id={styles.house}>
+          other_houses
+        </span>
         </div>
         {!user ? (
           <div className={styles.sign_up_login}>
-            <span>
-              <NavLink className={styles.link} to='/login' exact={true} activeClassName='active'>
-                Login
-              </NavLink>
-            </span>
-            <span>
-              <NavLink className={styles.link} to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
-              </NavLink>
-            </span>
+            <div onClick={handleSignIn} id={styles.login}>
+              <span className={styles.link} id={styles.loginText}>
+                  Sign In
+              </span>
+            </div>
+            <div onClick={handleSignUp} id={styles.signup}>
+              <span className={styles.link} id={styles.signupText}>
+                  Join Free
+              </span>
+            </div>
           </div>
         ): 
           <div>

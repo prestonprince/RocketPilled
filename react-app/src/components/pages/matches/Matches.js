@@ -7,6 +7,8 @@ import MatchList from "./MatchList";
 
 import { getAllMatches } from '../../../store/matches';
 
+import styles from '../../cssModules/Matches.module.css'
+
 const Matches = () => {
     const dispatch = useDispatch();
     const allMatches = useSelector(state => state.matches)
@@ -28,9 +30,9 @@ const Matches = () => {
     return (
         <>
             {isLoaded ? (
-                <div>
+                <div className={styles.container}>
                     <MatchesTitleCard />
-                    <MatchesNav setType={setType} />
+                    <MatchesNav type={type} setType={setType} />
                     <MatchList matches={filteredMatches} />
                 </div>
             ):

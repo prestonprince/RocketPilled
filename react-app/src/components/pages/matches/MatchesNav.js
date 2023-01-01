@@ -62,16 +62,15 @@ const MatchesNav = ({ setType, type }) => {
                     </div>
                 }
             </div>
-            <div>
-                <button onClick={teamsButton}>Teams</button>
-                <div>
+            <div className={styles.buttons}>
+                <div className={styles.teams} onClick={teamsButton}>
+                    <span className={styles.groups} class="material-symbols-outlined">
+                        groups
+                    </span>
+                    <span>Teams</span>
+                </div>
+                <div className={styles.createMatch}>
                     <CreateMatchModal />
-                    {/* on button click, show drop down below */}
-                    {/* <div>
-                        <span>Solo</span>
-                        <span>Duo</span>
-                        <span>Squad</span>
-                    </div> */}
                 </div>
             </div>
         </div>

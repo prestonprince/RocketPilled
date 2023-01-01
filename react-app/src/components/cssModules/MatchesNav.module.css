@@ -49,3 +49,21 @@
 .typeCardActive:hover {
     cursor: pointer;
 }
+
+.teams {
+    /* border: 3px solid red; */
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+}
+
+.teams:hover {
+    cursor: pointer;
+    color: #b3b3ae;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+}

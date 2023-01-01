@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import CreateMatchForm from "../forms/CreateMatchForm";
+import styles from "../cssModules/CreateMatchButton.module.css"
 
 const CreateMatchModal = ({ team }) => {
     const history = useHistory()
@@ -40,7 +41,7 @@ const CreateMatchModal = ({ team }) => {
 
     return (
         <>
-            <button onClick={handleClick}>
+            <button className={styles.button} onClick={handleClick}>
                 Create Match
             </button>
             {user && showModal && (

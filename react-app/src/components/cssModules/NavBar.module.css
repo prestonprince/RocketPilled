@@ -6,25 +6,34 @@
     background-color: #292929;
     height: 6.5vh;
     align-items: center;
+    font-weight: 600;
+    /* margin-top: 0.2vh; */
 }
 
 .nav_links {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     /* border: 3px solid red; */
     width: 90vw;
+    height: 100%;
 }
 
 .sign_up_login {
     display: flex;
     /* border: 3px solid yellow; */
-    width: 8vw;
-    justify-content: space-evenly;
+    width: 13vw;
+    height: 100%;
+    align-items: center;
+    margin-right: -5vw;
 }
 
 .link {
-    text-decoration: none;
     color: white;
+}
+
+.link:hover {
+    cursor: pointer;
 }
 
 .nav_user {
@@ -32,5 +41,72 @@
 }
 
 .nav_user:hover {
+    cursor: pointer;
+}
+
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid red; */
+    border-left: 1px solid #424242;
+    font-size: 1.15rem;
+    height: 100%;
+    width: 50%;
+    transition: all 0.25s ease;
+}
+
+#login:hover {
+    cursor: pointer;
+    background-color: #3f3f3f;
+}
+
+#signup {
+    background-color: #8aff80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid red; */
+    border-left: 1px solid #424242;
+    font-size: 1.15rem;
+    height: 100%;
+    width: 50%;
+    transition: all 0.25s ease;
+}
+
+#signup:hover {
+    cursor: pointer;
+    background-color: #9fff97;
+}
+
+
+#loginText {
+    color: #89fd7f;
+}
+
+#signupText {
+    color: #292929;
+}
+
+#house {
+    font-size: 2rem;
+}
+
+#house:hover {
+    cursor: pointer;
+}
+
+.houseContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    /* border: 3px solid red; */
+    height: 100%;
+    transition: all 0.25s ease;
+}
+
+.houseContainer:hover {
+    background-color: #1f1f1f;
     cursor: pointer;
 }

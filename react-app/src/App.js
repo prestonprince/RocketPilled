@@ -14,9 +14,14 @@ import CreateTeamForm from './components/forms/CreateTeamForm';
 import TeamDetails from './components/pages/teamDetails/TeamDetails';
 import { getAllTeams } from './store/teams';
 import MyMatches from './components/pages/myMatches/MyMatches';
+import AcceptMatchPop from './components/pages/matches/AcceptMatchPop';
+import { AcceptMatchModal } from './context/AcceptMatchModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false)
+  const [content, setContent] = useState('')
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,9 +65,14 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Banner />
-          <Matches />
+          <Matches setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
         </Route>
       </Switch>
+      {showModal && (
+        <AcceptMatchModal open={open} onClose={() => setShowModal(false)}>
+          <AcceptMatchPop content={content} setShowModal={setShowModal} setOpen={setOpen} />
+        </AcceptMatchModal>
+      )} 
     </BrowserRouter>
   );
 }

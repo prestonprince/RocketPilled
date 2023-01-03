@@ -2,4 +2,56 @@
     /* border: 3px solid red; */
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    height: 41vh;
+    gap: 1vh;
 }
+
+.container::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #4a4b4b;
+    position: relative;
+    left: -5px;
+  }
+  
+  .container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #1a1a1a;
+  }
+  
+  .container::-webkit-scrollbar-corner {
+    border: 2px red solid;
+  }
+
+  .card {
+    /* border: 3px solid green; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: .5vw;
+    /* height: 10vh; */
+  }
+
+  .view {
+    background-color: transparent;
+    border: #676767 2px solid;
+    padding: .25vw;
+    width: 4vw;
+    font-size: 1.2rem;
+    color: #74ff80;
+    position: relative;
+    right: 1vw;
+    transition: all .2s ease;
+  }
+
+  .view:hover {
+    cursor: pointer;
+    background-color: #383838;
+  }

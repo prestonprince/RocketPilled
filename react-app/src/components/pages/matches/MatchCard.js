@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
 import { acceptMatch, cancelMatch } from "../../../store/matches";
+import styles from '../../cssModules/MatchCard.module.css'
 
-const MatchCard = ({ match }) => {
+const MatchCard = ({ setContent, setShowModal, setOpen, match }) => {
     const [isUserMatch, setIsUserMatch] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -29,7 +30,13 @@ const MatchCard = ({ match }) => {
     }, [])
 
     const handleCancel = () => {
-        dispatch(cancelMatch(match, matchTeamIds[0]))
+        dispatch(cancelMatch(match, matchTeamIds[0])).then(() => {
+            setContent('Match Canceled')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 100)
+        })
     }
 
     const handleAccept = () => {
@@ -42,19 +49,41 @@ const MatchCard = ({ match }) => {
             history.push('/my-teams');
             return;
         };
-        dispatch(acceptMatch(team.id, match.id))
+        dispatch(acceptMatch(team.id, match.id)).then(() => {
+            setContent('Match Accepted')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 100)
+            history.push('/my-matches')
+        })
     };
 
+    let size;
+    if (match.type === 'Solo') size = '1v1';
+    if (match.type === 'Duo') size = '2v2';
+    if (match.type === 'Squad') size = '3v3';
+
     return (
-        <div>
-            <span>XP</span>
-            <span>{match.type}</span>
-            <span>{match.map}</span>
+        <div className={styles.container}>
+            <div className={styles.pic_container}>
+                <img
+                className={styles.pic}
+                src="https://www.gamespot.com/a/uploads/scale_medium/1197/11970954/3080765-rocketleague.jpg"
+                alt="rlpic"
+                ></img>
+            </div>
+            <span className={styles.xp}>XP</span>
+            <span>{size}</span>
+            <span>Available Now</span>
             {(user && isUserMatch) && matchTeamOwnerIds.includes(user.id) && (
-                <button onClick={handleCancel}>Cancel</button>
+                <button className={styles.button} onClick={handleCancel}>Cancel</button>
             )}
             {user && !isUserMatch && (
-                <button onClick={handleAccept}>Accept</button>
+                <button className={styles.button} onClick={handleAccept}>Accept</button>
+            )}
+            {!user && (
+                <span className={styles.nothing}> </span>
             )}
         </div>
     )

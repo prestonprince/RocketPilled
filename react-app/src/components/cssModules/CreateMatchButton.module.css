@@ -1,0 +1,16 @@
+.button {
+    background-color: #8aff80;
+    border-radius: .2vw;
+    width: 7vw;
+    height: 4vh;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    border: none;
+    transition: all 1s ease;
+}
+
+.button:hover {
+    position: relative;
+    bottom: .2vh;
+}

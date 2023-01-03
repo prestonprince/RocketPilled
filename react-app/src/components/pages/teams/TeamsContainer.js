@@ -9,19 +9,30 @@ const TeamsContainer = () => {
     return (
         <div className={styles.container}>
             <div className={styles.list_container}>
-                <div>
-                    <span>Solo Teams</span>
+                <div className={styles.bar}></div>
+                <div className={styles.header}>
+                    <span className={styles.gameLabel}>ROCKET LEAGUE</span>
+                    <span className={styles.teamLabel}>SOLO TEAMS</span>
                 </div>
                 <div>
                     <TeamsList teams={teams.Solo} />
                 </div>
             </div>
             <div className={styles.list_container}>
-                <span>Duo Teams</span><TeamsList teams={teams.Duo} />
+                <div className={styles.bar}></div>
+                <div className={styles.header}>
+                    <span className={styles.gameLabel}>ROCKET LEAGUE</span>
+                    <span className={styles.teamLabel}>DUO TEAMS</span>
+                </div>
+                <div>
+                    <TeamsList teams={teams.Duo} />
+                </div>
             </div>
             <div className={styles.list_container}>
-                <div>
-                    <span>Squad Teams</span>
+                <div className={styles.bar}></div>
+                <div className={styles.header}>
+                    <span className={styles.gameLabel}>ROCKET LEAGUE</span>
+                    <span className={styles.teamLabel}>SQUAD TEAMS</span>
                 </div>
                 <div>
                     <TeamsList teams={teams.Squad} />

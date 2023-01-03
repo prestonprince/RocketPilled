@@ -7,7 +7,9 @@ import MatchList from "./MatchList";
 
 import { getAllMatches } from '../../../store/matches';
 
-const Matches = () => {
+import styles from '../../cssModules/Matches.module.css'
+
+const Matches = ({ setContent, setShowModal, setOpen }) => {
     const dispatch = useDispatch();
     const allMatches = useSelector(state => state.matches)
     const user = useSelector(state => state.session.user)
@@ -28,15 +30,13 @@ const Matches = () => {
     return (
         <>
             {isLoaded ? (
-                <div>
+                <div className={styles.container}>
                     <MatchesTitleCard />
-                    <MatchesNav setType={setType} />
-                    <MatchList matches={filteredMatches} />
+                    <MatchesNav type={type} setType={setType} />
+                    <MatchList setContent={setContent} setShowModal={setShowModal} setOpen={setOpen} matches={filteredMatches} />
                 </div>
             ):
-                <div>
-                    <span>Loading...</span>
-                </div>
+            <div className={styles.loader}></div>
             }
         </>     
     )

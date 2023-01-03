@@ -6,6 +6,7 @@ import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
 import { SideBarModalProvider } from './context/SideBarModal';
+import { AcceptMatchModalProvider } from './context/AcceptMatchModal';
 
 import * as teamActions from "./store/teams";
 import * as matchActions from './store/matches'
@@ -23,7 +24,9 @@ ReactDOM.render(
     <Provider store={store}>
       <ModalProvider>
         <SideBarModalProvider>
-          <App /> 
+          <AcceptMatchModalProvider>
+            <App /> 
+          </AcceptMatchModalProvider>
         </SideBarModalProvider>
       </ModalProvider>
       </Provider>

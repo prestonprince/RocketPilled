@@ -1,7 +1,7 @@
 import MyMatchCard from "./MyMatchCard";
 
 const MyMatchList = ({ userTeams, matches }) => {
-    // console.log(matches);
+    console.log(matches);
 
     return (
         <div>

@@ -15,19 +15,16 @@ const MyMatches = () => {
     }, [dispatch]);
 
     const matchArr = Object.values(allMatches).map(obj => Object.values(obj)).flat();
-
     const userTeams = [
         ...Object.values(user.Solo),
         ...Object.values(user.Duo),
         ...Object.values(user.Squad),
     ]
-
+    
     const userTeamsMatches = userTeams.map(team => {
-        for (const match of team.matches) {
-            return match.id
-        }
+        return team.matches.map(match => match.id)
     }).flat();
-
+    
     const userMatches = matchArr.filter(match => userTeamsMatches.includes(match.id));
 
     return (

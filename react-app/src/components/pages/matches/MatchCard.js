@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { acceptMatch, cancelMatch } from "../../../store/matches";
 import styles from '../../cssModules/MatchCard.module.css'
 
-const MatchCard = ({ match }) => {
+const MatchCard = ({ setShowModal, setOpen, match }) => {
     const [isUserMatch, setIsUserMatch] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -43,7 +43,15 @@ const MatchCard = ({ match }) => {
             history.push('/my-teams');
             return;
         };
-        dispatch(acceptMatch(team.id, match.id))
+        dispatch(acceptMatch(team.id, match.id)).then(() => {
+            history.push('/')
+        }).then(() => {
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 100)
+            history.push('/my-matches')
+        })
     };
 
     let size;
@@ -68,6 +76,9 @@ const MatchCard = ({ match }) => {
             )}
             {user && !isUserMatch && (
                 <button className={styles.button} onClick={handleAccept}>Accept</button>
+            )}
+            {!user && (
+                <span className={styles.nothing}> </span>
             )}
         </div>
     )

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 
-const AcceptMatchPop = ({ setShowModal, setOpen, content }) => {
+const CancelMatchPop = ({ setShowModal, setOpen }) => {
     
     const closeModal = () => {
         setOpen(false)
@@ -16,8 +16,8 @@ const AcceptMatchPop = ({ setShowModal, setOpen, content }) => {
 
 
     return (
-        <span>{content}</span>
+        <span>Match Cancelled</span>
     )
 };
 
-export default AcceptMatchPop
+export default CancelMatchPop;

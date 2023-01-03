@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { acceptMatch, cancelMatch } from "../../../store/matches";
 import styles from '../../cssModules/MatchCard.module.css'
 
-const MatchCard = ({ setShowModal, setOpen, match }) => {
+const MatchCard = ({ setContent, setShowModal, setOpen, match }) => {
     const [isUserMatch, setIsUserMatch] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -30,7 +30,13 @@ const MatchCard = ({ setShowModal, setOpen, match }) => {
     }, [])
 
     const handleCancel = () => {
-        dispatch(cancelMatch(match, matchTeamIds[0]))
+        dispatch(cancelMatch(match, matchTeamIds[0])).then(() => {
+            setContent('Match Canceled')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 100)
+        })
     }
 
     const handleAccept = () => {
@@ -44,8 +50,7 @@ const MatchCard = ({ setShowModal, setOpen, match }) => {
             return;
         };
         dispatch(acceptMatch(team.id, match.id)).then(() => {
-            history.push('/')
-        }).then(() => {
+            setContent('Match Accepted')
             setShowModal(true)
             setTimeout(() => {
                 setOpen(true)

@@ -20,6 +20,7 @@ import { AcceptMatchModal } from './context/AcceptMatchModal';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false)
+  const [content, setContent] = useState('')
   const [open, setOpen] = useState(false)
   const dispatch = useDispatch();
 
@@ -64,12 +65,12 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Banner />
-          <Matches setOpen={setOpen} setShowModal={setShowModal} />
+          <Matches setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
         </Route>
       </Switch>
       {showModal && (
         <AcceptMatchModal open={open} onClose={() => setShowModal(false)}>
-          <AcceptMatchPop setShowModal={setShowModal} setOpen={setOpen} />
+          <AcceptMatchPop content={content} setShowModal={setShowModal} setOpen={setOpen} />
         </AcceptMatchModal>
       )} 
     </BrowserRouter>

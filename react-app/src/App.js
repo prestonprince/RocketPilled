@@ -41,7 +41,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

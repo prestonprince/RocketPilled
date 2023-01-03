@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
-const LoginForm = () => {
+import styles from '../cssModules/LoginForm.module.css'
+
+const LoginForm = ({ setContent, setShowModal, setOpen }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [emailLabel, setEmailLabel] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+    const e1 = "email : Email provided not found."
+    const e2 = 'password : Password was incorrect.'
     if (data) {
-      setErrors(data);
+      setErrors('')
+      console.log(data)
+      if (data.includes(e1) && data.length < 2) {
+        setContent("Member with email not found.")
+      } else if (data.includes(e2) && data.length < 2) {
+        setContent('Incorrect Password')
+      } else {
+        setContent("Sorry, invalid login information. The email and/or password you entered is incorrect.")
+      }
+      // console.log(errors)
+      // setContent(errors);
+      setShowModal(true)
+      setTimeout(() => {
+        setOpen(true)
+    }, 50)
     }
   };
 
@@ -26,39 +46,74 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const handleRedirect = () => {
+    history.push('/sign-up')
+  }
+
+  const handleInputClick = () => {
+    console.log("HI")
+  }
+
+  const handleDemoLogin = async(e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    }
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <div className={styles.bar}></div>
+        <div className={styles.header}>
+          <div className={styles.headTop}>
+            <h2 className={styles.title}>SIGN IN</h2>
+          </div>
+          <div className={styles.headBot}>
+            <span className={styles.member}>Not a member yet? <span className={styles.join} onClick={handleRedirect}>Join Free!</span></span>
+          </div>
+        </div>
+        <div className={styles.buttonContainer}>
+          <button onClick={(e) => handleDemoLogin(e)} className={styles.demo}>Continue with Demo User</button>
+        </div>
+        <form className={styles.form} onSubmit={onLogin}>
+          {/* <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div> */}
+          <div>
+            <input
+              onClick={handleInputClick}
+              className={styles.input}
+              name='email'
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+              required
+            />
+          </div>
+          <div>
+            <input
+              className={styles.input}
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+              required
+            />
+          </div>
+          <button className={styles.signIn} type='submit'>Login</button>
+        </form>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

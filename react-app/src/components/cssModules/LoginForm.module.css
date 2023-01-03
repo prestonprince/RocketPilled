@@ -1,0 +1,123 @@
+.container {
+    /* border: 3px solid red; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    width: 25vw;
+    background-color: #292929;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 3px solid red; */
+    height: 30vh;
+    justify-content: space-evenly;
+}
+
+.bar {
+    height: .8vh;
+    background-color: #5cc5e6;
+    /* border-radius: .25vh .25vh 0 0; */
+    width: 25vw;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.member {
+    font-size: .85rem;
+    color: #a6a6a6;
+}
+
+.join {
+    color: #7fe876;
+    text-decoration: underline;
+}
+
+.join:hover {
+    cursor: pointer;
+}
+
+.header {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    /* border: 3px solid green; */
+    height: 15vh;
+}
+
+.headTop {
+    /* border: 3px solid red; */
+    height: 60%;
+}
+
+.headBot {
+    /* border: 3px solid blue; */
+    height: 40%;
+}
+
+.buttonContainer {
+    /* border: 3px solid red; */
+    height: 5vh;
+}
+
+.demo {
+    background-color: #ffffff;
+    color: black;
+    font-weight: 600;
+    border: none;
+    border-radius: .2vh;
+    height: 3vh;
+    width: 12vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo:hover {
+    cursor: pointer;
+}
+
+.input {
+    background-color: #363636;
+    border: none;
+    height: 5vh;
+    width: 15vw;
+    color: white;
+}
+
+.signIn {
+    background-color: #8aff80;
+    color: #2e4224;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
+    width: 20vw;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.signIn:hover {
+    position: relative;
+    bottom: .2vh;
+}
+
+.input:focus {
+    border: none;
+}

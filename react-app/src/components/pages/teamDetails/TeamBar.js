@@ -2,13 +2,16 @@ const TeamBar = ({ team }) => {
     return (
         <div>
             <div>
-                <span>xp: points {team.xp_points}</span>
+                <span>XP</span>
+                <span>{team.xp_points} XP</span>
             </div>
             <div>
-                <span>placeholder for team record</span>
+                <span>CAREER record</span>
+                <span>209W - 14L</span>
             </div>
             <div>
-                <span>placeholder for recent team matches</span>
+                <span>RECENT MATCHES</span>
+                <span>W W W W L</span>
             </div>
         </div>
     )

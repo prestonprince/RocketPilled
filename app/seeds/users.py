@@ -134,52 +134,52 @@ def seed_users():
     # seed teams
 
     #squad
-    nrg = Team(owner_id=3, name="NRG", type='Squad')
-    faze = Team(owner_id=6, name="Faze", type='Squad')
+    nrg = Team(owner_id=3, name="NRG", type='Squad') #1 
+    faze = Team(owner_id=6, name="Faze", type='Squad') #2
 
-    ssg = Team(owner_id=9, name="SSG", type='Squad')
-    geng = Team(owner_id=11, name="GenG", type='Squad')
+    ssg = Team(owner_id=9, name="SSG", type='Squad') #3
+    geng = Team(owner_id=11, name="GenG", type='Squad') #4
 
     marines = Team(owner_id=14, name="Marines", type='Squad')
-    baroque = Team(owner_id=17, name="BaroqueWorks", type='Squad')
+    baroque = Team(owner_id=17, name="BaroqueWorks", type='Squad')#6 
 
     strawhats = Team(owner_id=20, name="StrawHats", type='Squad')
-    redhairs = Team(owner_id=23, name="RedHairs", type='Squad')
+    redhairs = Team(owner_id=23, name="RedHairs", type='Squad')#8
 
     #solos
     jacksolos = Team(owner_id=11, name="JackSolos", type='Solo')
-    fksolo = Team(owner_id=6, name='FkSolos', type='Solo')
+    fksolo = Team(owner_id=6, name='FkSolos', type='Solo')#10
 
     squishysolos = Team(owner_id=2, name="SquishSolos", type='Solo')
-    garrettsolo = Team(owner_id=3, name="GarrettGSolo", type='Solo')
+    garrettsolo = Team(owner_id=3, name="GarrettGSolo", type='Solo')#12
 
     jstnSolos = Team(owner_id=4, name="JstnSolos", type='Solo')
-    sypSolos = Team(owner_id=5, name="SypSolos", type='Solo')
+    sypSolos = Team(owner_id=5, name="SypSolos", type='Solo')#14
 
     mistSolos = Team(owner_id=7, name="MistSolos", type='Solo')
-    danSolo = Team(owner_id=8, name="DanSolos", type='Solo')
+    danSolo = Team(owner_id=8, name="DanSolos", type='Solo')#16
 
     arseSolos = Team(owner_id=9, name="ArsySolos", type='Solo')
-    ljSolos = Team(owner_id=10, name="LJSolos", type='Solo')
+    ljSolos = Team(owner_id=10, name="LJSolos", type='Solo')#18
     
     nolySolo = Team(owner_id=12, name="NolySolo", type='Solo')
-    chronicSolo = Team(owner_id=13, name="ChronSolo", type='Solo')
+    chronicSolo = Team(owner_id=13, name="ChronSolo", type='Solo')#20
 
     ghostSolo = Team(owner_id=14, name="GhostSolos", type='Solo')
-    killSolo = Team(owner_id=15, name="xKillERxSolo", type='Solo')
+    killSolo = Team(owner_id=15, name="xKillERxSolo", type='Solo')#22
 
     pwnSolo = Team(owner_id=16, name="PwnageSolos", type='Solo')
-    masterSolo = Team(owner_id=17, name="MasterChiefSolos", type='Solo')
+    masterSolo = Team(owner_id=17, name="MasterChiefSolos", type='Solo')#24
 
     #duo teams
     arsybaby = Team(owner_id=9, name='ArsyBabies', type='Duo')
-    theduo = Team(owner_id=10, name='TheDuo', type='Duo')
+    theduo = Team(owner_id=10, name='TheDuo', type='Duo')#26
 
     squishyG = Team(owner_id=2, name='SqushyG', type='Duo')
-    gboyz = Team(owner_id=11, name='GBoyz', type='Duo')
+    gboyz = Team(owner_id=11, name='GBoyz', type='Duo')#28
 
     ghostkiller = Team(owner_id=14, name='GhostKillerz', type='Duo')
-    chiefAssassin = Team(owner_id=17, name='chiefassassinz', type='Duo')
+    chiefAssassin = Team(owner_id=17, name='chiefassassinz', type='Duo')#30
 
     db.session.add_all([
         nrg, 
@@ -287,7 +287,7 @@ def seed_users():
 
     db.session.commit()
 
-    # seed matches
+    # seed posted matches
 
     #squad matches
     match1 = Match(status='posted', type='Squad', map='Champions Field')
@@ -310,6 +310,54 @@ def seed_users():
     match14 = Match(status='posted', type='Solo', map='Champions Field')
     match15 = Match(status='posted', type='Solo', map='Utopia Coliseum')
 
+    
+    # seed completed matches
+    
+    # squad matches  
+    # nrg v faze
+    match16 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=1)
+
+    # ssg v geng
+    match17 = Match(status='completed', type='Squad', map='Utopia Coliseum', winning_team_id=4)
+
+    # marines v baroque
+    match18 = Match(status='completed', type='Squad', map='Mannfield', winning_team_id=6)
+
+    # strawhats v redhairs
+    match19 = Match(status='completed', type='Squad', map='Champions Field', winning_team_id=7)
+
+    # jacksolos v fksolo
+    match20 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=10)
+
+    # squishy v garrett 
+    match21 = Match(status='completed', type='Squad', map='Salty Shores', winning_team_id=11)
+
+    #jstn v syp
+    match22 = Match(status='completed', type='Squad', map='DFH Stadium', winning_team_id=14)
+
+    # mist v dan 
+    match23 = Match(status='completed', type='Squad', map='DFH Stadium', winning_team_id=16)
+
+    # arsenal v lj 
+    match24 = Match(status='completed', type='Squad', map='Neon Fields', winning_team_id=17)
+
+    # noly v chronic 
+    match25 = Match(status='completed', type='Squad', map='Deadeye Canyon', winning_team_id=20)
+
+    # ghost v kill
+    match26 = Match(status='completed', type='Squad', map='Neo Tokyo', winning_team_id=22)
+
+    #pwn v masterchief
+    match27 = Match(status='completed', type='Squad', map='Forbidden Temple', winning_team_id=23)
+
+    # arsybaby v theduo
+    match28 = Match(status='completed', type='Squad', map='AquaDome', winning_team_id=25)
+
+    # squisyG v gboyz
+    match29 = Match(status='completed', type='Squad', map='Sovereign Heights', winning_team_id=27)
+
+    # ghostkiller v chief assassin
+    match30 = Match(status='completed', type='Squad', map='Farmstead', winning_team_id=30)
 
     db.session.add_all([
         match1, 
@@ -326,7 +374,22 @@ def seed_users():
         match12,
         match13,
         match14,
-        match15
+        match15,
+        match16,
+        match17,
+        match18,
+        match19,
+        match20,
+        match21,
+        match22,
+        match23,
+        match24,
+        match25,
+        match26,
+        match27,
+        match28,
+        match29,
+        match30
     ])
     db.session.commit()
 
@@ -349,6 +412,50 @@ def seed_users():
     match14.teams.append(ghostSolo)
     match15.teams.append(pwnSolo)
 
+    match16.teams.append(faze)
+    match16.teams.append(nrg)
+
+    match17.teams.append(ssg)
+    match17.teams.append(geng)
+
+    match18.teams.append(marines)
+    match18.teams.append(baroque)
+
+    match19.teams.append(strawhats)
+    match19.teams.append(redhairs)
+
+    match20.teams.append(jacksolos)
+    match20.teams.append(fksolo)
+
+    match21.teams.append(squishysolos)
+    match21.teams.append(garrettsolo)
+
+    match22.teams.append(jstnSolos)
+    match22.teams.append(sypSolos)
+
+    match23.teams.append(mistSolos)
+    match23.teams.append(danSolo)
+
+    match24.teams.append(arseSolos)
+    match24.teams.append(ljSolos)
+
+    match25.teams.append(nolySolo)
+    match25.teams.append(chronicSolo)
+    
+    match26.teams.append(ghostSolo)
+    match26.teams.append(killSolo)
+
+    match27.teams.append(pwnSolo)
+    match27.teams.append(masterSolo)
+
+    match28.teams.append(arsybaby)
+    match28.teams.append(theduo)
+    
+    match29.teams.append(squishyG)
+    match29.teams.append(gboyz)
+
+    match30.teams.append(ghostkiller)
+    match30.teams.append(chiefAssassin)
 
     db.session.commit()
     print("DONE SEEDING")

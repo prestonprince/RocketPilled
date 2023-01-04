@@ -44,7 +44,18 @@ const TeamDetails = () => {
     return (
         <div>
             <div>
-                <span>{team.name}</span>
+                <div>
+                    <h2>{team.name}</h2>
+                    <span>EST. 10/28/22</span>
+                    <span class="material-symbols-outlined">
+                        shuffle
+                    </span>
+                    <span>Rocket League</span>
+                    <span class="material-symbols-outlined">
+                        list
+                    </span>
+                    <span>Global {team.type} Ladder</span>
+                </div>
                 {user.id === team.owner_id ? (
                     <div>
                         {(type !== 'Solo' && teamSizeCheck(team)) && (

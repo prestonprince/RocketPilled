@@ -41,6 +41,11 @@ const TeamDetails = () => {
         })
     }
 
+    console.log(team.matches)
+
+    const completedMatches = team.matches.filter(match => match.status === 'completed');
+    console.log(completedMatches)
+
     return (
         <div>
             <div>

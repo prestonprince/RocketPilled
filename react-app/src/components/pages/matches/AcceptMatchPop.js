@@ -11,7 +11,7 @@ const AcceptMatchPop = ({ setShowModal, setOpen, content }) => {
     };
 
     useEffect(() => {
-        setTimeout(closeModal, 2500)
+        setTimeout(closeModal, 3500)
     })
 
 

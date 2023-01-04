@@ -1,10 +1,40 @@
-.teams:hover {
+.header {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 3px solid red; */
+    padding-top: 3vh;
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-left: 1vw;
+}
+
+.options {
+    /* border: 3px solid red; */
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.optionCard {
+    /* border: 3px solid green; */
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+    gap: .5vw;
+}
+
+.optionCard:hover {
+    background-color: #464646;
     cursor: pointer;
 }
 
-.container{
+.optionCardLine {
+    /* border: 3px solid green; */
+    height: .5vh;
     display: flex;
-    flex-direction: column;
-    color: white;
-    /* border: 3px solid red; */
+    align-items: center;
+    border-bottom: 1px solid #696969;
 }

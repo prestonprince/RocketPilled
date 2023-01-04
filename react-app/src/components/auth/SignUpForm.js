@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import styles from '../cssModules/LoginForm.module.css'
 
-const SignUpForm = () => {
+const SignUpForm = ({ setContent, setShowModal, setOpen }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -11,19 +12,30 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
-        setErrors(data)
+        setContent(data)
+        setShowModal(true)
+        setTimeout(() => {
+          setOpen(true)
+        }, 50)
       }
+    } else {
+      setContent('Passwords do not match')
+      setShowModal(true)
+      setTimeout(() => {
+        setOpen(true)
+      }, 50)
     }
   };
 
   const updateUsername = (e) => {
-    setUsername(e.target.value);
+    setUsername(e.target.value)
   };
 
   const updateEmail = (e) => {
@@ -38,56 +50,85 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const handleRedirect = () => {
+    history.push('/login')
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <div className={styles.bar}></div>
+        <div className={styles.header2}>
+          <div className={styles.headTop}>
+            <h2 className={styles.title2}>STEP UP YOUR GAME JOIN TODAY</h2>
+          </div>
+          <div className={styles.headBot}>
+            <span className={styles.member2}>
+              Already a member? 
+              <span onClick={handleRedirect} className={styles.join}> Sign in</span>
+            </span>
+          </div>
+        </div>
+        <form className={styles.form2} onSubmit={onSignUp}>
+          {/* <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div> */}
+          <div>
+            <input
+              className={styles.input}
+              placeholder='Username'
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              className={styles.input}
+              placeholder='Email'
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              className={styles.input}
+              placeholder='Password'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              className={styles.input}
+              placeholder='Repeat Password'
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <div className={styles.btnBox}>
+            <button className={styles.signIn} type='submit'>Sign Up</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div>
   );
 };
 

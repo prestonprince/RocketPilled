@@ -54,7 +54,7 @@ const MatchCard = ({ setContent, setShowModal, setOpen, match }) => {
             setShowModal(true)
             setTimeout(() => {
                 setOpen(true)
-            }, 100)
+            }, 50)
             history.push('/my-matches')
         })
     };

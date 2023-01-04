@@ -13,4 +13,5 @@
 .button:hover {
     position: relative;
     bottom: .2vh;
+    cursor: pointer;
 }

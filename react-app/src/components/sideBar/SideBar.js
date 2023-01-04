@@ -8,9 +8,14 @@ const SideBar = ({ user }) => {
 
     return (
         <>
-            <span onClick={() => setShowModal(true)}>
+        <div onClick={() => setShowModal(true)} style={{display: 'flex'}}>
+            <span>
                 {user.username}
             </span>
+            <span className="material-symbols-outlined">
+                expand_more
+            </span>
+        </div>
             {showModal && (
                 <SideBarModal onClose={() => setShowModal(false)}>
                     <SideBarContent setShowModal={setShowModal} user={user} />

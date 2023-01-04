@@ -41,10 +41,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignUpForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
         </Route>
         <ProtectedRoute path='/teams' exact>
           <Banner />
@@ -59,6 +59,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/my-teams'>
           <MyTeams />
+        </ProtectedRoute>
+        <ProtectedRoute path='/coming-soon'>
+          <h2>Feature Coming Soon!</h2>
         </ProtectedRoute>
         <ProtectedRoute path='/my-matches'>
           <MyMatches />

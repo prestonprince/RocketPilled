@@ -16,6 +16,7 @@ import { getAllTeams } from './store/teams';
 import MyMatches from './components/pages/myMatches/MyMatches';
 import AcceptMatchPop from './components/pages/matches/AcceptMatchPop';
 import { AcceptMatchModal } from './context/AcceptMatchModal';
+import TeamDeetsBanner from './components/TeamDeetsBanner';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,7 +39,9 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div className='nav'>      
       <NavBar />
+    </div>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
@@ -51,7 +54,7 @@ function App() {
           <Teams />
         </ProtectedRoute>
         <ProtectedRoute path='/teams/:type/:id'>
-          <Banner />
+          <TeamDeetsBanner />
           <TeamDetails />
         </ProtectedRoute>
         <ProtectedRoute path='/teams/new' exact>

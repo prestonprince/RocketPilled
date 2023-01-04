@@ -8,6 +8,8 @@ import TeamRoster from "./TeamRoster";
 import TeamMatches from "./TeamMatches";
 import ManageRosterModal from "../../ManageRosterModal";
 
+import styles from '../../cssModules/TeamDetails.module.css'
+
 const TeamDetails = () => {
     const { id, type } = useParams()
     const dispatch = useDispatch()
@@ -41,25 +43,31 @@ const TeamDetails = () => {
         })
     }
 
-    console.log(team.matches)
-
-    const completedMatches = team.matches.filter(match => match.status === 'completed');
-    console.log(completedMatches)
-
     return (
-        <div>
-            <div>
-                <div>
-                    <h2>{team.name}</h2>
-                    <span>EST. 10/28/22</span>
-                    <span class="material-symbols-outlined">
-                        shuffle
-                    </span>
-                    <span>Rocket League</span>
-                    <span class="material-symbols-outlined">
-                        list
-                    </span>
-                    <span>Global {team.type} Ladder</span>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.headerLeft}>
+                    <div className={styles.leftSide}>
+                        <div className={styles.picContainer}>
+                            <span style={{fontSize: "3.2rem"}} class='material-symbols-outlined'>
+                                        list
+                            </span>                    
+                        </div>
+                    </div>
+                    <div className={styles.rightSide}>
+                        <h2 className={styles.teamName}>{team.name}</h2>
+                        <span>EST. 10/28/22</span>
+                        <span class="material-symbols-outlined">
+                            shuffle
+                        </span>
+                        <span>Rocket League</span>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                list
+                            </span>
+                            <span>Global {team.type} Ladder</span>
+                        </div>
+                    </div>
                 </div>
                 {user.id === team.owner_id ? (
                     <div>

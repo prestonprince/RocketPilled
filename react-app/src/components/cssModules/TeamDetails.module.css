@@ -1,0 +1,53 @@
+.container {
+    /* border: 3px solid #ff0000; */
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    /* border: 3px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    position: relative;
+    bottom: 30vh;
+}
+
+.headerLeft {
+    border: 3px solid red;
+    display: flex;
+    width: 80%;
+}
+
+
+.leftSide {
+    /* border: 3px solid gold; */
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picContainer {
+    border: 3px solid white;
+    /* width: 5vw; */
+    background-color: #363636;
+    border-radius: 5vw;
+    width: 3vw;
+    padding: 1.5vw;
+}
+
+.rightSide {
+    border: 3px solid blue;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.teamName {
+    font-size: 2.7rem;
+    font-weight: 600;
+}

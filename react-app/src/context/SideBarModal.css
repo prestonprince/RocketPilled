@@ -1,7 +1,7 @@
 #sideBarModal {
     position: fixed;
     top: 13vh;
-    right: 8vw;
+    right: 7vw;
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@
   #sideBarModal-content {
     position: absolute;
     background-color: #3f3f3f;
-    width: 17vw;
+    width: 15vw;
     height: 100vh;
     display: flex;
     flex-direction: column;

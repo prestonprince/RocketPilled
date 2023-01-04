@@ -11,7 +11,7 @@ const TeamsList = ({ teams }) => {
     return (
         <div className={styles.container}>
             {Object.values(teams).map(team => (
-                <div className={styles.card}>
+                <div key={team.id} className={styles.card}>
                     <span key={team.id}>{team.name}</span>
                     <button className={styles.view} onClick={() => handleClick(team)}>View</button>
                 </div>

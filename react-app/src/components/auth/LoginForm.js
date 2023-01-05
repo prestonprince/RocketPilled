@@ -20,7 +20,6 @@ const LoginForm = () => {
     const e1 = "email : Email provided not found."
     const e2 = 'password : Password was incorrect.'
     if (data) {
-      console.log(data)
       if (data.includes(e1) && data.length < 2) {
         setContent("Member with email not found.")
       } else if (data.includes(e2) && data.length < 2) {
@@ -28,8 +27,6 @@ const LoginForm = () => {
       } else {
         setContent("Sorry, invalid login information. The email and/or password you entered is incorrect.")
       }
-      // console.log(errors)
-      // setContent(errors);
       setShowModal(true)
       setTimeout(() => {
         setOpen(true)
@@ -47,10 +44,6 @@ const LoginForm = () => {
 
   const handleRedirect = () => {
     history.push('/sign-up')
-  }
-
-  const handleInputClick = () => {
-    console.log("HI")
   }
 
   const handleDemoLogin = async(e) => {
@@ -78,14 +71,8 @@ const LoginForm = () => {
           <button onClick={(e) => handleDemoLogin(e)} className={styles.demo}>Continue with Demo User</button>
         </div>
         <form className={styles.form} onSubmit={onLogin}>
-          {/* <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div> */}
           <div>
             <input
-              onClick={handleInputClick}
               className={styles.input}
               name='email'
               type='email'

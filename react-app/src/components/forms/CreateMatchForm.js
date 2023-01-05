@@ -50,7 +50,6 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
         }).catch((res) => {
 
             setContent(res.errors[0])
-            console.log(res)
             setShowModal(true)
             setTimeout(() => {
                 setOpen(true)

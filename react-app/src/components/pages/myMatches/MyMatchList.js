@@ -1,11 +1,10 @@
 import MyMatchCard from "./MyMatchCard";
+import styles from '../../cssModules/MyMatchList.module.css'
 
 const MyMatchList = ({ userTeams, matches }) => {
-    console.log(matches);
 
     return (
-        <div>
-            <h2>match list</h2>
+        <div className={styles.container}>
             {matches.map(match => (
                 <MyMatchCard key={match.id} userTeams={userTeams} match={match}/>
             ))}

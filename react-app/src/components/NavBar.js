@@ -30,6 +30,7 @@ const NavBar = () => {
         </div>
         <div className={styles.houseContainer} onClick={handleHome}>
           <img 
+            alt='logo'
             className={styles.logo}
             src="https://media.discordapp.net/attachments/1049445170778738789/1059992237775269929/logo.png?width=488&height=488">
           </img>

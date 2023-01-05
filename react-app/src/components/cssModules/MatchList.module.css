@@ -47,7 +47,7 @@
     align-items: center;
     background-color: #292929;
     height: 6vh;
-    padding-left: 1vw;
+    /* padding-left: 2vw; */
     color: #b3b3b3;
     font-weight: 700;
     font-size: .9rem;
@@ -63,20 +63,21 @@
 .game {
     position: relative;
     right: 1vw;
+    padding-left: 2vw;
 }
 
 .entry {
     position: relative;
-    right: 0.5vw;
+    right: 1.7vw;
 }
 
 .size {
     position: relative;
-    right: 2vw;
+    right: 2.7vw;
     /* margin-right: 2vw; */
 }
 
 .starting {
     position: relative;
-    right: 4.5vw;
+    right: 5.2vw;
 }

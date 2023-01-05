@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import ManageRosterForm from "./ManageRosterForm";
 import { getAllUsers } from "../../store/session";
+import styles from '../cssModules/TeamDetails.module.css'
 
 const ManageRosterModal = ({ team }) => {
     const [showModal, setShowModal] = useState(false);
@@ -12,7 +13,7 @@ const ManageRosterModal = ({ team }) => {
         return () => {
             dispatch(getAllUsers())
         }
-    }, [])
+    }, [dispatch])
 
     const handleClick = () => {
         dispatch(getAllUsers()).then(() => setShowModal(true))
@@ -20,7 +21,7 @@ const ManageRosterModal = ({ team }) => {
 
     return (
         <>
-            <button onClick={handleClick}>
+            <button className={styles.btn} onClick={handleClick}>
                 Add Teammates
             </button>
             {showModal && (

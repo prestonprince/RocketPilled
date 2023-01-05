@@ -4,13 +4,15 @@ import { useHistory } from "react-router-dom";
 import TeamOptions from "../CreateMatchModal/TeamOptions";
 
 import { postMatch } from "../../store/matches";
+import { useNotification } from "../../context/Notification";
 
-const CreateMatchForm = ({ setShowModal }) => {
+const CreateMatchForm = ({ setShowMatchModal }) => {
     const [matchType, setMatchType] = useState('all')
     const [matchTeamId, setMatchTeamId] = useState('')
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
+    const { setContent, setOpen, setShowModal } = useNotification()
 
     const userTeams = [
         ...Object.values(user.Solo),
@@ -36,10 +38,23 @@ const CreateMatchForm = ({ setShowModal }) => {
         };
 
         dispatch(postMatch(match)).then(() => {
+            setContent('Match Posted')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
             setMatchTeamId('');
             setMatchType('all');
-            setShowModal(false);
+            setShowMatchModal(false);
             history.push('/')
+        }).catch((res) => {
+
+            setContent(res.errors[0])
+            console.log(res)
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
         })
     }
 

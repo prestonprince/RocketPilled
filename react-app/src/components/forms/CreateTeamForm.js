@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { createTeam } from "../../store/teams";
+import { useNotification } from "../../context/Notification";
 
 const CreateTeamForm = () => {
     const user = useSelector(state => state.session.user)
@@ -10,6 +11,7 @@ const CreateTeamForm = () => {
     const history = useHistory()
     const [name, setName] = useState('')
     const [teamType, setTeamType] = useState('default')
+    const { setOpen, setShowModal, setContent } = useNotification()
 
     const onSubmit = e => {
         e.preventDefault();
@@ -28,7 +30,11 @@ const CreateTeamForm = () => {
         })
         .catch(async (res) => {
             const data = await res.json();
-            console.log(data)
+            setContent(data.errors[0])
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
         })
 
     };

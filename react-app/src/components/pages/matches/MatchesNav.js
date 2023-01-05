@@ -20,8 +20,6 @@ const MatchesNav = ({ setType, type }) => {
         setType(type)
     };
 
-    console.log(type)
-
     return (
         <div className={styles.container}>
             <div className={styles.typeBox}>

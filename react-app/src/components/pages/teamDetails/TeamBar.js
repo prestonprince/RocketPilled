@@ -2,7 +2,9 @@ import styles from '../../cssModules/TeamBar.module.css'
 
 const TeamBar = ({ team }) => {
     const completedMatches = team.matches.filter(match => match.status === 'completed');
-    const winningMatches = completedMatches.filter(match => match.winning_team_id === team.id)
+    const winningMatches = completedMatches.filter(match => {
+        return match.winning_team_id === team.id
+    })
     const losingMatches = completedMatches.filter(match => match.winning_team_id !== team.id)
     const winPercentage = Math.floor((winningMatches.length / completedMatches.length) * 100)
 

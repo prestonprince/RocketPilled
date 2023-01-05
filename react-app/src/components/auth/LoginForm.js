@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import { useNotification } from '../../context/Notification';
 
 import styles from '../cssModules/LoginForm.module.css'
 
-const LoginForm = ({ setContent, setShowModal, setOpen }) => {
-  const [errors, setErrors] = useState([]);
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [emailLabel, setEmailLabel] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory()
+  const { setContent, setShowModal, setOpen } = useNotification()
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -20,7 +20,6 @@ const LoginForm = ({ setContent, setShowModal, setOpen }) => {
     const e1 = "email : Email provided not found."
     const e2 = 'password : Password was incorrect.'
     if (data) {
-      setErrors('')
       console.log(data)
       if (data.includes(e1) && data.length < 2) {
         setContent("Member with email not found.")
@@ -56,10 +55,7 @@ const LoginForm = ({ setContent, setShowModal, setOpen }) => {
 
   const handleDemoLogin = async(e) => {
     e.preventDefault();
-    const data = await dispatch(login('demo@aa.io', 'password'));
-    if (data) {
-      setErrors(data);
-    }
+    await dispatch(login('demo@aa.io', 'password'));
   }
 
   if (user) {

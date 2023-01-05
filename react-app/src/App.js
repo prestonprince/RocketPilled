@@ -17,12 +17,14 @@ import MyMatches from './components/pages/myMatches/MyMatches';
 import AcceptMatchPop from './components/pages/matches/AcceptMatchPop';
 import { AcceptMatchModal } from './context/AcceptMatchModal';
 import TeamDeetsBanner from './components/TeamDeetsBanner';
+import { useNotification } from './context/Notification';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false)
-  const [content, setContent] = useState('')
-  const [open, setOpen] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
+  // const [content, setContent] = useState('')
+  // const [open, setOpen] = useState(false)
+  const { showModal, setShowModal } = useNotification()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,10 +46,10 @@ function App() {
     </div>
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
+          <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
+          <SignUpForm />
         </Route>
         <ProtectedRoute path='/teams' exact>
           <Banner />
@@ -71,12 +73,12 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Banner />
-          <Matches setContent={setContent} setOpen={setOpen} setShowModal={setShowModal} />
+          <Matches />
         </Route>
       </Switch>
       {showModal && (
-        <AcceptMatchModal open={open} onClose={() => setShowModal(false)}>
-          <AcceptMatchPop content={content} setShowModal={setShowModal} setOpen={setOpen} />
+        <AcceptMatchModal onClose={() => setShowModal(false)}>
+          <AcceptMatchPop />
         </AcceptMatchModal>
       )} 
     </BrowserRouter>

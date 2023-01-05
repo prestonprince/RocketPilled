@@ -134,7 +134,7 @@ def seed_users():
     # seed teams
 
     #squad
-    ssg = Team(owner_id=9, name="SSG", type='Squad') #3
+    ssg = Team(owner_id=9, name="SSG", type='Squad', xp_points=1) #3
     redhairs = Team(owner_id=23, name="RedHairs", type='Squad')#8
 
     nrg = Team(owner_id=3, name="NRG", type='Squad') #1 
@@ -315,43 +315,43 @@ def seed_users():
     
     # squad matches  
     # nrg v faze
-    match16 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=1)
+    match16 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=2)
 
     # ssg v geng
-    match17 = Match(status='completed', type='Squad', map='Utopia Coliseum', winning_team_id=4)
+    match17 = Match(status='completed', type='Squad', map='Utopia Coliseum', winning_team_id=8)
 
     # marines v baroque
-    match18 = Match(status='completed', type='Squad', map='Mannfield', winning_team_id=6)
+    match18 = Match(status='completed', type='Squad', map='Mannfield', winning_team_id=10)
 
     # strawhats v redhairs
-    match19 = Match(status='completed', type='Squad', map='Champions Field', winning_team_id=7)
+    match19 = Match(status='completed', type='Squad', map='Champions Field', winning_team_id=12)
 
     # jacksolos v fksolo
-    match20 = Match(status='completed', type='Solo', map='Wasteland', winning_team_id=10)
+    match20 = Match(status='completed', type='Solo', map='Wasteland', winning_team_id=4)
 
     # squishy v garrett 
-    match21 = Match(status='completed', type='Solo', map='Salty Shores', winning_team_id=11)
+    match21 = Match(status='completed', type='Solo', map='Salty Shores', winning_team_id=13)
 
     #jstn v syp
-    match22 = Match(status='completed', type='Solo', map='DFH Stadium', winning_team_id=14)
+    match22 = Match(status='completed', type='Solo', map='DFH Stadium', winning_team_id=15)
 
     # mist v dan 
-    match23 = Match(status='completed', type='Solo', map='DFH Stadium', winning_team_id=16)
+    match23 = Match(status='completed', type='Solo', map='DFH Stadium', winning_team_id=18)
 
     # arsenal v lj 
-    match24 = Match(status='completed', type='Solo', map='Neon Fields', winning_team_id=17)
+    match24 = Match(status='completed', type='Solo', map='Neon Fields', winning_team_id=20)
 
     # noly v chronic 
-    match25 = Match(status='completed', type='Solo', map='Deadeye Canyon', winning_team_id=20)
+    match25 = Match(status='completed', type='Solo', map='Deadeye Canyon', winning_team_id=22)
 
     # ghost v kill
-    match26 = Match(status='completed', type='Solo', map='Neo Tokyo', winning_team_id=22)
+    match26 = Match(status='completed', type='Solo', map='Neo Tokyo', winning_team_id=24)
 
     #pwn v masterchief
-    match27 = Match(status='completed', type='Solo', map='Forbidden Temple', winning_team_id=23)
+    match27 = Match(status='completed', type='Solo', map='Forbidden Temple', winning_team_id=26)
 
     # arsybaby v theduo
-    match28 = Match(status='completed', type='Duo', map='AquaDome', winning_team_id=25)
+    match28 = Match(status='completed', type='Duo', map='AquaDome', winning_team_id=6)
 
     # squisyG v gboyz
     match29 = Match(status='completed', type='Duo', map='Sovereign Heights', winning_team_id=27)
@@ -360,70 +360,70 @@ def seed_users():
     match30 = Match(status='completed', type='Duo', map='Farmstead', winning_team_id=30)
 
     # ssg v faze
-    match31 = Match(status='completed', type='Squad', map='Neon Fields', winning_team_id=2)
+    match31 = Match(status='completed', type='Squad', map='Neon Fields', winning_team_id=7)
 
     # nrg v geng
-    match32 = Match(status='completed', type='Squad', map='Farmstead', winning_team_id=4)
+    match32 = Match(status='completed', type='Squad', map='Farmstead', winning_team_id=1)
 
     # marines v redhairs
-    match33 = Match(status='completed', type='Squad', map='AquaDome', winning_team_id=8)
+    match33 = Match(status='completed', type='Squad', map='AquaDome', winning_team_id=12)
 
     # strawhats v baroque
-    match34 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=7)
+    match34 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=11)
 
     # fksolos v garrettsolo
-    match35 = Match(status='completed', type='Solo', map='Salty Shores', winning_team_id=12)
+    match35 = Match(status='completed', type='Solo', map='Salty Shores', winning_team_id=4)
 
     # squishySolo v jacksolos
-    match36 = Match(status='completed', type='Solo', map='Deadeye Canyon', winning_team_id=9)
+    match36 = Match(status='completed', type='Solo', map='Deadeye Canyon', winning_team_id=3)
 
     # jsntsolos v mistsolo
-    match37 = Match(status='completed', type='Solo', map='Neo Tokyo', winning_team_id=15)
+    match37 = Match(status='completed', type='Solo', map='Neo Tokyo', winning_team_id=17)
 
     # sypSolo v dansolo
-    match38 = Match(status='completed', type='Solo', map='Sovereign Heights', winning_team_id=16)
+    match38 = Match(status='completed', type='Solo', map='Sovereign Heights', winning_team_id=18)
 
     # ljsolo v nolysolo
-    match39 = Match(status='completed', type='Solo', map='Farmstead', winning_team_id=18)
+    match39 = Match(status='completed', type='Solo', map='Farmstead', winning_team_id=20)
 
     # arseSolo v chronicsolo
-    match40 = Match(status='completed', type='Solo', map='Utopia Coliseum', winning_team_id=17)
+    match40 = Match(status='completed', type='Solo', map='Utopia Coliseum', winning_team_id=19)
 
     # ghostSolo v masterSolo
-    match41 = Match(status='completed', type='Solo', map='Mannfield', winning_team_id=24)
+    match41 = Match(status='completed', type='Solo', map='Mannfield', winning_team_id=23)
 
     # killsolo v pwnsolo
-    match42 = Match(status='completed', type='Solo', map='Urban Central', winning_team_id=23)
+    match42 = Match(status='completed', type='Solo', map='Urban Central', winning_team_id=25)
 
     #arsybaby v squishyg
     match43 = Match(status='completed', type='Duo', map='Champions Field', winning_team_id=27)
 
     #theduo v ghostkiller
-    match44 = Match(status='completed', type='Duo', map='DFH Stadium', winning_team_id=26)
+    match44 = Match(status='completed', type='Duo', map='DFH Stadium', winning_team_id=6)
 
     #gboyz v chiefAssassin
     match45 = Match(status='completed', type='Duo', map='Champions Field', winning_team_id=28)
 
     #redhairs v ssg
-    match46 = Match(status='completed', type='Squad', map='Neo Tokyo', winning_team_id=8)
+    match46 = Match(status='completed', type='Squad', map='Neo Tokyo', winning_team_id=7)
 
     #nrg v baroque
     match47 = Match(status='completed', type='Squad', map='Wasteland', winning_team_id=1)
 
     #marines v geng
-    match48 = Match(status='completed', type='Squad', map='Neon Fields', winning_team_id=4)
+    match48 = Match(status='completed', type='Squad', map='Neon Fields', winning_team_id=8)
 
     #faze v strawhats
-    match49 = Match(status='completed', type='Squad', map='Sovereign Heights', winning_team_id=7)
+    match49 = Match(status='completed', type='Squad', map='Sovereign Heights', winning_team_id=2)
 
     #arsybaby v gboyz
-    match50 = Match(status='completed', type='Duo', map='Deadeye Canyon', winning_team_id=25)
+    match50 = Match(status='completed', type='Duo', map='Deadeye Canyon', winning_team_id=28)
 
     #squshyG v ghostkiller
     match51 = Match(status='completed', type='Duo', map='Deadeye Canyon', winning_team_id=29)
 
     #theduo v chiefAssassin
-    match52 = Match(status='completed', type='Duo', map='Urban Central', winning_team_id=26)
+    match52 = Match(status='completed', type='Duo', map='Urban Central', winning_team_id=6)
 
 
     db.session.add_all([

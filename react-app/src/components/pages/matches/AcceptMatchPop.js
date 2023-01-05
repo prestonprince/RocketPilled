@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useNotification } from "../../../context/Notification";
 
 
-const AcceptMatchPop = ({ setShowModal, setOpen, content }) => {
+const AcceptMatchPop = () => {
+    const { setShowModal, setOpen, content } = useNotification()
     
     const closeModal = () => {
         setOpen(false)

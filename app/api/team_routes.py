@@ -50,12 +50,12 @@ def create_team():
 
 
 def validate_team_member(team, user, user_info):
-    if len(user_info[team.type]) > 0:
-        return {'error': f"User is on another {team.type} team"}
-
     if user in team.members:
         return {"error": "User is already on this team"}
-    
+
+    if len(user_info[team.type]) > 0:
+        return {'error': f"User is on another {team.type} team"}
+        
     if not team:
         return {'error': 'This team does not exist'}
 
@@ -79,7 +79,7 @@ def add_team_member(team_id):
     user_info = user.to_dict()
 
     validations = validate_team_member(team, user, user_info)
-    if validations: return validations
+    if validations: return validations, 401
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

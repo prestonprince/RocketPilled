@@ -6,7 +6,7 @@ import { getAllUsers } from "../../store/session";
 import styles from '../cssModules/TeamDetails.module.css'
 
 const ManageRosterModal = ({ team }) => {
-    const [showModal, setShowModal] = useState(false);
+    const [showRosterModal, setShowRosterModal] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const ManageRosterModal = ({ team }) => {
     }, [dispatch])
 
     const handleClick = () => {
-        dispatch(getAllUsers()).then(() => setShowModal(true))
+        dispatch(getAllUsers()).then(() => setShowRosterModal(true))
     }
 
     return (
@@ -24,9 +24,9 @@ const ManageRosterModal = ({ team }) => {
             <button className={styles.btn} onClick={handleClick}>
                 Add Teammates
             </button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <ManageRosterForm team={team} setShowModal={setShowModal} />
+            {showRosterModal && (
+                <Modal onClose={() => setShowRosterModal(false)}>
+                    <ManageRosterForm team={team} setShowRosterModal={setShowRosterModal} />
                 </Modal>
             )}
         </>

@@ -2,14 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
+import { useNotification } from "../../../context/Notification";
 
 import { acceptMatch, cancelMatch } from "../../../store/matches";
 import styles from '../../cssModules/MatchCard.module.css'
 
-const MatchCard = ({ setContent, setShowModal, setOpen, match }) => {
+const MatchCard = ({ match }) => {
     const [isUserMatch, setIsUserMatch] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
+    const { setContent, setShowModal, setOpen } = useNotification()
     const user = useSelector(state => state.session.user)
     const matchTeamIds = match.teams.map(team => team.id)
     const matchTeamOwnerIds = match.teams.map(team => team.owner_id);

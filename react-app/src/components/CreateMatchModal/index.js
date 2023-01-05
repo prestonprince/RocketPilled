@@ -7,7 +7,7 @@ import styles from "../cssModules/CreateMatchButton.module.css"
 
 const CreateMatchModal = ({ team }) => {
     const history = useHistory()
-    const [showModal, setShowModal] = useState(false);
+    const [showMatchModal, setShowMatchModal] = useState(false);
     const user = useSelector(state => state.session.user)
     
     // returns true if a team does not have a full roster
@@ -36,7 +36,7 @@ const CreateMatchModal = ({ team }) => {
             history.push('/my-teams')
             return;
         }
-        setShowModal(true)
+        setShowMatchModal(true)
     };
 
     return (
@@ -44,9 +44,9 @@ const CreateMatchModal = ({ team }) => {
             <button className={styles.button} onClick={handleClick}>
                 Create Match
             </button>
-            {user && showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <CreateMatchForm setShowModal={setShowModal} />
+            {user && showMatchModal && (
+                <Modal onClose={() => setShowMatchModal(false)}>
+                    <CreateMatchForm setShowMatchModal={setShowMatchModal} />
                 </Modal>
             )}
         </>

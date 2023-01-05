@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { getAllMatches } from "../../../store/matches";
 import MyMatchList from "./MyMatchList";
+import styles from '../../cssModules/MyMatches.module.css'
 
 const MyMatches = () => {
     const dispatch = useDispatch()
@@ -30,16 +31,16 @@ const MyMatches = () => {
     return (
         <>
         {isLoaded ? (
-            <div>
-                <div>
-                    <h2>MY MATCHES</h2>
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <span><span className={styles.my}>MY</span> MATCHES</span>
                 </div>
                 <div>
                     <MyMatchList userTeams={userTeams} matches={userMatches}/>
                 </div>
             </div>
         ): 
-            <div>Loading...</div>
+            <div></div>
         }
         </>
     )

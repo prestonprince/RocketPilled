@@ -1,7 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import MyTeamCard from "./MyTeamCard";
+import styles from '../../cssModules/MyTeamsContainer.module.css'
 
-const MyTeamsConainer = ({ teams, setClick, click }) => {
+const MyTeamsContainer = ({ teams, setClick, click }) => {
     const history = useHistory()
 
     const myTeams = Object.values(teams)
@@ -11,17 +12,28 @@ const MyTeamsConainer = ({ teams, setClick, click }) => {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             {myTeams.length > 0 ? (
                 <ul>
                     {myTeams.map(team => (<MyTeamCard setClick={setClick} click={click} key={team.id} team={team} />))}
                 </ul>
             ): 
-            <h2>No teams yet</h2>
+            <div className={styles.container}>
+                <h2>No teams yet</h2>
+                <div className={styles.btnContainer}>
+                    <button className={styles.btnContainer} onClick={handleClick}>
+                        <div className={styles.iconContainer}>
+                            <span style={{color: '#7bff80', fontSize: ".95rem"}} class="material-symbols-outlined">
+                                    add
+                            </span>
+                        </div>
+                        Create Team
+                    </button>
+                </div>
+            </div>
         }
-            <button onClick={handleClick}>Create Team</button>
         </div>
     )
 };
 
-export default MyTeamsConainer;
+export default MyTeamsContainer;

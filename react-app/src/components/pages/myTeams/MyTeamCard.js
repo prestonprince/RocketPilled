@@ -1,15 +1,10 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-import { deleteTeam } from "../../../store/teams"
-import { removeTeamMember } from "../../../store/teams";
-import { authenticate } from "../../../store/session";
+import styles from '../../cssModules/MyTeamCard.module.css'
 
-const MyTeamCard = ({ team, setClick, click }) => {
+const MyTeamCard = ({ team, click }) => {
     const history = useHistory()
-    const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
 
     useEffect(() => {}, [click])
 
@@ -18,9 +13,21 @@ const MyTeamCard = ({ team, setClick, click }) => {
     }
 
     return (
-        <div>
-            <h3>{team.name}</h3>
-            <button onClick={() => handleTeamClick(team)}>manage</button>
+        <div className={styles.container}>
+            <div className={styles.pic_container}>
+                <img
+                    className={styles.pic}
+                    src="https://rocketleague.media.zestyio.com/rl_cross-play_asset_no-text.jpg"
+                    alt="rlpic"
+                >
+                </img>
+            </div>
+            <div className={styles.infoContainer}>
+                <span className={styles.name}>{team.name}</span>
+                <span className={styles.rl}>Rocket League | Cross-Platform</span>
+                <span className={styles.type}>{team.type}</span>
+                <button className={styles.btn} onClick={() => handleTeamClick(team)}>manage</button>
+            </div>
         </div>
     )
 };

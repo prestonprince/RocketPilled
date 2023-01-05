@@ -11,16 +11,16 @@
     background: linear-gradient(to bottom right, #303030, #292929);
 }
 
-.loader {
+.loaderCard {
     position: relative;
     border-radius: 30px;
-    width: 60%;
+    width: 100%;
     height: 4px;
-    top: 250px;
-    left: 325px;
+    /* top: 250px;
+    left: 325px; */
 }
 
-.loader::before {
+.loaderCard::before {
     content: "";
     position: absolute;
     border-radius: 20px;
@@ -30,6 +30,18 @@
     left: 0;
     background: #8aff80;
     animation: moving 0.5s ease-in-out infinite;
+}
+
+@keyframes moving {
+    50% {
+     width: 100%;
+    }
+   
+    100% {
+     width: 0;
+     right: 0;
+     left: unset;
+    }
 }
 
 .infoCard {

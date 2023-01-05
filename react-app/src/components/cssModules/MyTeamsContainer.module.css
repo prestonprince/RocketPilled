@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5vw;
+    background-color: transparent;
+    color: #7bff80;
+    border: none;
+}
+
+.btnContainer:hover {
+    cursor: pointer;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #7bff80;
+    border-radius: 40vh;
+    /* padding: .25vw; */
+    width: 1vw;
+    height: 2vh;
+}

@@ -47,7 +47,7 @@ const TeamMatchCard = ({ team, match }) => {
             </div>
             
         ) :
-            <div className={styles.loader}></div>
+            <div className={styles.loaderCard}></div>
         }
         </>
     )

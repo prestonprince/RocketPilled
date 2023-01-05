@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import MyTeamsConainer from "./MyTeamsContainer";
+import MyTeamsContainer from "./MyTeamsContainer";
 import TeamsNav from "./TeamsNav";
 import styles from "../../cssModules/MyTeams.module.css"
 
@@ -13,10 +13,12 @@ const MyTeams = () => {
     return (
         <div className={styles.container}>
                <div className={styles.top}>
-                <span>My Teams</span>
-                <TeamsNav setTeams={setTeams} user={user} />
+                <div className={styles.header}>
+                    <span><span className={styles.my}>MY</span> TEAMS</span>
+                </div>
+                <TeamsNav teams={teams} setTeams={setTeams} user={user} />
             </div>
-            <MyTeamsConainer teams={teams} setClick={setClick} click={click} />
+            <MyTeamsContainer teams={teams} setClick={setClick} click={click} />
         </div>
     )
 };

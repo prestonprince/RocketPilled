@@ -8,6 +8,8 @@ import TeamRoster from "./TeamRoster";
 import TeamMatches from "./TeamMatches";
 import ManageRosterModal from "../../ManageRosterModal";
 
+import styles from '../../cssModules/TeamDetails.module.css'
+
 const TeamDetails = () => {
     const { id, type } = useParams()
     const dispatch = useDispatch()
@@ -17,6 +19,15 @@ const TeamDetails = () => {
     const [removePlayer, setRemovePlayer] = useState(false)
 
     const team = teams[type][id]
+    const userTeams = [
+        ...Object.values(user.Solo),
+        ...Object.values(user.Duo),
+        ...Object.values(user.Squad)
+    ]
+
+    const userTeamsIds = userTeams.map(team => team.id)
+
+    const isUserTeam = userTeamsIds.find(id => id === team.id)
 
 
     useEffect(() => {}, [removePlayer])
@@ -42,28 +53,57 @@ const TeamDetails = () => {
     }
 
     return (
-        <div>
-            <div>
-                <span>{team.name}</span>
-                {user.id === team.owner_id ? (
-                    <div>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.headerLeft}>
+                    <div className={styles.leftSide}>
+                        <div className={styles.picContainer}>
+                            <span style={{fontSize: "3.2rem"}} class='material-symbols-outlined'>
+                                        list
+                            </span>                    
+                        </div>
+                    </div>
+                    <div className={styles.rightSide}>
+                        <h2 className={styles.teamName}>{team.name}</h2>
+                        <span className={styles.time}>EST. 10/28/22</span>
+                        <div className={styles.info}>
+                            <div className={styles.rl}>
+                                <span class="material-symbols-outlined">
+                                    shuffle
+                                </span>
+                                <span>Rocket League</span>
+                            </div>
+                            <div>|</div>
+                            <div className={styles.rl}>
+                                <span class="material-symbols-outlined">
+                                    list
+                                </span>
+                                <span>Global {team.type} Ladder</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {user.id === team.owner_id && (
+                    <div className={styles.buttons}>
                         {(type !== 'Solo' && teamSizeCheck(team)) && (
                             <ManageRosterModal team={team} />
                         )}
-                        <button onClick={() => handleDisband(team)}>Disband</button>
+                        <button className={styles.btn} onClick={() => handleDisband(team)}>Disband</button>
                     </div>
-                ):
+                )}
+                {isUserTeam && user.id !== team.owner_id && (
                     <div>
                         <button onClick={() => handleLeave(team)}>Leave Team</button>
                     </div>
-                }
+                )}
+                
             </div>
             <div>
                 <TeamBar team={team}/>
             </div>
-            <div>
+            <div className={styles.teamInfoContainer}>
                 <TeamRoster setRemovePlayer={setRemovePlayer} team={team} />
-                <TeamMatches />
+                <TeamMatches team={team} />
             </div>
         </div>
     )

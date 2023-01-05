@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./AcceptMatch.css";
+import { useNotification } from "./Notification";
 
 const AcceptMatchContext = React.createContext();
 
@@ -20,7 +21,8 @@ export function AcceptMatchModalProvider({ children }) {
   );
 }
 
-export function AcceptMatchModal({ open, onClose, children }) {
+export function AcceptMatchModal({ onClose, children }) {
+  const { open } = useNotification()
   const modalNode = useContext(AcceptMatchContext);
   if (!modalNode) return null;
 

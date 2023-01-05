@@ -43,7 +43,7 @@ class Match(db.Model):
         return self.status
 
     @_status.setter
-    def _status(seld, status):
+    def _status(self, status):
         self.status = status
 
     def to_dict_base(self):

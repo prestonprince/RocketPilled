@@ -31,8 +31,12 @@ const MyMatches = () => {
         <>
         {isLoaded ? (
             <div>
-                <h2>My Matches</h2>
-                <MyMatchList userTeams={userTeams} matches={userMatches}/>
+                <div>
+                    <h2>MY MATCHES</h2>
+                </div>
+                <div>
+                    <MyMatchList userTeams={userTeams} matches={userMatches}/>
+                </div>
             </div>
         ): 
             <div>Loading...</div>

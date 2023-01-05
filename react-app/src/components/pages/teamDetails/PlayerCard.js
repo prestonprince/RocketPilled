@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeTeamMember } from "../../../store/teams";
+import styles from '../../cssModules/PlayerCard.module.css'
 
 const PlayerCard = ({ team, player, setRemovePlayer }) => {
     const dispatch = useDispatch();
@@ -10,11 +11,23 @@ const PlayerCard = ({ team, player, setRemovePlayer }) => {
     }
 
     return (
-        <div>
-            <span>{player.username}</span>
-            {team.owner_id !== player.id && user.id === team.owner_id && (
-                <button onClick={handleKick}>Kick</button>
-            )}
+        <div className={styles.container}>
+            <div className={styles.left}>
+                <div className={styles.picContainer}>
+                    <span style={{fontSize: '1.8rem'}} class="material-symbols-outlined">
+                        person
+                    </span>
+                </div>
+                <div className={styles.playerNamePoints}>
+                    <span className={styles.name}>{player.username}</span>
+                    <span className={styles.points}>XP: {player.xp_points} xp</span>
+                </div>
+            </div>
+            <div className={styles.right}>
+                {team.owner_id !== player.id && user.id === team.owner_id && (
+                    <button className={styles.btn} onClick={handleKick}>Kick</button>
+                )}
+            </div>
         </div>
     )
 };

@@ -1,0 +1,12 @@
+.img_container {
+    height: 55vh;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    color: black;
+    filter: brightness(35%);
+    opacity: 0.9;
+}

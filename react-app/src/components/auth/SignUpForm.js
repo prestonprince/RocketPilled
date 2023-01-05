@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import styles from '../cssModules/LoginForm.module.css'
+import { useNotification } from '../../context/Notification';
 
-const SignUpForm = ({ setContent, setShowModal, setOpen }) => {
-  const [errors, setErrors] = useState([]);
+const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,6 +13,7 @@ const SignUpForm = ({ setContent, setShowModal, setOpen }) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory()
+  const { setContent, setShowModal, setOpen } = useNotification()
 
   const onSignUp = async (e) => {
     e.preventDefault();

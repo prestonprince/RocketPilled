@@ -1,0 +1,107 @@
+.container {
+    /* border: 3px solid #ff0000; */
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    /* border: 3px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+    position: relative;
+    bottom: 30vh;
+}
+
+.headerLeft {
+    /* border: 3px solid red; */
+    display: flex;
+    width: 80%;
+}
+
+
+.leftSide {
+    /* border: 3px solid gold; */
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picContainer {
+    border: 3px solid white;
+    /* width: 5vw; */
+    background-color: #363636;
+    border-radius: 5vw;
+    width: 3vw;
+    padding: 1.5vw;
+}
+
+.rightSide {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-left: 1vw;
+}
+
+.teamName {
+    font-size: 2.7rem;
+    font-weight: 600;
+}
+
+.time {
+    font-weight: 600;
+}
+
+.info {
+    padding-top: 1vh;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.rl {
+    display: flex;
+    align-items: center;
+    gap: .25vw;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+}
+
+.btn {
+    background-color: #8aff80;
+    border-radius: .2vw;
+    width: 7vw;
+    height: 4vh;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    border: none;
+    transition: all 1s ease;
+}
+
+.btn:hover {
+    position: relative;
+    bottom: .2vh;
+    cursor: pointer;
+}
+
+.teamInfoContainer {
+    position: relative;
+    bottom: 15vh;
+    /* border: 3px solid red; */
+    display: flex;
+    gap: 5vw;
+    width: 55vw;
+}
+
+

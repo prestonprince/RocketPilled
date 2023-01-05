@@ -1,0 +1,63 @@
+.container {
+    /* border: 3px solid green; */
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    background-color: #303030;
+    justify-content: space-evenly;
+    background: #303030;
+    background: -webkit-linear-gradient(top left, #303030, #292929);
+    background: -moz-linear-gradient(top left, #303030, #292929);
+    background: linear-gradient(to bottom right, #303030, #292929);
+}
+
+.loader {
+    position: relative;
+    border-radius: 30px;
+    width: 60%;
+    height: 4px;
+    top: 250px;
+    left: 325px;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    border-radius: 20px;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #8aff80;
+    animation: moving 0.5s ease-in-out infinite;
+}
+
+.infoCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.opp {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.title {
+    color: #b3b3b3;
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.statusW {
+    color: #8aff80;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.statusL {
+    color: #ff2e57;
+    font-weight: 600;
+    font-size: 1.2rem;
+}

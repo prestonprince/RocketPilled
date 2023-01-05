@@ -1,0 +1,68 @@
+.container {
+    /* border: 3px solid green; */
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    background: #303030;
+    background: -webkit-linear-gradient(top left, #303030, #292929);
+    background: -moz-linear-gradient(top left, #303030, #292929);
+    background: linear-gradient(to bottom right, #303030, #292929);
+}
+
+.left {
+    padding-left: .7vw;
+    display: flex;
+    gap: .5vw;
+    align-items: center;
+    width: 50%;
+}
+
+.picContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid white; */
+    width: 1.5vw;
+    padding: .5vw;
+    border-radius: 20vw;
+    background-color: #5cc5e6;
+}
+
+.playerNamePoints {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.points {
+    font-size: .8rem;
+    color: #a0acb1;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.btn {
+    background-color: #8aff80;
+    border-radius: .2vw;
+    width: 7vw;
+    height: 4vh;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    border: none;
+    transition: all 1s ease;
+}
+
+.btn:hover {
+    position: relative;
+    bottom: .2vh;
+    cursor: pointer;
+}

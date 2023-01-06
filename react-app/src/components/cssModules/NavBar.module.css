@@ -1,5 +1,5 @@
 .nav_container {
-    position: sticky;
+    position: fixed;
     /* border: 3px solid blue; */
     display: flex;
     justify-content: center;
@@ -8,6 +8,8 @@
     align-items: center;
     font-weight: 600;
     /* margin-top: 0.2vh; */
+    width: 100%;
+    z-index: 5;
 }
 
 .nav_links {
@@ -117,4 +119,18 @@
     height: 5vh;
     filter: brightness(100%);
     /* border: 3px solid red; */
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    /* border: 3px solid red; */
+    height: 100%;
+    transition: all 0.25s ease;
+}
+
+.logoContainer:hover {
+    cursor: pointer;
 }

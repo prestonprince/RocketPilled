@@ -18,6 +18,7 @@ import AcceptMatchPop from './components/pages/matches/AcceptMatchPop';
 import { AcceptMatchModal } from './context/AcceptMatchModal';
 import TeamDeetsBanner from './components/TeamDeetsBanner';
 import { useNotification } from './context/Notification';
+import NotFound from './components/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,40 +41,64 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-    <div className='nav'>      
-      <NavBar />
-    </div>
+    <BrowserRouter>   
       <Switch>
         <Route path='/login' exact={true}>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/teams' exact>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <Banner />
           <Teams />
         </ProtectedRoute>
         <ProtectedRoute path='/teams/:type/:id'>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <TeamDeetsBanner />
           <TeamDetails />
         </ProtectedRoute>
         <ProtectedRoute path='/teams/new' exact>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <CreateTeamForm />
         </ProtectedRoute>
         <ProtectedRoute path='/my-teams'>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <MyTeams />
         </ProtectedRoute>
         <ProtectedRoute path='/coming-soon'>
           <h2>Feature Coming Soon!</h2>
         </ProtectedRoute>
         <ProtectedRoute path='/my-matches'>
+          <div className='nav'>
+            <NavBar />
+          </div>
           <MyMatches />
         </ProtectedRoute>
         <Route path='/' exact={true} >
+          <div className='nav'>
+            <NavBar />
+          </div>
           <Banner />
           <Matches />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
       {showModal && (

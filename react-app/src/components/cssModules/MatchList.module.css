@@ -33,11 +33,6 @@
     border-radius: 10px;
     background-color: #1a1a1a;
   }
-  
-  .container::-webkit-scrollbar-corner {
-    border: 2px red solid;
-  }
-
 
 .header {
     /* border: 3px solid blue; */

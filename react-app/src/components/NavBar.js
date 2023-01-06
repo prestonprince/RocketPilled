@@ -28,7 +28,7 @@ const NavBar = () => {
           other_houses
         </span>
         </div>
-        <div className={styles.houseContainer} onClick={handleHome}>
+        <div className={styles.logoContainer} onClick={handleHome}>
           <img 
             alt='logo'
             className={styles.logo}

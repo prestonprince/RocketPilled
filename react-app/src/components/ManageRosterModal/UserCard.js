@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addTeamMember } from "../../store/teams";
 import { useNotification } from '../../context/Notification'
+import styles from '../cssModules/ManageRosterForm.module.css'
 
 const UserCard = ({ user, team, setShowRosterModal }) => {
     const dispatch = useDispatch();
@@ -19,9 +20,9 @@ const UserCard = ({ user, team, setShowRosterModal }) => {
     }
 
     return (
-        <div>
+        <div className={styles.card}>
             <span>{user.username}</span>
-            <button onClick={handleAddToTeam}>Add to Team</button>
+            <button className={styles.button} onClick={handleAddToTeam}>Add to Team</button>
         </div>
     )
 };

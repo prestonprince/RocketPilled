@@ -11,7 +11,6 @@ const TeamCard = ({ matchType, matchTeamId, setMatchTeamId, team }) => {
         <>
         {team ? (
             <div className={matchTeamId === team.id ? styles.cardContainerActive : styles.cardContainer} onClick={handleClick}>
-                <span>{team.type}</span>
                 <span>{team.name}</span>
             </div>
 

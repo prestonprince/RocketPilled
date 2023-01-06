@@ -33,8 +33,6 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(matchType)
-
         if (matchType === 'all') {
             setContent('Please Select a Match Type')
             setShowModal(true)
@@ -65,7 +63,7 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
             setMatchTeamId('');
             setMatchType('all');
             setShowMatchModal(false);
-            history.push('/')
+            history.push('/my-matches')
         }).catch((res) => {
 
             setContent(res.errors[0])

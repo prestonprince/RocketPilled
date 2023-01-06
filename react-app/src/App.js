@@ -76,9 +76,7 @@ function App() {
           <CreateTeamForm />
         </ProtectedRoute>
         <ProtectedRoute path='/my-teams'>
-          <div className='nav'>
-            <NavBar />
-          </div>
+          <NavBar />
           <MyTeams />
         </ProtectedRoute>
         <ProtectedRoute path='/coming-soon'>

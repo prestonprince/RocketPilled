@@ -10,6 +10,7 @@
     /* margin-top: 0.2vh; */
     width: 100%;
     z-index: 5;
+    top: 0;
 }
 
 .nav_links {

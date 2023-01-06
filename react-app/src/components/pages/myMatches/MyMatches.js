@@ -40,7 +40,7 @@ const MyMatches = () => {
                 </div>
             </div>
         ): 
-            <div></div>
+            <div className={styles.loader}></div>
         }
         </>
     )

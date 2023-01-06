@@ -5,6 +5,7 @@ import TeamOptions from "../CreateMatchModal/TeamOptions";
 
 import { postMatch } from "../../store/matches";
 import { useNotification } from "../../context/Notification";
+import styles from '../cssModules/CreateMatch.module.css'
 
 const CreateMatchForm = ({ setShowMatchModal }) => {
     const [matchType, setMatchType] = useState('all')
@@ -32,6 +33,22 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (matchType === 'all') {
+            setContent('Please Select a Match Type')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
+            return;
+        } else if (matchTeamId === '') {
+            setContent('Please Select a Team')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
+            return;
+        }
+
         const match = {
             type: matchType,
             team_id: matchTeamId
@@ -46,7 +63,7 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
             setMatchTeamId('');
             setMatchType('all');
             setShowMatchModal(false);
-            history.push('/')
+            history.push('/my-matches')
         }).catch((res) => {
 
             setContent(res.errors[0])
@@ -58,24 +75,34 @@ const CreateMatchForm = ({ setShowMatchModal }) => {
     }
 
     return (
-        <div>
-            <h2>Create Match Form</h2>
+        <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="type">
-                    <select onChange={(e) => setMatchType(e.target.value)} value={matchType}>
-                        <option value='all' disabled hidden>Select Match Type</option>
-                        {TYPES.map(type => (
-                            <option
-                                key={type}
-                                value={type}
-                            >{type}</option>
-                        ))}
-                    </select>
-                </label>
-                <label htmlFor="team">
-                    <TeamOptions setMatchTeamId={setMatchTeamId} teams={teams} />
-                </label>
-                <button>Post Match</button>
+                <div className={styles.formContainer}>
+                    <label htmlFor="type">
+                        <div className={styles.typeContainer}>
+                            <span className={styles.teamSelect}>Select Match Type</span>
+                            <select className={styles.select} onChange={(e) => setMatchType(e.target.value)} value={matchType}>
+                                <option value='all' disabled hidden>Select Match Type</option>
+                                {TYPES.map(type => (
+                                    <option
+                                        key={type}
+                                        value={type}
+                                    >{type}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </label>
+                    <label htmlFor="team">
+                        <span className={styles.teamSelect}>Select Team</span>
+                        <div className={styles.optionsContainer}>
+                            <TeamOptions matchType={matchType} matchTeamId={matchTeamId} setMatchTeamId={setMatchTeamId} teams={teams} />
+                        </div>
+                    </label>
+                    <div className={styles.btnContainer}>
+
+                        <button className={styles.btn}>Post Match</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

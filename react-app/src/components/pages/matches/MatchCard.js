@@ -61,6 +61,8 @@ const MatchCard = ({ match }) => {
         })
     };
 
+    const opp = match.teams[0].name
+
     let size;
     if (match.type === 'Solo') size = '1v1';
     if (match.type === 'Duo') size = '2v2';
@@ -78,6 +80,7 @@ const MatchCard = ({ match }) => {
             <span className={styles.xp}>XP</span>
             <span>{size}</span>
             <span>Available Now</span>
+            <span>{opp}</span>
             {(user && isUserMatch) && matchTeamOwnerIds.includes(user.id) && (
                 <button className={styles.button} onClick={handleCancel}>Cancel</button>
             )}

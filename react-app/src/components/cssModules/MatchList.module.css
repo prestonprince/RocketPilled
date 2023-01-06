@@ -64,16 +64,21 @@
 
 .entry {
     position: relative;
-    right: 1.7vw;
+    right: 2.2vw;
 }
 
 .size {
     position: relative;
-    right: 2.7vw;
+    right: 4.5vw;
     /* margin-right: 2vw; */
 }
 
 .starting {
     position: relative;
-    right: 5.2vw;
+    right: 6.5vw;
+}
+
+.vs {
+    position: relative;
+    right: 5vw;
 }

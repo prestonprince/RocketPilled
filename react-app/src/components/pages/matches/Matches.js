@@ -9,7 +9,7 @@ import { getAllMatches } from '../../../store/matches';
 
 import styles from '../../cssModules/Matches.module.css'
 
-const Matches = ({ setContent, setShowModal, setOpen }) => {
+const Matches = () => {
     const dispatch = useDispatch();
     const allMatches = useSelector(state => state.matches)
     const user = useSelector(state => state.session.user)
@@ -33,7 +33,7 @@ const Matches = ({ setContent, setShowModal, setOpen }) => {
                 <div className={styles.container}>
                     <MatchesTitleCard />
                     <MatchesNav type={type} setType={setType} />
-                    <MatchList setContent={setContent} setShowModal={setShowModal} setOpen={setOpen} matches={filteredMatches} />
+                    <MatchList matches={filteredMatches} />
                 </div>
             ):
             <div className={styles.loader}></div>

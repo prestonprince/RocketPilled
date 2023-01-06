@@ -25,7 +25,12 @@ def user_has_team(form, field):
 def name_check(form, field):
     # check if name is taken
     name = field.data
+
+    if len(name) > 25:
+        raise ValidationError("Name must be 25 characters or less")
+
     team = Team.query.filter(Team.name == name).first()
+    
     if team: 
         raise ValidationError("Team name has been taken")
 

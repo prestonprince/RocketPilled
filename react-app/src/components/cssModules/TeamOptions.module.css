@@ -1,0 +1,24 @@
+.container {
+    margin-top: 2vh;
+    /* border: 3px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    padding: 2vw;
+    background-color: #1a1a1a;
+}
+
+.cardContainer {
+    border-left: .5vw solid #8aff80;
+    padding: .8vw;
+    background-color: #4a4a4a;
+    width: 5vw;
+}
+
+.cardContainerActive {
+    border-left: .5vw solid #5cc5e6;
+    padding: .8vw;
+    background-color: #4a4a4a;
+    width: 5vw;
+}

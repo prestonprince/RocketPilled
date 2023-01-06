@@ -1,10 +1,11 @@
 import TeamCard from "./TeamCard";
+import styles from '../cssModules/TeamOptions.module.css'
 
-const TeamOptions = ({ setMatchTeamId, teams }) => {
+const TeamOptions = ({ matchType, matchTeamId, setMatchTeamId, teams }) => {
     return (
-        <div>
+        <div className={styles.container}>
             {teams.map(team => (
-                <TeamCard key={team.id} setMatchTeamId={setMatchTeamId} team={team} />
+                <TeamCard key={team.id} matchType={matchType} matchTeamId={matchTeamId} setMatchTeamId={setMatchTeamId} team={team} />
             ) )}
         </div>
     )

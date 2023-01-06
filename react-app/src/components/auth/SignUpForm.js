@@ -95,7 +95,7 @@ const SignUpForm = () => {
             <input
               className={styles.input}
               placeholder='Email'
-              type='text'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}

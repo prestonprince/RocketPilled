@@ -59,26 +59,31 @@
 .game {
     position: relative;
     right: 1vw;
+    width: 16%;
     padding-left: 2vw;
 }
 
 .entry {
+    width: 16%;
     position: relative;
-    right: 2.2vw;
+    right: 3.5vw;
 }
 
 .size {
+    width: 16%;
     position: relative;
-    right: 4.5vw;
+    right: 4vw;
     /* margin-right: 2vw; */
 }
 
 .starting {
+    width: 16%;
     position: relative;
-    right: 6.5vw;
+    right: 3.5vw;
 }
 
 .vs {
+    width: 16%;
     position: relative;
-    right: 5vw;
+    right: 1.5vw;
 }

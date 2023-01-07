@@ -36,7 +36,7 @@
     height: 3vh;
     margin-right: .65vw;
     position: relative;
-    right: 3vw;
+    right: 2vw;
 }
 
 .button:hover {
@@ -54,4 +54,11 @@
     margin-right: .65vw;
     position: relative;
     right: 3vw;
+}
+
+.cardContainer {
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: center;
+    width: 16%;
 }

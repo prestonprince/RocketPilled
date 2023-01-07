@@ -6,6 +6,7 @@ const Footer = () => {
             <div>
                 <span className={styles.title}>DEVELOPED BY PRESTON PRINCE</span>
             </div>
+            <div className={styles.links}>
                 <a href='https://github.com/prestonprince' target='_blank' className={styles.link}>
                     <div className={styles.gitBox}>
                         <div className={styles.iconContainer}>
@@ -17,6 +18,17 @@ const Footer = () => {
                         {/* <span>GITHUB</span> */}
                     </div>
                 </a>
+                <a href='https://www.linkedin.com/in/preston-prince-24419124a/' target='_blank' className={styles.link}>
+                    <div className={styles.gitBox}>
+                        <div className={styles.iconContainer}>
+                            <img
+                                src="https://cdn.discordapp.com/attachments/1045904047124783215/1061087384114036856/icons8-linkedin-circled-30.png"
+                                alt="github_icon"
+                            />
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     )
 };

@@ -1,148 +1,98 @@
-# Flask React Project
+# Hangers Academy
 
-This is the starter for the Flask React project.
+<a href='https://rocketpilled.onrender.com/' alt=''>Rocket Pilled</a> is a mix between a passion project and a website clone, inspired by <a href='https://www.checkmategaming.com/' alt=''>CheckMateGaming</a>. Rocket Pilled is a site where Rocket League players can go to make solo, duo, or squad teams, and go head to head against each other to compete for experience points.
 
-## Getting started
-1. Clone this repository (only this branch)
+## ✅ Wiki Link
 
-2. Install dependencies
+- [Database Schema](https://github.com/prestonprince/RocketPilled/wiki/DB-Schema)
+- [Feature List](https://github.com/prestonprince/RocketPilled/wiki/MVP-Feature-List)
+- [Redux State Shape](https://github.com/prestonprince/RocketPilled/wiki/Redux-State-Shape)
+- [User Stories](https://github.com/prestonprince/RocketPilled/wiki/User-Stories)
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## 👩‍💻 Tech Stack
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+**Frameworks, Platforms and Libraries:**
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-%23404d59.svg?style=for-the-badge&logo=flask&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Redux](https://img.shields.io/badge/python-yellow?style=for-the-badge&logo=python&logoColor=blue)
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+**Database:**
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-   ```bash
-   pipenv shell
-   ```
+**Hosting:**
 
-   ```bash
-   flask db upgrade
-   ```
+![Render](https://img.shields.io/badge/Render-informational?style=for-the-badge&logo=render&logoColor=%5bdec3)
 
-   ```bash
-   flask seed all
-   ```
+## 💻 Run Locally
 
-   ```bash
-   flask run
-   ```
+Clone the project
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+```bash
+  git clone https://github.com/prestonprince/RocketPilled.git
+```
 
+Go to the project directory
 
-## Deployment through Render.com
+```bash
+  cd rocket_pilled
+```
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+Install dependencies
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+Backend
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
+```bash
 pip install -r requirements.txt &&
-pip install psycopg2 &&
 flask db upgrade &&
 flask seed all
 ```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+Frontend
 
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
+```bash
+cd react-app
+npm install
 ```
 
-_If you are using websockets, use the following start command instead for increased performance:_
+Start the server
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+```bash
+pipenv run flask run
+```
 
-### Part B: Add the Environment Variables
+In seperate terminal
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+```bash
+cd react-app
+npm start
+```
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+## 🖥 Environment Variables
 
-Add the following keys and values in the Render GUI form:
+To run this project, you will need to add the following environment variables to your .env file
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+```
+SECRET_KEY=boostedGG
+DATABASE_URL=sqlite:///dev.db
+SCHEMA=rocket_pilled
+```
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+## Sign Up
 
-Add the following keys and values:
+Users can access Sign Up via the 'Join Free' button in the top right.
 
-- DATABASE_URL (copy value from Internal Database URL field)
+![Sign Up Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061075985400877146/Untitled_video_-_Made_with_Clipchamp_3.gif)
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
+## Log In 
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
+Users can access Log In via the 'Sign In' button in the top right.
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
+![Log In Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061077182597832795/Untitled_video_-_Made_with_Clipchamp_4.gif)
 
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
+## Make Teams and Post/Accept Matches
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+Logged in users can make a Solo, Duo, or Squad team, and post or accept matches.
+
+![Log In Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061079450021793842/Untitled_video_-_Made_with_Clipchamp_5.gif)
+

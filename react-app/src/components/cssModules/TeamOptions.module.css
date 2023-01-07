@@ -13,14 +13,14 @@
     border-left: .5vw solid #8aff80;
     padding: .8vw;
     background-color: #4a4a4a;
-    width: 5vw;
+    width: fit-content;
 }
 
 .cardContainerActive {
     border-left: .5vw solid #5cc5e6;
     padding: .8vw;
     background-color: #4a4a4a;
-    width: 5vw;
+    width: fit-content;
 }
 
 .cardContainer:hover {

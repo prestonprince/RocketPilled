@@ -19,6 +19,7 @@ import { AcceptMatchModal } from './context/AcceptMatchModal';
 import TeamDeetsBanner from './components/TeamDeetsBanner';
 import { useNotification } from './context/Notification';
 import NotFound from './components/NotFound';
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -94,6 +95,7 @@ function App() {
           </div>
           <Banner />
           <Matches />
+          <Footer />
         </Route>
         <Route>
           <NotFound />

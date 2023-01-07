@@ -1,7 +1,7 @@
 import MatchCard from "./MatchCard";
 import styles from '../../cssModules/MatchList.module.css'
 
-const MatchList = ({ setContent, setShowModal, setOpen, matches }) => {
+const MatchList = ({ matches }) => {
     
     return (
         <>
@@ -20,13 +20,16 @@ const MatchList = ({ setContent, setShowModal, setOpen, matches }) => {
                         <div className={styles.starting}>
                             <span>STARTING</span>
                         </div>
+                        <div className={styles.vs}>
+                            <span>VS</span>
+                        </div>
                         <div>
                             <span></span>
                         </div>
                     </div>
                 <div className={styles.container}>
                     {matches.map(match => (
-                        <MatchCard setContent={setContent} setShowModal={setShowModal} setOpen={setOpen} key={match.id} match={match}/>
+                        <MatchCard key={match.id} match={match}/>
                     ))}
                 </div>
             </div>

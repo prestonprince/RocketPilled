@@ -35,3 +35,28 @@
     font-size: .9rem;
     color: #b3b3b3;
 }
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3vw;
+}
+
+.btn {
+    background-color: #8aff80;
+    border-radius: .2vw;
+    width: 7vw;
+    height: 4vh;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    border: none;
+    transition: all 1s ease;
+}
+
+.btn:hover {
+    position: relative;
+    bottom: .2vh;
+    cursor: pointer;
+}

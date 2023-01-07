@@ -1,0 +1,40 @@
+.container {
+    /* border: 3px solid red; */
+    padding-top: 2vh;
+    background-color: #292929;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+}
+
+.iconContainer {
+    /* border: 3px solid red; */
+    width: 2vw;
+    height: 3vh;
+}
+
+.gitBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3vw;
+}
+
+.gitBox:hover {
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.title {
+    color: #989898;
+    font-weight: 600;
+    font-size: .85rem;
+}

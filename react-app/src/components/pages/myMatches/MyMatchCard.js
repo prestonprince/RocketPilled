@@ -1,8 +1,27 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { cancelMatch } from '../../../store/matches';
+import { useNotification } from "../../../context/Notification";
 import styles from '../../cssModules/MyMatchCard.module.css'
 
 const MyMatchCard = ({ userTeams, match }) => {
     const userTeamsIds = userTeams.map(team => team.id)
     const opp = match.teams.find(team => !userTeamsIds.includes(team.id));
+    const user = useSelector(state => state.session.user)
+    const dispatch = useDispatch()
+
+    const { setContent, setShowModal, setOpen } = useNotification()
+
+    const matchTeamIds = match.teams.map(team => team.id)
+
+    const handleCancel = () => {
+        dispatch(cancelMatch(match, matchTeamIds[0])).then(() => {
+            setContent('Match Canceled')
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 100)
+        })
+    }
 
     return (
         <div className={styles.container}>
@@ -30,6 +49,11 @@ const MyMatchCard = ({ userTeams, match }) => {
                     <span>{match.status}</span>
                 </div>
             </div>
+            {match.status === 'posted' && match.teams[0].owner_id === user.id && (
+                <div className={styles.btnContainer}>
+                    <button className={styles.btn} onClick={handleCancel}>Cancel</button>
+                </div>
+            )}
         </div>
     )
 };

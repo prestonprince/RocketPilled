@@ -10,10 +10,10 @@ const NotFound = () => {
 
     return (
         <div className={styles.container}>
-            <span className={styles.home} onClick={handleClick}>Go Back Home</span>
-            <div className={styles.gifContainer}>
-                <img className={styles.gif} src="https://media.giphy.com/media/DnMMGxEvniha7CvASq/giphy.gif"></img>
-            </div>
+            <div className={styles.errorBar}></div>
+            <span className={styles.error}>404 ERROR</span>
+            <span className={styles.dead}>Dead link is dead. The link you followed either doesn't or has been misplaced. Please check the spelling and try again.</span>
+            <button className={styles.home} onClick={handleClick}>Continue</button>
         </div>
     )
 };

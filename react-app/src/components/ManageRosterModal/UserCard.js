@@ -10,8 +10,8 @@ const UserCard = ({ user, team, setShowRosterModal }) => {
 
     const handleAddToTeam = () => {
         dispatch(addTeamMember(user.id, team.id)).then(() => setShowRosterModal(false)).catch(async(res) => {
-            const data = await res.json();
-            setContent(data.error)
+            setShowRosterModal(false)
+            setContent(res)
             setShowModal(true)
             setTimeout(() => {
                 setOpen(true)

@@ -21,53 +21,55 @@ const NavBar = () => {
   }
 
   return (
-    <nav className={styles.nav_container}>
-      <div className={styles.nav_links}>
-        <div className={styles.houseContainer} onClick={handleHome}>
-        <span className="material-symbols-outlined" id={styles.house}>
-          other_houses
-        </span>
-        </div>
-        <div className={styles.logoContainer} onClick={handleHome}>
-          <img 
-            alt='logo'
-            className={styles.logo}
-            src="https://media.discordapp.net/attachments/1049445170778738789/1059992237775269929/logo.png?width=488&height=488">
-          </img>
-        </div>
-        {!user ? (
-          <div className={styles.sign_up_login}>
-            <div onClick={handleSignIn} id={styles.login}>
-              <span className={styles.link} id={styles.loginText}>
-                  Sign In
-              </span>
-            </div>
-            <div onClick={handleSignUp} id={styles.signup}>
-              <span className={styles.link} id={styles.signupText}>
-                  Join Free
-              </span>
-            </div>
+    <div className={styles.poppaContainer}>
+      <nav className={styles.nav_container}>
+        <div className={styles.nav_links}>
+          <div className={styles.houseContainer} onClick={handleHome}>
+          <span className="material-symbols-outlined" id={styles.house}>
+            other_houses
+          </span>
           </div>
-        ): 
-          <div>
-            <span className={styles.nav_user}><SideBar user={user} /></span>
+          <div className={user ? styles.logoContainer : styles.logoNoUser} onClick={handleHome}>
+            <img 
+              alt='logo'
+              className={styles.logo}
+              src="https://media.discordapp.net/attachments/1049445170778738789/1059992237775269929/logo.png?width=488&height=488">
+            </img>
           </div>
-        }
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
-        {/* <li>
-          <NavLink to='/my-teams' exact={true} activeClassName='active'>
-            My Teams
-          </NavLink>
-        </li> */}
-        {/* <li>
-          <LogoutButton />
-        </li> */}
-      </div>
-    </nav>
+          {!user ? (
+            <div className={styles.sign_up_login}>
+              <div onClick={handleSignIn} id={styles.login}>
+                <span className={styles.link} id={styles.loginText}>
+                    Sign In
+                </span>
+              </div>
+              <div onClick={handleSignUp} id={styles.signup}>
+                <span className={styles.link} id={styles.signupText}>
+                    Join Free
+                </span>
+              </div>
+            </div>
+          ): 
+            <div>
+              <span className={styles.nav_user}><SideBar user={user} /></span>
+            </div>
+          }
+          {/* <li>
+            <NavLink to='/users' exact={true} activeClassName='active'>
+              Users
+            </NavLink>
+          </li> */}
+          {/* <li>
+            <NavLink to='/my-teams' exact={true} activeClassName='active'>
+              My Teams
+            </NavLink>
+          </li> */}
+          {/* <li>
+            <LogoutButton />
+          </li> */}
+        </div>
+      </nav>
+    </div>
   );
 }
 

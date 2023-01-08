@@ -1,29 +1,42 @@
 .container {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* align-items: center; */
     width: 100%;
     height: 100%;
+    gap: 1.5vh;
 }
 
-.gifContainer {
-    width: 100%;
-    height: 100%;
+.errorBar {
+    width: 4vw;
+    height: .75vh;
+    background-color: #ff2e57;
 }
 
-.gif {
-    object-fit: cover;
-    z-index: 0;
+.error {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.dead {
+    color: #f1fbff;
+    font-size: .9rem;
 }
 
 .home {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 800;
-    position: absolute;
-    /* bottom: 20vh; */
-    top: 15vh;
-    z-index: 10;
-    padding-left: 2vw;
+    padding: .5vw;
+    width: 5vw;
+    color: #8aff80;
+    background-color: #292929;
+    border: 1px solid #676767;
+    font-size: 1rem;
+    transition: all .3s ease;
 }
 
 .home:hover {
     cursor: pointer;
+    background-color: #3a3a3a;
 }

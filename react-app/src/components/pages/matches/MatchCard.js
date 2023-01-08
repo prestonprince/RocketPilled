@@ -58,6 +58,12 @@ const MatchCard = ({ match }) => {
                 setOpen(true)
             }, 50)
             history.push('/my-matches')
+        }).catch((res) => {
+            setContent(res.error)
+            setShowModal(true)
+            setTimeout(() => {
+                setOpen(true)
+            }, 50)
         })
     };
 
@@ -91,6 +97,9 @@ const MatchCard = ({ match }) => {
             </div>
             {(user && isUserMatch) && matchTeamOwnerIds.includes(user.id) && (
                 <button className={styles.button} onClick={handleCancel}>Cancel</button>
+            )}
+            {(user && isUserMatch) && !matchTeamOwnerIds.includes(user.id) && (
+                <span className={styles.nothing}> </span>
             )}
             {user && !isUserMatch && (
                 <button className={styles.button} onClick={handleAccept}>Accept</button>

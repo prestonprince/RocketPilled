@@ -93,7 +93,7 @@ const TeamDetails = () => {
                 )}
                 {isUserTeam && user.id !== team.owner_id && (
                     <div>
-                        <button onClick={() => handleLeave(team)}>Leave Team</button>
+                        <button className={styles.btn} onClick={() => handleLeave(team)}>Leave Team</button>
                     </div>
                 )}
                 

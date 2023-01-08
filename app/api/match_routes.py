@@ -31,16 +31,21 @@ def post_match():
     Route that takes in type and team id and posts new match for that team
     """
     form = PostMatchForm()
+    data = form.data
+    user_id = current_user.id
+    team = Team.query.get(data['team_id'])
+
+    if user_id != team.owner_id:
+        return {"errors": ['You do not own this team']}, 401
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         map = random_map(MAPS)
-        new_match = Match(type=form.data['type'], map=map)
+        new_match = Match(type=data['type'], map=map)
 
         db.session.add(new_match)
         db.session.commit()
 
-        team = Team.query.get(form.data['team_id'])
         new_match.teams.append(team)
         db.session.commit()
 
@@ -60,14 +65,18 @@ def update_status(match_id):
     #! will only update from posted to pending until 3rd feature is implemented
     form = UpdateMatchStatusForm()
     data = form.data
+    user_id = current_user.id
     match = Match.query.get(match_id)
     team = Team.query.get(data['team_id'])
 
     if team.type != match.type:
-        return {'error': 'Team and match type must be the same'}
+        return {'error': 'Team and match type must be the same'}, 401
+
+    if user_id != team.owner_id:
+        return {'error': f'You do not own the {team.name} team'},403
 
     if len(match.teams) > 1:
-        return {'error': 'this match has already been accepted'}
+        return {'error': 'this match has already been accepted'}, 401
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -98,15 +107,15 @@ def cancel_match(match_id):
         return {'error', 'You are not authorized to perform this action'}, 403
 
     if not match:
-        return {'error': 'Match not found'}
+        return {'error': 'Match not found'}, 400
 
     if match.status != 'posted':
-        return {'error': 'Match cannot be cancelled once accepted'}
+        return {'error': 'Match cannot be cancelled once accepted'}, 400
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         if team not in match.teams:
-            return {'error': "This team is unauthorized to cancel the match"}
+            return {'error': "This team is unauthorized to cancel the match"}, 403
 
         db.session.delete(match)
         db.session.commit()

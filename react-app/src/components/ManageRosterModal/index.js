@@ -9,14 +9,14 @@ const ManageRosterModal = ({ team }) => {
     const [showRosterModal, setShowRosterModal] = useState(false);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        return () => {
-            dispatch(getAllUsers())
-        }
-    }, [dispatch])
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(getAllUsers())
+    //     }
+    // }, [dispatch])
 
     const handleClick = () => {
-        dispatch(getAllUsers()).then(() => setShowRosterModal(true))
+        setShowRosterModal(true)
     }
 
     return (

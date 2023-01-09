@@ -1,4 +1,4 @@
-# Hangers Academy
+# Rocket Pilled
 
 <a href='https://rocketpilled.onrender.com/' alt=''>Rocket Pilled</a> is a mix between a passion project and a website clone, inspired by <a href='https://www.checkmategaming.com/' alt=''>CheckMateGaming</a>. Rocket Pilled is a site where Rocket League players can go to make solo, duo, or squad teams, and go head to head against each other to compete for experience points.
 
@@ -95,4 +95,3 @@ Users can access Log In via the 'Sign In' button in the top right.
 Logged in users can make a Solo, Duo, or Squad team, and post or accept matches.
 
 ![Log In Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061079450021793842/Untitled_video_-_Made_with_Clipchamp_5.gif)
-

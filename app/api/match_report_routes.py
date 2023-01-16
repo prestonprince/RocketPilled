@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Team, db, User, MatchReport
+from app.models import Team, db, User, MatchReport, Match
 from .auth_routes import validation_errors_to_error_messages, authorized
 from app.forms import PostReportForm
 
@@ -12,7 +12,7 @@ def is_completed(match, report):
     new_report = report.to_dict()
     return True if new_report['is_win'] is not prev_report['is_win'] else False
 
-@match_report_routes('/<int:match_id>', methods=['POST'])
+@match_report_routes.route('', methods=['POST'])
 @login_required
 def post_match_report(match_id):
     """
@@ -26,8 +26,9 @@ def post_match_report(match_id):
     match = Match.query.get(data['match_id'])
 
     if not authorized(team.owner_id):
-        return {'error', 'You do not own this team'}
+        return {'error', 'You do not own this team'}, 401
 
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # make new report and commit to db
         new_report = MatchReport(
@@ -39,10 +40,14 @@ def post_match_report(match_id):
         db.session.commit()
         
         # check if match already has a report, if it does, update match to completed or disputed based on reports
-        if len(match.reports) > 0:
+        if len(match.reports) > 1:
+            print('HAS BEEN REPORTED')
             if is_completed(match, new_report):
                 match.status = 'completed'
                 db.session.commit()
+
+                # check if new report is win, if it is, set winning_team_id of match to the team id that is posting the report, else
+                # grab the team id from the previous report, and set the match winning_team_id to that id
                 if new_report.is_win == True:
                     match.winning_team_id = team.id
                     db.session.commit()
@@ -53,4 +58,7 @@ def post_match_report(match_id):
             else:
                 match.status = 'disputed'
                 db.session.commit()
-            
+        
+        return match.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+                

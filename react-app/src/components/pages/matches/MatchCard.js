@@ -51,6 +51,8 @@ const MatchCard = ({ match }) => {
             history.push('/my-teams');
             return;
         };
+        console.log('teamID', team.id)
+        console.log('matchID', match.id)
         dispatch(acceptMatch(team.id, match.id)).then(() => {
             setContent('Match Accepted')
             setShowModal(true)

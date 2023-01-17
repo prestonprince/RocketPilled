@@ -7,14 +7,15 @@ from app.forms import PostReportForm
 match_report_routes = Blueprint('match_reports', __name__)
 
 # check if match is completed, returns true if completed, returns false if disputed
-def is_completed(match, report):
-    prev_report = match.reports[0].to_dict()
-    new_report = report.to_dict()
-    return True if new_report['is_win'] is not prev_report['is_win'] else False
+def is_completed(prev_report, new_report):
+    if prev_report['is_win'] != new_report['is_win']:
+        return True
+    else:
+        return False
 
 @match_report_routes.route('', methods=['POST'])
 @login_required
-def post_match_report(match_id):
+def post_match_report():
     """
     Post a report to a specific match
     Query for match by match_id param and query for team by team_id in request body.
@@ -41,18 +42,18 @@ def post_match_report(match_id):
         
         # check if match already has a report, if it does, update match to completed or disputed based on reports
         if len(match.reports) > 1:
-            print('HAS BEEN REPORTED')
-            if is_completed(match, new_report):
+            prev_report = list(filter(lambda x: x.team_id != team.id, match.reports))[0].to_dict()
+            report = new_report.to_dict()
+            if is_completed(prev_report, report):
                 match.status = 'completed'
                 db.session.commit()
 
                 # check if new report is win, if it is, set winning_team_id of match to the team id that is posting the report, else
                 # grab the team id from the previous report, and set the match winning_team_id to that id
-                if new_report.is_win == True:
+                if report['is_win'] == True:
                     match.winning_team_id = team.id
                     db.session.commit()
                 else:
-                    prev_report = match.reports[0].to_dict()
                     match.winning_team_id = prev_report['team_id']
                     db.session.commit()
             else:

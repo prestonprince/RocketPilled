@@ -39,4 +39,4 @@ def match_exists(form, field):
 class PostReportForm(FlaskForm):
     team_id = IntegerField('team_id', validators=[DataRequired(), team_exists, team_reported])
     match_id = IntegerField('match_id', validators=[DataRequired(), match_exists, match_reported])
-    is_win = BooleanField('is_win', validators=[DataRequired()])
+    is_win = BooleanField('is_win')

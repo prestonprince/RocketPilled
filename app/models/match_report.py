@@ -28,6 +28,5 @@ class MatchReport(db.Model):
             "team_id": self.team_id,
             "match_id": self.match_id,
             "is_win": self.is_win,
-            "team": self.team.to_dict(),
             "match": self.match.to_dict()
         }

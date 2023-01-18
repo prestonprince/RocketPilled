@@ -46,6 +46,14 @@ class Match(db.Model):
     def _status(self, status):
         self.status = status
 
+    @property
+    def _winning_team_id(self):
+        return self.winning_team_id
+    
+    @_winning_team_id.setter
+    def _winning_team_id(self, winning_team_id):
+        self.winning_team_id = winning_team_id
+
     def to_dict_base(self):
         return {
             "id": self.id,

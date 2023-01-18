@@ -27,6 +27,32 @@ const updateToPending = (payload) => ({
     payload
 });
 
+// thunks
+export const reportMatch = ({matchId, teamId, isWin}) => async(dispatch) => {
+    const response = await fetch('/api/match-reports', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            match_id: matchId,
+            team_id: teamId,
+            is_win: isWin
+        })
+    });
+
+    // dispatch thunk to get all matches in order rehydrate state
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(getAllMatches());
+        return data
+    };
+
+    // return err if err
+    const err = response.json();
+    return err;
+}
+
 export const getAllMatches = () => async(dispatch) => {
     const response = await fetch('/api/matches', {
         headers: {

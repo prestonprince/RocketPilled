@@ -43,6 +43,15 @@
     padding-left: 3vw;
 }
 
+.btnContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3vw;
+    gap: 1vh;
+}
+
 .btn {
     background-color: #8aff80;
     border-radius: .2vw;

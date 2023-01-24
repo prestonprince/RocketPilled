@@ -22,12 +22,12 @@ const NavBar = () => {
 
   return (
     <div className={styles.poppaContainer}>
-      <nav className={styles.nav_container}>
-        <div className={styles.nav_links}>
+      <div className={styles.nav_container}>
+        {/* <div className={styles.nav_links}> */}
           <div className={styles.houseContainer} onClick={handleHome}>
-          <span className="material-symbols-outlined" id={styles.house}>
-            other_houses
-          </span>
+            <span className="material-symbols-outlined" id={styles.house}>
+              other_houses
+            </span>
           </div>
           <div className={user ? styles.logoContainer : styles.logoNoUser} onClick={handleHome}>
             <img 
@@ -54,21 +54,8 @@ const NavBar = () => {
               <span className={styles.nav_user}><SideBar user={user} /></span>
             </div>
           }
-          {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <NavLink to='/my-teams' exact={true} activeClassName='active'>
-              My Teams
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <LogoutButton />
-          </li> */}
-        </div>
-      </nav>
+        {/* </div> */}
+      </div>
     </div>
   );
 }

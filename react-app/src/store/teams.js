@@ -81,8 +81,8 @@ export const deleteTeam = (team) => async(dispatch) => {
         dispatch(removeUserTeam(team));
         return data
     }
-    
-    throw response
+    const data = await response.json()
+    throw data
 };
 
 export const addTeamMember = (userId, teamId) => async(dispatch) => {

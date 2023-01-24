@@ -19,7 +19,6 @@ const ManageRosterForm = ({ team, setShowRosterModal }) => {
 
     let validUsers;
     if (allUsers && allUsers.length > 0) {
-        console.log(allUsers)
         validUsers = allUsers
         .filter(user => !teamMembersIds.includes(user.id))
         .filter(user => user[team.type].length < 1)

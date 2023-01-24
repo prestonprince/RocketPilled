@@ -4,7 +4,6 @@ import TeamMatchCard from './TeamMatchCard';
 
 const TeamMatches = ({ team }) => {
     const matches = team.matches.filter(match => match.status === 'completed')
-    console.log(matches)
     return (
         <div className={styles.container}>
             <div className={styles.header}>

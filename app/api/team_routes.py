@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Team, db, User
+from app.models import Team, db, User, MatchReport
 from app.forms import CreateTeamForm, AddTeamMemberForm, RemoveTeamMemberForm
 from .auth_routes import validation_errors_to_error_messages, authorized
 
@@ -123,9 +123,16 @@ def delete_team(team_id):
     Delete a team if authorized
     """
     team = Team.query.get(team_id)
+    match_reports = MatchReport.query.filter_by(team_id=team_id).all()
 
     if not authorized(team.owner_id):
         return {"error": "You do not own this team"}
+
+    if len(match_reports) > 0:
+        for report in match_reports:
+            print(report.team_id)
+            db.session.delete(report)
+            db.session.commit()
         
     db.session.delete(team)
     db.session.commit()

@@ -36,7 +36,7 @@ class Match(db.Model):
     winning_team_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), default=None)
 
     teams = db.relationship("Team", secondary=team_matches, back_populates="matches")
-    reports = db.relationship("MatchReport", back_populates='match')
+    reports = db.relationship("MatchReport", back_populates='match', cascade='all, delete')
 
     @property
     def _status(self):

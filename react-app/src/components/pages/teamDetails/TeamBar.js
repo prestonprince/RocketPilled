@@ -6,7 +6,9 @@ const TeamBar = ({ team }) => {
         return match.winning_team_id === team.id
     })
     const losingMatches = completedMatches.filter(match => match.winning_team_id !== team.id)
-    const winPercentage = Math.floor((winningMatches.length / completedMatches.length) * 100)
+
+    let winPercentage;
+    completedMatches.length > 0 ? winPercentage = Math.floor((winningMatches.length / completedMatches.length) * 100) : winPercentage=0
 
     let record;
     if (completedMatches.length > 0) {

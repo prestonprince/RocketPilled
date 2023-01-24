@@ -23,9 +23,6 @@ import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  // const [showModal, setShowModal] = useState(false)
-  // const [content, setContent] = useState('')
-  // const [open, setOpen] = useState(false)
   const { showModal, setShowModal } = useNotification()
   const dispatch = useDispatch();
 
@@ -95,12 +92,13 @@ function App() {
           </div>
           <Banner />
           <Matches />
-          <Footer />
+          {/* <Footer /> */}
         </Route>
         <Route>
           <NotFound />
         </Route>
       </Switch>
+      <Footer />
       {showModal && (
         <AcceptMatchModal onClose={() => setShowModal(false)}>
           <AcceptMatchPop />

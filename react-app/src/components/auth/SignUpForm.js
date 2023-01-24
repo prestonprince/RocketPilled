@@ -17,6 +17,16 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if (username.length > 25) {
+      setContent('Username must be 25 characters or less');
+      setShowModal(true);
+      setTimeout(() => {
+        setOpen(true);
+      }, 50)
+      return;
+    };
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {

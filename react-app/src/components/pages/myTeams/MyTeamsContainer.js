@@ -19,7 +19,7 @@ const MyTeamsContainer = ({ teams, setClick, click }) => {
                 </ul>
             ): 
             <div className={styles.container}>
-                <h2>No teams yet</h2>
+                <h2 className={styles.title}>No teams yet</h2>
                 <div className={styles.btnContainer}>
                     <button className={styles.btnContainer} onClick={handleClick}>
                         <div className={styles.iconContainer}>

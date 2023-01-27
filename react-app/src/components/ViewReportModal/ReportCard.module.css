@@ -1,0 +1,27 @@
+.container {
+    width: 30vw;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardContainer {
+    /* border: 3px solid red; */
+    width: 20vw;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    align-items: center;
+    font-size: 1.5rem;
+    /* height: 18vh; */
+}
+
+.win {
+    color: #8aff80;
+}
+
+.loss {
+    color: #ff2e57;
+}

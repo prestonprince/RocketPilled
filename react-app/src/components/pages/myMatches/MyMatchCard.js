@@ -4,6 +4,7 @@ import { cancelMatch } from '../../../store/matches';
 import { useNotification } from "../../../context/Notification";
 import { reportMatch } from '../../../store/matches';
 import styles from '../../cssModules/MyMatchCard.module.css'
+import ViewReportModal from '../../ViewReportModal';
 
 const MyMatchCard = ({ userTeams, match }) => {
     const userTeamsIds = userTeams.map(team => team.id)
@@ -112,6 +113,11 @@ const MyMatchCard = ({ userTeams, match }) => {
                 <div className={styles.btnContainer2}>
                     <button className={styles.btn} onClick={handleWinReport}>Report Win</button>
                     <button className={styles.btn} onClick={handleLossReport}>Report Loss</button>
+                </div>
+            )}
+            {hasReported && (
+                <div className={styles.btnContainer}>
+                    <ViewReportModal opp={opp} userTeam={userTeam} match={match} />
                 </div>
             )}
         </div>

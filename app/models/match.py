@@ -37,6 +37,7 @@ class Match(db.Model):
 
     teams = db.relationship("Team", secondary=team_matches, back_populates="matches")
     reports = db.relationship("MatchReport", back_populates='match', cascade='all, delete')
+    tickets = db.relationship("Ticket", back_populates='match')
 
     @property
     def _status(self):

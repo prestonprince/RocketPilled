@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     xp_points = db.Column(db.Integer, default=0)
 
     teams = db.relationship("Team", secondary=team_members, cascade='all, delete', back_populates="members")
-    
+    tickets = db.relationship("Ticket", back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password

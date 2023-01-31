@@ -128,6 +128,41 @@ export const getAllUsers = () => async(dispatch) => {
   }
 }
 
+// export const getUser = (userId) => async(dispatch) => {
+//   const response = await fetch(`/api/user/${userId}`, {
+//     headers: {
+//       "Content-Type": 'application/json'
+//     }
+//   });
+// }
+
+export const postTicket = ({ matchId, userId, screenshotLink, description }) = async(dispatch) => {
+  const response = await fetch('/api/tickets', {
+    method: "POST",
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify({
+      match_id: matchId,
+      user_id: userId,
+      screenshot_link: screenshotLink,
+      description
+    })
+  });
+
+  if (response.ok) {
+    const data = await response.json()
+    console.log(data);
+
+    await dispatch(authenticate())
+
+    return data
+  }
+  const err = response.json()
+  console.log('ERROR', err)
+  throw err
+}
+
 export default function reducer(state = initialState, action) {
   let newState = {...state};
   switch (action.type) {

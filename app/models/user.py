@@ -46,6 +46,7 @@ class User(db.Model, UserMixin):
             "xp_points": self.xp_points,
             "Solo": [team.to_dict() for team in self.teams if team.type == "Solo"],
             "Duo": [team.to_dict() for team in self.teams if team.type == "Duo"],
-            "Squad": [team.to_dict() for team in self.teams if team.type == "Squad"]
+            "Squad": [team.to_dict() for team in self.teams if team.type == "Squad"],
+            "tickets": [ticket.to_dict() for ticket in self.tickets]
         }
     

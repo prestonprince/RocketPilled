@@ -17,6 +17,24 @@ class Ticket(db.Model):
     match = db.relationship("Match", back_populates='tickets')
     user = db.relationship("User", back_populates='tickets')
 
+
+    @property
+    def _match(self):
+        return self.match
+    
+    @_match.setter
+    def _match(self, match):
+        self.match = match
+
+    
+    @property
+    def _user(self):
+        return self.user
+    
+    @_user.setter
+    def _user(self, user):
+        self.user = user
+
     
     def to_dict_base(self):
         return {

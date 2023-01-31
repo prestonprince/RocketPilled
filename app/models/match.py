@@ -71,5 +71,6 @@ class Match(db.Model):
             "winning_team_id": self.winning_team_id,
             "map": self.map,
             "teams": [team.to_dict() for team in self.teams],
-            "reports": [report.to_dict_base() for report in self.reports]
+            "reports": [report.to_dict_base() for report in self.reports],
+            "tickets": [ticket.to_dict_base() for ticket in self.tickets]
         }

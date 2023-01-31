@@ -5,7 +5,7 @@ from .auth_routes import validation_errors_to_error_messages, authorized
 from app.forms import PostTicketForm
 
 
-ticket_routes = Blueprint('teams', __name__)
+ticket_routes = Blueprint('tickets', __name__)
 
 
 @ticket_routes.route('/current')

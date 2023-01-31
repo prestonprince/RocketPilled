@@ -136,7 +136,7 @@ export const getAllUsers = () => async(dispatch) => {
 //   });
 // }
 
-export const postTicket = ({ matchId, userId, screenshotLink, description }) = async(dispatch) => {
+export const postTicket = ({ matchId, userId, screenshotLink, description }) => async(dispatch) => {
   const response = await fetch('/api/tickets', {
     method: "POST",
     headers: {

@@ -8,6 +8,11 @@ const SideBarContent = ({ user, setShowModal }) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const handleDisputedMatches = () => {
+        setShowModal(false)
+        history.push('/my-disputed-matches')
+    }
+
     const handleComingSoon = () => {
         setShowModal(false)
         history.push('/coming-soon')
@@ -47,17 +52,17 @@ const SideBarContent = ({ user, setShowModal }) => {
                     </span>
                     <span>Matches</span>
                 </div>
+                <div onClick={handleDisputedMatches} className={styles.optionCard}>
+                    <span class="material-symbols-outlined">
+                        error
+                    </span>
+                    <span>Disputed Matches</span>
+                </div>
                 <div onClick={handleTeams} className={styles.optionCard}>
                     <span class="material-symbols-outlined">
                         group
                     </span>
                     <span>Teams</span>
-                </div>
-                <div onClick={handleComingSoon} className={styles.optionCard}>
-                    <span class="material-symbols-outlined">
-                        group_add
-                    </span>
-                    <span>Team Invites</span>
                 </div>
                 <div onClick={handleComingSoon} className={styles.optionCard}>
                     <span class="material-symbols-outlined">

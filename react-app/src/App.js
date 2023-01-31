@@ -20,6 +20,7 @@ import TeamDeetsBanner from './components/TeamDeetsBanner';
 import { useNotification } from './context/Notification';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
+import DisputedMatches from './components/pages/DisputedMatches/DisputedMatches';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -85,6 +86,12 @@ function App() {
             <NavBar />
           </div>
           <MyMatches />
+        </ProtectedRoute>
+        <ProtectedRoute path='/my-disputed-matches'>
+          <div className='nav'>
+            <NavBar />
+          </div>
+          <DisputedMatches />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <div className='nav'>

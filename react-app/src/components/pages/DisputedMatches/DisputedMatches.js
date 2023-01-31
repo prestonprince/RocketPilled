@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllMatches } from "../../../store/matches";
 
+import DisputedMatchCard from "./DisputedMatchCard";
+import styles from "./DisputedMatches.module.css"
+
 function DisputedMatches() {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
@@ -29,10 +32,15 @@ function DisputedMatches() {
     return (
         <>
         {isLoaded ? (
-            <div style={{marginTop: '10vh'}}>
-                {disputedMatches.map(match => (
-                    <span>{match.id}</span>
-                ))}
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <span><span className={styles.my}>MY</span> DISPUTED MATCHES</span>
+                </div>
+                <div className={styles.matchCardContainer}>
+                    {allMatches && disputedMatches.length > 0 && disputedMatches.map(match => (
+                        <DisputedMatchCard userTeams={userTeams} key={match.id} match={match} />
+                    ))}
+                </div>
             </div>
         ) :
             <div></div>

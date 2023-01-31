@@ -8,14 +8,14 @@ from app.forms import PostTicketForm
 ticket_routes = Blueprint('teams', __name__)
 
 
-#! May not need bc can access user tickets thru user model
-# @ticket_routes.route('/<int:ticket_id>')
-# def get_ticket(ticket_id):
-#     """
-#     Query and return a single ticket by its id
-#     """
-#     ticket = Ticket.query.get(ticket_id)
-#     return {"ticket": ticket.to_dict()}
+@ticket_routes.route('/current')
+def get_user_tickets():
+    """
+    Query for current user and return all of their tickets
+    """
+    user = User.query.get(current_user.id).to_dict()
+    user_tickets = user['tickets']
+    return {'tickets': user_tickets}
 
 
 @ticket_routes.route('', methods=['POST'])

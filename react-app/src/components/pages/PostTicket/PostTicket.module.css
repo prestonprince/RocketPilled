@@ -16,3 +16,9 @@
 .my {
     border-top: .4vw solid #5cc5e6;
 }
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

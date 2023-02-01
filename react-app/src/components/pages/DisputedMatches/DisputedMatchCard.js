@@ -1,8 +1,29 @@
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import styles from '../../cssModules/MyMatchCard.module.css'
 
 function DisputedMatchCard({ userTeams, match }) {
+    const [hasSubmittedTicket, setHasSubmittedTicket] = useState(false)
+    const history = useHistory()
+
     const userTeamsIds = userTeams.map(team => team.id)
-    const opp = match.teams.find(team => !userTeamsIds.includes(team.id));
+    const opp = match.teams.find(team => !userTeamsIds.includes(team.id))
+    const userTeam = match.teams.find(team => userTeamsIds.includes(team.id))
+
+    const userTeamMemberIds = userTeam.members.map(member => member.id)
+
+    useEffect(() => {
+        for (const ticket of match.tickets) {
+            if (userTeamMemberIds.includes(ticket.user_id)) setHasSubmittedTicket(true)
+        };
+
+    }, [userTeamMemberIds, match.tickets]);
+
+    function handleTicketClick() {
+        history.push('/tickets/new')
+    }
+
     return (
     <>
         <div className={styles.container}>
@@ -30,6 +51,11 @@ function DisputedMatchCard({ userTeams, match }) {
                     <span>{match.status}</span>
                 </div>
             </div>
+            {!hasSubmittedTicket && (
+                <div className={styles.btnContainer}>
+                    <button onClick={handleTicketClick} className={styles.btn}>Submit Ticket</button>
+                </div>
+            )}
         </div>
     </>
       

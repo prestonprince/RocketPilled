@@ -16,3 +16,8 @@
 .my {
     border-top: .4vw solid #5cc5e6;
 }
+
+.matchCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+}

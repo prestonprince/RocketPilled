@@ -21,6 +21,7 @@ import { useNotification } from './context/Notification';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import DisputedMatches from './components/pages/DisputedMatches/DisputedMatches';
+import PostTicket from './components/pages/PostTicket/PostTicket';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -92,6 +93,12 @@ function App() {
             <NavBar />
           </div>
           <DisputedMatches />
+        </ProtectedRoute>
+        <ProtectedRoute path='/tickets/new'>
+          <div className='nav'>
+            <NavBar />
+          </div>
+          <PostTicket />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <div className='nav'>

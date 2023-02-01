@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { useMatchId } from '../../../context/Match'
 import styles from '../../cssModules/MyMatchCard.module.css'
 
 function DisputedMatchCard({ userTeams, match }) {
     const [hasSubmittedTicket, setHasSubmittedTicket] = useState(false)
+    const { setMatchId }  = useMatchId()
     const history = useHistory()
 
     const userTeamsIds = userTeams.map(team => team.id)
@@ -17,10 +19,10 @@ function DisputedMatchCard({ userTeams, match }) {
         for (const ticket of match.tickets) {
             if (userTeamMemberIds.includes(ticket.user_id)) setHasSubmittedTicket(true)
         };
-
     }, [userTeamMemberIds, match.tickets]);
 
     function handleTicketClick() {
+        setMatchId(match.id)
         history.push('/tickets/new')
     }
 

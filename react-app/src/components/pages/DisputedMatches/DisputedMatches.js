@@ -43,7 +43,7 @@ function DisputedMatches() {
                 </div>
             </div>
         ) :
-            <div></div>
+            <div className={styles.loader}></div>
         }
         </>
     )

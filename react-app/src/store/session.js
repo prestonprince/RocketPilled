@@ -128,14 +128,6 @@ export const getAllUsers = () => async(dispatch) => {
   }
 }
 
-// export const getUser = (userId) => async(dispatch) => {
-//   const response = await fetch(`/api/user/${userId}`, {
-//     headers: {
-//       "Content-Type": 'application/json'
-//     }
-//   });
-// }
-
 export const postTicket = ({ matchId, userId, screenshotLink, description }) => async(dispatch) => {
   const response = await fetch('/api/tickets', {
     method: "POST",

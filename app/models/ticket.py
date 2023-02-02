@@ -40,7 +40,8 @@ class Ticket(db.Model):
         return {
             'id': self.id,
             'screenshot_link': self.screenshot_link,
-            'description': self.description
+            'description': self.description,
+            'user_id': self.user_id
         }
     
 
@@ -49,6 +50,7 @@ class Ticket(db.Model):
             'id': self.id,
             'screenshot_link': self.screenshot_link,
             'description': self.description,
+            'user_id': self.user_id,
             'match': self.match.to_dict_base(),
             'user': self.user.to_dict_base() 
         }

@@ -150,9 +150,10 @@ export const postTicket = ({ matchId, userId, screenshotLink, description }) => 
 
     return data
   }
-  const err = response.json()
-  console.log('ERROR', err)
-  throw err
+  throw response
+  // const err = response.json()
+  // console.log('ERROR', err)
+  // return err
 }
 
 export default function reducer(state = initialState, action) {

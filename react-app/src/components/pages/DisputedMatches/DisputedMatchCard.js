@@ -17,6 +17,7 @@ function DisputedMatchCard({ userTeams, match }) {
 
     useEffect(() => {
         for (const ticket of match.tickets) {
+            console.log(ticket)
             if (userTeamMemberIds.includes(ticket.user_id)) setHasSubmittedTicket(true)
         };
     }, [userTeamMemberIds, match.tickets]);

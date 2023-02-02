@@ -45,5 +45,5 @@ def post_ticket():
 
         new_ticket.user = user
         db.session.commit()
-        return {new_ticket.to_dict()}
+        return {'ticket': new_ticket.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

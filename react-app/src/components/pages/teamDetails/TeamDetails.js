@@ -58,7 +58,7 @@ const TeamDetails = () => {
                 <div className={styles.headerLeft}>
                     <div className={styles.leftSide}>
                         <div className={styles.picContainer}>
-                            <span style={{fontSize: "3.2rem"}} class='material-symbols-outlined'>
+                            <span className={`material-symbols-outlined ${styles.bigList}`}>
                                         list
                             </span>                    
                         </div>

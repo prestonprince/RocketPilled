@@ -14,7 +14,7 @@ const PlayerCard = ({ team, player, setRemovePlayer }) => {
         <div className={styles.container}>
             <div className={styles.left}>
                 <div className={styles.picContainer}>
-                    <span style={{fontSize: '1.8rem'}} class="material-symbols-outlined">
+                    <span className={`material-symbols-outlined ${styles.pic}`}>
                         person
                     </span>
                 </div>

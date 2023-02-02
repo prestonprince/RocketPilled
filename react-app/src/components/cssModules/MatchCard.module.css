@@ -5,7 +5,7 @@
     align-items: center;
     background-color: #292929;
     padding: 0.25vw;
-    width: 50vw;
+    width: 100%;
     /* height: fit-content; */
 }
 
@@ -37,6 +37,9 @@
     margin-right: .65vw;
     position: relative;
     right: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button:hover {
@@ -61,4 +64,46 @@
     display: flex;
     justify-content: center;
     width: 16%;
+}
+
+@media (max-width: 1300px) {
+    .container {
+        font-size: .9rem;
+    }
+    .button {
+        font-size: .75rem;
+        width: 5vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .button {
+        width: 6vw;
+        font-size: .7rem;
+    }
+
+    .pic_container {
+        width: 5vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .xp {
+        font-size: 1.2rem;
+    }
+
+    .button {
+        width: 7vw;
+        font-size: .6rem;
+        height: 2vh;
+        right: .5vw;
+    }
+
+    .container {
+        font-size: .7rem;
+    }
+
+    .pic_container {
+        width: 8vw;
+    }
 }

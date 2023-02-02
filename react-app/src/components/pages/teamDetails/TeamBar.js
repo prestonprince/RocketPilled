@@ -41,7 +41,7 @@ const TeamBar = ({ team }) => {
         <div className={styles.container}>
             <div className={styles.barCardFirst}>
                 <div>
-                    <span style={{fontSize: '3.5rem', color: 'gold'}} class="material-symbols-outlined">
+                    <span className={`material-symbols-outlined ${styles.badge}`}>
                         military_tech
                     </span>
                 </div>

@@ -67,3 +67,19 @@
     align-items: center;
     gap: 1.5vw;
 }
+
+@media (max-width: 1024px) {
+    .teams {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .teams {
+        font-size: .8rem;
+    }
+
+    .typeBox {
+        font-size: .7rem;
+    }
+}

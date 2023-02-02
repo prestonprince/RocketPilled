@@ -27,3 +27,15 @@
     font-size: .9rem;
     color: #82868b;
 }
+
+@media (max-width: 900px) {
+    .header {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        font-size: .8rem;
+    }
+}

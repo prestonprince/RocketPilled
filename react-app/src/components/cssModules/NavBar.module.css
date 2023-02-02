@@ -170,3 +170,9 @@
 .logoNoUser:hover {
     cursor: pointer;
 }
+
+@media (max-width: 900px) {
+    .houseContainer {
+        margin-left: 2vw;
+    }
+}

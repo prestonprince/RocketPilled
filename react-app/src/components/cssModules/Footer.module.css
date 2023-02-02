@@ -50,3 +50,27 @@
     display: flex;
     gap: 1vw;
 }
+
+@media ( max-width: 1300px ) {
+
+    .iconContainer {
+        /* border: 3px solid blue; */
+        width: 3vw;
+    }
+}
+
+@media ( max-width: 900px ) {
+
+    .iconContainer {
+        /* border: 3px solid blue; */
+        width: 4vw;
+    }
+}
+
+@media ( max-width: 600px ) {
+
+    .iconContainer {
+        /* border: 3px solid blue; */
+        width: 5vw;
+    }
+}

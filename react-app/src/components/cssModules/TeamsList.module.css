@@ -55,3 +55,24 @@
     cursor: pointer;
     background-color: #383838;
   }
+
+  @media (max-width: 1300px) {
+    .view {
+        font-size: .95rem;
+        width: 5vw;
+    }
+}
+
+  @media (max-width: 900px) {
+    .view {
+      font-size: .9rem;
+      width: 5vw;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .view {
+      font-size: .7rem;
+      width: 6vw;
+    }
+  }

@@ -21,3 +21,35 @@
 .smallText {
     font-size: .8rem;
 }
+
+@media (max-width: 800px) {
+    .container {
+        /* border: 3px solid red; */
+        bottom: 6vh;
+        width: 60vw;
+    }
+
+    .bigText {
+        font-size: .8rem;
+    }
+
+    .smallText{
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        /* border: 3px solid red; */
+        width: 65vw;
+        height: 8vh;
+    }
+
+    .bigText {
+        font-size: .7rem;
+    }
+
+    .smallText{
+        font-size: .7rem;
+    }
+}

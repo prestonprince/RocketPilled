@@ -14,9 +14,9 @@ const MyTeamsContainer = ({ teams, setClick, click }) => {
     return (
         <div className={styles.container}>
             {myTeams.length > 0 ? (
-                <ul>
+                <div className={styles.cardContainer}>
                     {myTeams.map(team => (<MyTeamCard setClick={setClick} click={click} key={team.id} team={team} />))}
-                </ul>
+                </div>
             ): 
             <div className={styles.container}>
                 <h2 className={styles.title}>No teams yet</h2>

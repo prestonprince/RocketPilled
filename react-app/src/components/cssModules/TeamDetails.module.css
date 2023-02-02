@@ -165,6 +165,10 @@
     .teamInfoContainer {
         width: 65vw;
     }
+
+    .btn {
+        width: 12vw;
+    }
 }
 
 @media (max-width: 800px) {
@@ -193,6 +197,11 @@
         bottom: 25vh;
     }
 
+    .btn {
+        width: 13.5vw;
+        font-size: .75rem;
+    }
+
     .headerLeft {
         width: 100%;
     }
@@ -203,5 +212,11 @@
 
     .teamInfoContainer {
         width: 75vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .btn {
+        width: 14.5vw;
     }
 }

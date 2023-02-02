@@ -28,3 +28,15 @@
     /* border-radius: 12px; */
     box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width: 1200px) {
+    #sideBarModal-content {
+      width: 30vw;
+    }
+  }
+
+  @media (max-width: 800px) {
+    #sideBarModal-content {
+      width: 40vw;
+    }
+  }

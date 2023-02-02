@@ -30,6 +30,11 @@
     height: 8vh;
     font-size: 1.25rem;
     border-radius: 5px;
+    text-align: center;
+}
+
+.input:focus {
+    outline: none;
 }
 
 .select {
@@ -40,6 +45,11 @@
     border: none;
     border-radius: 5px;
     font-size: 1.25rem;
+    text-align: center;
+}
+
+.select:focus {
+    outline: none;
 }
 
 .btn {
@@ -63,4 +73,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1200px) {
+    .input {
+        width: 20vw;
+        font-size: 1.2rem;
+    }
+
+    .select {
+        width: 20vw;
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        width: 30vw;
+        font-size: 1.2rem;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .input {
+        width: 35vw;
+        font-size: 1.1rem;
+    }
+
+    .select {
+        width: 35vw;
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        width: 40vw;
+        font-size: 1.1rem;
+    }
 }

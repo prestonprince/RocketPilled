@@ -171,6 +171,51 @@
     cursor: pointer;
 }
 
+@media (max-width: 1600px) {
+    .sign_up_login  {
+        /* border: 3px solid green; */
+        width: 15vw;
+    }
+
+    #signup {
+        font-size: 1rem;
+    }
+
+    #login {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .sign_up_login  {
+        /* border: 3px solid green; */
+        width: 20vw;
+    }
+
+    #signup {
+        font-size: .9rem;
+    }
+
+    #login {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .sign_up_login  {
+        /* border: 3px solid green; */
+        width: 25vw;
+    }
+
+    #signup {
+        font-size: .9rem;
+    }
+
+    #login {
+        font-size: .9rem;
+    }
+}
+
 @media (max-width: 900px) {
     .houseContainer {
         margin-left: 2vw;

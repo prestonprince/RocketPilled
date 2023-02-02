@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     xp_points = db.Column(db.Integer, default=0)
 
     teams = db.relationship("Team", secondary=team_members, cascade='all, delete', back_populates="members")
-    
+    tickets = db.relationship("Ticket", back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password
@@ -45,6 +46,7 @@ class User(db.Model, UserMixin):
             "xp_points": self.xp_points,
             "Solo": [team.to_dict() for team in self.teams if team.type == "Solo"],
             "Duo": [team.to_dict() for team in self.teams if team.type == "Duo"],
-            "Squad": [team.to_dict() for team in self.teams if team.type == "Squad"]
+            "Squad": [team.to_dict() for team in self.teams if team.type == "Squad"],
+            "tickets": [ticket.to_dict() for ticket in self.tickets]
         }
     

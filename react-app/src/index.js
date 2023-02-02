@@ -11,6 +11,7 @@ import NotificationProvider from './context/Notification'
 
 import * as teamActions from "./store/teams";
 import * as matchActions from './store/matches'
+import MatchIdProvider from './context/Match';
 
 const store = configureStore();
 
@@ -27,7 +28,9 @@ ReactDOM.render(
         <SideBarModalProvider>
           <AcceptMatchModalProvider>
             <NotificationProvider>
-              <App /> 
+              <MatchIdProvider>
+                <App /> 
+              </MatchIdProvider>
             </NotificationProvider>
           </AcceptMatchModalProvider>
         </SideBarModalProvider>

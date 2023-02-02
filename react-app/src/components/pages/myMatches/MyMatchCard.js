@@ -39,7 +39,7 @@ const MyMatchCard = ({ userTeams, match }) => {
     useEffect(() => {
         let report;
         if (match.reports.length > 0) {
-            report = match.reports[0]
+            report = match.reports.find(report => report.team_id === userTeam.id)
         };
         if (report?.team_id === userTeam.id) setHasReported(true) 
     }, [hasReported])

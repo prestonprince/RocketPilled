@@ -1,5 +1,5 @@
 .container {
-    margin-top: 10vh;
+    margin-top: 12vh;
     margin-left: 1vw;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,20 @@
     gap: 2vw;
 }
 
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
 .loader {
     position: relative;
     border-radius: 30px;
     width: 60%;
-    height: 4px;
-    top: 250px;
-    left: 325px;
+    height: 10px;
+    /* top: 250px;
+    left: 325px; */
 }
 
 .loader::before {

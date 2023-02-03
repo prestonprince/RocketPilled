@@ -218,5 +218,6 @@
 @media (max-width: 600px) {
     .btn {
         width: 14.5vw;
+        height: fit-content;
     }
 }

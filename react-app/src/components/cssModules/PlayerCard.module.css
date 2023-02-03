@@ -123,4 +123,10 @@
     .pic {
         font-size: 1.2rem;
     }
+
+    .btn {
+        width: 8vw;
+        font-size: .8rem;
+        height: 2vh;
+    }
 }

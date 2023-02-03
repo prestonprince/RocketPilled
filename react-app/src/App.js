@@ -22,6 +22,7 @@ import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import DisputedMatches from './components/pages/DisputedMatches/DisputedMatches';
 import PostTicket from './components/pages/PostTicket/PostTicket';
+import ComingSoon from './components/ComingSoon';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -80,7 +81,7 @@ function App() {
           <MyTeams />
         </ProtectedRoute>
         <ProtectedRoute path='/coming-soon'>
-          <h2>Feature Coming Soon!</h2>
+          <ComingSoon />
         </ProtectedRoute>
         <ProtectedRoute path='/my-matches'>
           <div className='nav'>

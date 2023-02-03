@@ -22,6 +22,10 @@
     width: 80%;
 }
 
+.bigList {
+    font-size: 3.2rem;
+}
+
 
 .leftSide {
     /* border: 3px solid gold; */
@@ -38,6 +42,9 @@
     border-radius: 5vw;
     width: 3vw;
     padding: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rightSide {
@@ -104,4 +111,113 @@
     width: 55vw;
 }
 
+@media (max-width: 1200px) {
+    .teamName {
+        font-size: 2.5rem;
+    }
 
+    .time {
+        font-size: .9rem;
+    }
+
+    .rl {
+        font-size: .9rem;
+    }
+
+    .picContainer {
+        width: 4vw;
+    }
+
+    .bigList {
+        font-size: 2.8rem;
+    }
+
+    .teamInfoContainer {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 1050px) {
+    .teamName {
+        font-size: 2rem;
+    }
+
+    .time {
+        font-size: .8rem;
+    }
+
+    .rl {
+        font-size: .8rem;
+    }
+
+    .picContainer {
+        width: 4vw;
+    }
+
+    .bigList {
+        font-size: 2.5rem;
+    }
+
+    .headerLeft {
+        width: 100%;
+    }
+
+    .teamInfoContainer {
+        width: 65vw;
+    }
+
+    .btn {
+        width: 12vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .teamName {
+        font-size: 1.8rem;
+    }
+
+    .time {
+        font-size: .7rem;
+    }
+
+    .rl {
+        font-size: .7rem;
+    }
+
+    .picContainer {
+        width: 4vw;
+    }
+
+    .bigList {
+        font-size: 2rem;
+    }
+
+    .header {
+        width: 60%;
+        bottom: 25vh;
+    }
+
+    .btn {
+        width: 13.5vw;
+        font-size: .75rem;
+    }
+
+    .headerLeft {
+        width: 100%;
+    }
+
+    .picContainer {
+        border: 2px solid white;
+    }
+
+    .teamInfoContainer {
+        width: 75vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .btn {
+        width: 14.5vw;
+        height: fit-content;
+    }
+}

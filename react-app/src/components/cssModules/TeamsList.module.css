@@ -36,6 +36,9 @@
     justify-content: space-between;
     align-items: center;
     padding-left: .5vw;
+    /* font-size: .9rem; */
+    /* border-bottom: 1px solid rgb(105, 105, 105);
+    padding: .5vw; */
     /* height: 10vh; */
   }
 
@@ -54,4 +57,29 @@
   .view:hover {
     cursor: pointer;
     background-color: #383838;
+  }
+
+  @media (max-width: 1300px) {
+    .view {
+        font-size: .95rem;
+        width: 5vw;
+    }
+}
+
+  @media (max-width: 900px) {
+    .view {
+      font-size: .9rem;
+      width: 5vw;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .view {
+      font-size: .7rem;
+      width: 6vw;
+    }
+
+    .container {
+      gap: 1.5vh;
+    }
   }

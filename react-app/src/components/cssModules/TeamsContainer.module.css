@@ -2,7 +2,7 @@
     display: flex;
     /* border: 3px solid red; */
     justify-content: center;
-    /* margin-top: 5vh; */
+    margin-top: 5vh;
     width: 60vw;
     height: 50vh;
     gap: 1vw;
@@ -42,4 +42,49 @@
 .gameLabel {
     font-size: .8rem;
     font-weight: 600;
+}
+
+@media (max-width: 1300px) {
+    .list_container {
+        font-size: .95rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        /* border: 3px solid red; */
+        width: 70vw;
+    }
+
+    .teamLabel {
+        /* border: 3px solid red; */
+        font-size: 1rem;
+    }
+
+    .gameLabel {
+        font-size: .7rem;
+    }
+
+    .list_container {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 100vw;
+    }
+
+    .teamLabel {
+        /* border: 3px solid red; */
+        font-size: .9rem;
+    }
+
+    .gameLabel {
+        font-size: .7rem;
+    }
+
+    .list_container {
+        font-size: .7rem;
+    }
 }

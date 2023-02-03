@@ -17,6 +17,7 @@
     align-items: center;
     border-bottom: 1px solid #292929;
     width: 30vw;
+    height: 5vh;
     font-size: 0.8rem;
     font-weight: 600;
     color: #b3b3ae;
@@ -66,4 +67,38 @@
     display: flex;
     align-items: center;
     gap: 1.5vw;
+}
+
+@media (max-width: 1024px) {
+    .teams {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .teams {
+        font-size: 1.1rem;
+    }
+
+    .typeBox {
+        font-size: .9rem;
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: start;
+        gap: 2vh;
+        bottom: 0;
+        margin-top: 5vh;
+        width: 100%;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5vw;
+        gap: 2vh;
+    }
 }

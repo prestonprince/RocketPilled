@@ -49,6 +49,10 @@
     width: 50%;
 }
 
+.pic {
+    font-size: 1.8rem;
+}
+
 .btn {
     background-color: #8aff80;
     border-radius: .2vw;
@@ -65,4 +69,64 @@
     position: relative;
     bottom: .2vh;
     cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    .picContainer {
+        width: 2vw;
+    }
+
+    .name {
+        font-size: 1.1rem;
+    }
+
+    .points {
+        font-size: .7rem;
+    }
+
+    .pic {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .picContainer {
+        width: 2.5vw;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+
+    .points {
+        font-size: .7rem;
+    }
+
+    .pic {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .picContainer {
+        width: 3vw;
+    }
+
+    .name {
+        font-size: .8rem;
+    }
+
+    .points {
+        font-size: .7rem;
+    }
+
+    .pic {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        width: 8vw;
+        font-size: .8rem;
+        height: 2vh;
+    }
 }

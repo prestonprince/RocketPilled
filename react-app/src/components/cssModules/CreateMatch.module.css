@@ -15,6 +15,7 @@
     height: 4vh;
     border: none;
     border-radius: .15vw;
+    text-align: center;
 }
 
 .formContainer {
@@ -38,7 +39,6 @@
 
 .typeContainer {
     display: flex;
-    flex-direction: column;
     gap: 2vh;
 }
 
@@ -63,4 +63,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1300px) {
+    .formContainer {
+        width: 70vw;
+        height: 30vh;
+    }
+
+    .btn {
+        width: 15vw;
+    }
+
+    .select {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .formContainer {
+        width: 70vw;
+        height: 25vh;
+    }
+
+    .btn {
+        width: 15vw;
+    }
+
+    .select {
+        width: 30vw;
+    }
 }

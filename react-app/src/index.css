@@ -51,4 +51,28 @@ body::-webkit-scrollbar {
     animation: moving 0.5s ease-in-out infinite;
 }
 
+.comingSoonContainer {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+  .home-btn {
+    background-color: #8aff80;
+    border-radius: .2vw;
+    width: fit-content;
+    height: 4vh;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    border: none;
+    transition: all 1s ease;
+}
+
+.home-btn:hover {
+    position: relative;
+    bottom: .2vh;
+    cursor: pointer;
+}

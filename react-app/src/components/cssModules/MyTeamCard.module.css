@@ -52,3 +52,92 @@
     cursor: pointer;
     background-color: #3b3a3a;
 }
+
+@media ( max-width: 1300px ) {
+    .container {
+        /* border: 3px solid red; */
+        width: 60vw
+    }
+
+    .pic_container {
+        /* border: 3px solid red; */
+        width: 20vw;
+        height: 15vh;
+    }
+
+    .name {
+        font-size: 1.2rem;
+    }
+
+    .rl {
+        font-size: .8rem;
+    }
+
+    .type {
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: fit-content;
+        font-size: .8rem;
+    }
+}
+
+@media ( max-width: 1100px ) {
+    .container {
+        /* border: 3px solid red; */
+        width: 60vw
+    }
+
+    .pic_container {
+        /* border: 3px solid red; */
+        width: 20vw;
+        height: 15vh;
+    }
+
+    .name {
+        font-size: 1.2rem;
+    }
+
+    .rl {
+        font-size: .8rem;
+    }
+
+    .type {
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: fit-content;
+        font-size: .8rem;
+    }
+}
+
+@media ( max-width: 600px ) {
+    .container {
+        width: 90%;
+    }
+
+    .pic_container {
+        /* border: 3px solid red; */
+        width: 20vw;
+        height: 15vh;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+
+    .rl {
+        font-size: .7rem;
+    }
+
+    .type {
+        font-size: .9rem;
+    }
+
+    .btn {
+        width: fit-content;
+        font-size: .75rem;
+    }
+}

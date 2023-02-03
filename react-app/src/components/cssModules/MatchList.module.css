@@ -135,8 +135,17 @@
 }
 
 @media (max-width: 600px) {
+    .container {
+        gap: .75vh;
+    }
+    
+    .bigContainer {
+        margin-top: 2vh;
+    }
+
     .header {
         font-size: .6rem;
+        display: none;
     }
     .entry {
         right:3vw;

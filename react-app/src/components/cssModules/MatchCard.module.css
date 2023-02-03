@@ -88,22 +88,44 @@
 }
 
 @media (max-width: 600px) {
+    .container {
+        /* border: 3px solid red; */
+        display: flex;
+        align-items: center;
+    }
+
     .xp {
         font-size: 1.2rem;
     }
 
     .button {
-        width: 7vw;
-        font-size: .6rem;
-        height: 2vh;
-        right: .5vw;
+        width: 12vw;
+        font-size: .83rem;
+        height: 3vh;
+        right: 1vw;
     }
 
     .container {
-        font-size: .7rem;
+        font-size: 1rem;
     }
 
     .pic_container {
-        width: 8vw;
+        width: 20vw;
+    }
+
+    .avNow {
+        text-align: center;
+    }
+
+    .cardContainer {
+        margin-right: 6vw;
+        height: 7vh;
+        /* width: 40vw; */
+        display: flex;
+        align-items: center;
+    }
+
+    .opp {
+        display: none;
     }
 }

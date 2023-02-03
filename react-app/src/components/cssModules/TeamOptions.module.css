@@ -26,3 +26,9 @@
 .cardContainer:hover {
     cursor: pointer;
 }
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}

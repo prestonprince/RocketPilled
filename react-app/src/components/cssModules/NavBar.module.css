@@ -2,12 +2,14 @@
     /* border: 3px solid red; */
     display: flex;
     justify-content: center;
+    /* padding: 1vw; */
 }
 
 .nav_container {
     position: fixed;
     /* border: 3px solid blue; */
     display: flex;
+    padding: 1vw;
     /* justify-content: center; */
     justify-content: space-between;
     background-color: #292929;
@@ -201,6 +203,12 @@
     }
 }
 
+@media (max-width: 900px) {
+    .houseContainer {
+        margin-left: 2vw;
+    }
+}
+
 @media (max-width: 650px) {
     .sign_up_login  {
         /* border: 3px solid green; */
@@ -214,10 +222,9 @@
     #login {
         font-size: .9rem;
     }
-}
 
-@media (max-width: 900px) {
-    .houseContainer {
-        margin-left: 2vw;
+    .logo {
+        width: 7vw;
+        height: 7vh;
     }
 }

@@ -84,16 +84,16 @@ const MatchCard = ({ match }) => {
                 alt="rlpic"
                 ></img>
             </div>
-            <div className={styles.cardContainer}>
+            <div className={`${styles.cardContainer} ${styles.opp}`}>
                 <span className={styles.xp}>XP</span>
             </div>
             <div className={styles.cardContainer}>
                 <span>{size}</span>
             </div>
-            <div className={styles.cardContainer}>
+            <div className={`${styles.cardContainer} ${styles.avNow}`}>
                 <span>Available Now</span>
             </div>
-            <div className={styles.cardContainer}>
+            <div className={`${styles.cardContainer} ${styles.opp}`}>
                 <span>{opp}</span>
             </div>
             {(user && isUserMatch) && matchTeamOwnerIds.includes(user.id) && (

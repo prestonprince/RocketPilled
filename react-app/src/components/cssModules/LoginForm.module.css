@@ -159,3 +159,26 @@
 .btnBox {
     padding-top: 3vh;
 }
+
+@media (max-width: 600px) {
+    .title2 {
+        font-size: 1.2rem;
+    }
+
+    .formContainer{
+        width: 60vw;
+        height: 60vh;
+    }
+
+    .input {
+        width: 40vw;
+    }
+
+    .signIn {
+        width: 50vw;
+    }
+
+    .demo {
+        width: 50vw;
+    }
+}

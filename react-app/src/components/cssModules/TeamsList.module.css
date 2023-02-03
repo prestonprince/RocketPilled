@@ -36,6 +36,9 @@
     justify-content: space-between;
     align-items: center;
     padding-left: .5vw;
+    /* font-size: .9rem; */
+    /* border-bottom: 1px solid rgb(105, 105, 105);
+    padding: .5vw; */
     /* height: 10vh; */
   }
 
@@ -74,5 +77,9 @@
     .view {
       font-size: .7rem;
       width: 6vw;
+    }
+
+    .container {
+      gap: 1.5vh;
     }
   }

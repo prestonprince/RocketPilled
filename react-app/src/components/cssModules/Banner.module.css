@@ -2,11 +2,28 @@
     height: 27vh;
 }
 
-img {
+.img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     color: black;
     filter: brightness(35%);
     opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+    .img_container {
+        height: 35vh;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        box-shadow: 0 3vh 20px #161616;
+    }
+
+    .fadeContainer {
+        position: relative;
+        bottom: 5vh;
+        height: 3vh;
+        /* border: 3px solid red; */
+        z-index: 9;
+    }
 }

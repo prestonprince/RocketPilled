@@ -82,16 +82,16 @@ SCHEMA=rocket_pilled
 
 Users can access Sign Up via the 'Join Free' button in the top right.
 
-![Sign Up Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061075985400877146/Untitled_video_-_Made_with_Clipchamp_3.gif)
+![Sign Up Demo](./assets/signup.png)
 
 ## Log In 
 
 Users can access Log In via the 'Sign In' button in the top right.
 
-![Log In Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061077182597832795/Untitled_video_-_Made_with_Clipchamp_4.gif)
+![Log In Demo](./assets/login.png)
 
 ## Make Teams and Post/Accept Matches
 
 Logged in users can make a Solo, Duo, or Squad team, and post or accept matches.
 
-![Log In Demo](https://cdn.discordapp.com/attachments/1049445170778738789/1061079450021793842/Untitled_video_-_Made_with_Clipchamp_5.gif)
+![Log In Demo](https://cdn.discordapp.com/attachments/1049836343137673328/1071081469595877386/Untitled_video_-_Made_with_Clipchamp_5.gif)

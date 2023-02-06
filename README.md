@@ -24,6 +24,43 @@
 
 ![Render](https://img.shields.io/badge/Render-informational?style=for-the-badge&logo=render&logoColor=%5bdec3)
 
+# MVP Features
+
+## Sign Up
+
+Users can access Sign Up via the 'Join Free' button in the top right.
+
+![Sign Up Demo](./assets/signupGif.gif)
+
+### Sign Up Form Component
+
+This is the component the user sees when filling out the form to sign up as a new user. Controlled inputs are used here in conjunction with the React useState hook, and the function onSignUp is invoked when the form is submitted. 
+
+![Sign Up Form](./assets/signupForm.png)
+
+## Log In 
+
+Users can access Log In via the 'Sign In' button in the top right.
+
+![Log In Demo](./assets/loginGif.gif)
+
+### Log In Form Component
+
+This is the component the user sees when filling out the form to log in as an existing user. Controlled inputs are used here in conjunction with the React useState hook, and the function onLogin is invoked when the form is submitted. 
+
+![Log In Form](./assets/loginForm.png)
+
+## Make Teams and Post/Accept Matches
+
+Logged in users can make a Solo, Duo, or Squad team, and post or accept matches.
+
+![Log In Demo](./assets/makeTeams.gif)
+
+### Create/Delete Teams Thunk Actions and Reducer Using React-Redux
+When creating or deleting a team, these functions are invoked, which make a call to the backend server, inputting data or deleting data from the database, which is then communicated through the Redux store. 
+![Create/Delete Teams Thunks](./assets/teamsStore.png)
+![Teams Reducer](./assets/teamsReducer.png)
+
 ## 💻 Run Locally
 
 Clone the project
@@ -77,21 +114,3 @@ SECRET_KEY=boostedGG
 DATABASE_URL=sqlite:///dev.db
 SCHEMA=rocket_pilled
 ```
-
-## Sign Up
-
-Users can access Sign Up via the 'Join Free' button in the top right.
-
-![Sign Up Demo](./assets/signupGif.gif)
-
-## Log In 
-
-Users can access Log In via the 'Sign In' button in the top right.
-
-![Log In Demo](./assets/loginGif.gif)
-
-## Make Teams and Post/Accept Matches
-
-Logged in users can make a Solo, Duo, or Squad team, and post or accept matches.
-
-![Log In Demo](./assets/makeTeams.gif)

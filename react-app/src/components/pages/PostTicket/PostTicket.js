@@ -13,11 +13,18 @@ function PostTicket() {
     const [ screenshotLink, setScreenshotLink ] = useState('');
     const [ description, setDescription ] = useState('')
     const [errors, setErrors] = useState({})
-    const [dispatchError, setDispatchError] = useState('')
 
-    const { matchId, setMatchId } = useMatchId()
+    const { matchId } = useMatchId()
     const { setOpen, setShowModal, setContent } = useNotification()
     const user = useSelector(state => state.session.user)
+
+    const setNotif = (content) => {
+        setContent(content);
+        setShowModal(true);
+        setTimeout(() => {
+            setOpen(true)
+        }, 100)
+    } 
 
     function onSubmit(e) {
         e.preventDefault();
@@ -34,7 +41,8 @@ function PostTicket() {
         if (description.length <= 50) {
             setErrors({
                 description: 'Description must be greater than 50 characters'
-            })
+            });
+            return
         };
 
         const ticket = {
@@ -49,15 +57,11 @@ function PostTicket() {
             setErrors({})
             setScreenshotLink('')
             
-            setContent('Ticket Submitted')
-            setShowModal(true)
-            setTimeout(() => {
-                setOpen(true)
-            }, 50)
+            setNotif('Ticket Submitted')
 
             history.push('/my-disputed-matches')
         }).catch((err) => {
-            console.log(err)
+            setNotif(err)
         })
     }
 

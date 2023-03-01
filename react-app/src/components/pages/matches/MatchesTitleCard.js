@@ -7,11 +7,11 @@ const MatchesTitleCard = () => {
                 <div className={styles.bigText}>
                     <h2>XP MATCHES</h2>
                 </div>
-                <div className={styles.smallText}>
+                {/* <div className={styles.smallText}>
                     <span>
                         Join up and earn xp with every win. Play when and how you want.
                     </span>
-                </div>
+                </div> */}
             </div>
         </div>
     )

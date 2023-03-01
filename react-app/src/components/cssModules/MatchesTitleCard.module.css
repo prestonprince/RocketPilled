@@ -7,9 +7,9 @@
     background-color: #8aff80;
     color: #000000;
     position: relative;
-    bottom: 7vh;
+    bottom: 5vh;
     z-index: 2;
-    height: 9vh;
+    height: 8vh;
 }
 
 .bigContainer {
@@ -34,8 +34,9 @@
 @media (max-width: 800px) {
     .container {
         /* border: 3px solid red; */
-        bottom: 6vh;
+        bottom: 4vh;
         width: 60vw;
+        height: 6vh;
     }
 
     .bigText {
